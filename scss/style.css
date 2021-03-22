@@ -1,0 +1,74 @@
+/* Variables */
+.fullscreen {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body .header {
+  text-align: center;
+  background-image: url(../img/top.jpg);
+}
+
+body .main .result {
+  position: relative;
+}
+
+body .main .result .resultLine {
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+  height: 75%;
+  background-color: bisque;
+}
+
+body .main .result .resultLine .itemPanel {
+  margin: auto;
+  border-radius: 5%;
+  border: 1em solid white;
+  background-color: white;
+}
+
+body .main .result .resultLine .itemPanel img {
+  height: 25vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+body .main .result .resultLine p {
+  margin: 0;
+}
+
+body .main .result .showMore {
+  position: absolute;
+  bottom: 0;
+  left: 44%;
+  -webkit-transform: translate(0%, -44%);
+          transform: translate(0%, -44%);
+  text-align: center;
+  margin: auto;
+  display: block;
+  border: none;
+  border-radius: 50vw;
+  padding: 0.5em 2em;
+  font-size: 1.3em;
+}
+
+body .main .recipe {
+  background-color: pink;
+}
+
+body .main .bookmark {
+  background-color: lightsalmon;
+}
+
+body .footer .fa-chevron-circle-up {
+  position: absolute;
+  right: 0;
+  padding-bottom: 1em;
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

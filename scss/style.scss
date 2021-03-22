@@ -1,0 +1,80 @@
+/* Variables */
+$textColor1: white;
+$bgColor1: white;
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+.fullscreen {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  //header
+  .header {
+    text-align: center;
+    background-image: url(../img/top.jpg);
+  }
+  //main
+  .main {
+    .result {
+      position: relative;
+      .resultLine {
+        //@include flex;
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        height: 75%;
+        background-color: bisque;
+        .itemPanel {
+          margin: auto;
+          border-radius: 5%;
+          border: 1em solid $bgColor1;
+          background-color: $bgColor1;
+          img {
+            height: 25vh;
+            object-fit: cover;
+          }
+        }
+        p {
+          margin: 0;
+        }
+      }
+      .showMore {
+        position: absolute;
+        bottom: 0;
+        left: 44%;
+        transform: translate(0%, -44%);
+        text-align: center;
+        margin: auto;
+        display: block;
+        border: none;
+        border-radius: 50vw;
+        padding: 0.5em 2em;
+        font-size: 1.3em;
+      }
+    }
+    .recipe {
+      background-color: pink;
+    }
+    .bookmark {
+      background-color: lightsalmon;
+    }
+  }
+  //footer
+  .footer {
+    .fa-chevron-circle-up {
+      position: absolute;
+      right: 0;
+      padding-bottom: 1em;
+      cursor: pointer;
+      &:hover {
+      }
+    }
+  }
+}

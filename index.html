@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Recipe Finder</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE-Edge" />
+  <!--Google font-->
+
+  <!--Icon: fontawesome-->
+  <script src="https://kit.fontawesome.com/a62f436beb.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./reset.css" />
+  <link rel="stylesheet" href="./scss/style.css" />
+</head>
+
+<body>
+  <header class="header fullscreen">
+    <h1>Recipe Finder</h1>
+    <a href="#bookmark"><i class="fas fa-heart"></i></a>
+
+    <!--recipe search form-->
+    <div>
+      <!--change to form later-->
+      <p>Find your recipes</p>
+      <div>
+        <label for="#ingredients">Dish: </label>
+        <input type="text" name="ingredients" class="ingredients" placeholder="Enter any keyword" required>
+      </div>
+      <div>
+        <label for="#cuisine">Cuisine: </label>
+        <input type="text" name="cuisine" class="cuisine" placeholder="Enter cuisine">
+      </div>
+      <!--input idea : dishType dropdown-->
+      <input type="submit" value="Search Recipe" class="search">
+    </div>
+    <!--change to form later-->
+    <!--***************today's date and degital clock***************-->
+  </header>
+
+  <div class="main">
+
+    <section class="result fullscreen">
+      <h2>Result</h2>
+      <div class="resultLine">
+        <!--***************Recipe photos here***************-->
+        <!--display first ten-->
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+        <div class="itemPanel">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
+          <p>Spatchcocked Saffron Chicken</p>
+          <a href="#">view detail</a>
+        </div>
+      </div>
+      <!--display another ten items when the button is clicked-->
+      <button type="button" class="showMore">Show More</button>
+    </section>
+
+    <section class="recipe fullscreen">
+      <h2>Recipe</h2>
+      <!--***************Recipe detail here***************-->
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
+        incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
+        veniam vel eaque.</p>
+      <button type="button">Start Cooking</button>
+      <button type="button">Bookmark</button>
+      <!--c***************ountdown timer form***************-->
+    </section>
+
+    <section class="bookmark fullscreen">
+      <h2>Bookmark</h2>
+      <!--***************Recipe photo and title only***************-->
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
+        incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
+        veniam vel eaque.</p>
+      <!--***************note taker***************-->
+    </section>
+
+  </div>
+
+  <!--footer-->
+  <footer class="footer">
+    <h4>
+      @Yuki Matsubara all right reserved. 2021/03.
+      <a href="https://www.linkedin.com/in/yukimatsubara/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/YukiRamu" target="_blank"><i class="fab fa-github-square"></i></a>
+    </h4>
+    <a id="toTop" href="#"><i class="fas fa-chevron-circle-up fa-3x"></i></a>  
+  </footer>
+  <!--GSAP Animation Library-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+  <!--JavaScript-->
+  <script src="./js/main.js" type="text/javascript"></script>
+</body>
+
+</html>
