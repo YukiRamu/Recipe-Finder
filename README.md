@@ -10,4 +10,6 @@ To do list <br>
 <li>Bookmark</li>
 <li>Countdown clock</li>
 <li>Note taker</li>
+<li>Move to top button</li>
+<li>GSAP Library</li>
 </ul>
