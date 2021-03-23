@@ -1,6 +1,7 @@
 /* Variables and Global styling */
 h1 {
   font-size: 3em;
+  font-family: 'Merriweather', serif;
 }
 
 h2 {
@@ -22,12 +23,27 @@ p {
   color: palevioletred;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Main Styling */
+body {
+  font-family: 'PT Serif', serif;
+}
+
 body .header {
   text-align: center;
   background-image: url(../img/top.jpg);
   height: 100vh;
   overflow: hidden;
+  text-transform: uppercase;
+}
+
+body .header .bookmarkLink {
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
 
 body .header .searchForm {

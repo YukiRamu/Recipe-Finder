@@ -2,12 +2,13 @@
 <html>
 
 <head>
-  <title>Recipe Finder</title>
+  <title>Simple and Tasty Recipes</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE-Edge" />
   <!--Google font-->
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=PT+Serif&display=swap" rel="stylesheet">
   <!--Icon: fontawesome-->
   <script src="https://kit.fontawesome.com/a62f436beb.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -17,8 +18,8 @@
 
 <body>
   <header class="header">
-    <h1>Recipe Finder</h1>
-    <a href="#bookmark"><i class="fas fa-heart"></i></a>
+    <h1>Simple and Tasty Recipes</h1>
+    <a href="#bookmark" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
 
     <!--recipe search form-->
     <div class="searchForm">
@@ -43,48 +44,13 @@
     <section class="result">
       <h2>Result</h2>
       <div class="resultPanel">
-        <!--***************Recipe photos here***************-->
+        <!--*************** Recipe photos here. Below is a reference ***************-->
         <!--display first eight-->
-        <div class="itemPanel">
+        <!-- <div class="itemPanel">
           <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
           <p>Spatchcocked Saffron Chicken</p>
           <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
-        <div class="itemPanel">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
-          <p>Spatchcocked Saffron Chicken</p>
-          <a href="#">view detail</a>
-        </div>
+        </div> -->
         <!--***************Recipe photos here***************-->
       </div>
 
@@ -95,7 +61,7 @@
     <section class="recipe" id="recipe">
       <h2>Recipe</h2>
       <div class="recipePanel">
-        <!--***************Recipe detail here Below is a reference ***************-->
+        <!--*************** Recipe detail here Below is a reference ***************-->
         <!-- <ul class="dishInfo">
           <p class="title">Title of the dish</p>
           <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
@@ -124,7 +90,7 @@
 
     </section>
 
-    <section class="bookmark">
+    <section class="bookmark" id="bookmark">
       <h2>Bookmark</h2>
       <!--***************Recipe photo and title only***************-->
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi

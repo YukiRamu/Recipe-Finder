@@ -10,6 +10,7 @@ $bgColor1: white;
 }
 h1 {
   font-size: 3em;
+  font-family: 'Merriweather', serif;
 }
 h2 {
   font-size: 2em;
@@ -26,15 +27,25 @@ p {
 .fa-heart {
   color: palevioletred;
 }
+a {
+  text-decoration: none;
+}
 
 /* Main Styling */
 body {
+  font-family: 'PT Serif', serif;
   //header
   .header {
     text-align: center;
     background-image: url(../img/top.jpg);
     height: 100vh;
     overflow: hidden;
+    text-transform: uppercase;
+    .bookmarkLink {
+      position: absolute;
+      top:5%;
+      right: 5%;
+    }
     .searchForm {
       background-color: rgba(245, 245, 220, 0.572);
       margin: auto;

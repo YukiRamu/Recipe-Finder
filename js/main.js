@@ -138,11 +138,12 @@ const displayRecipe = (title) => {
   console.log("hi I am here ");
   console.log(mealTitle);//NodeList
   console.log(typeof (mealTitle));//Object
+  console.log("meal title is " + title);
 
   let selectedIndex = "";
   for (let i = 0; i < mealTitle.length; i++) {
     console.log("hi I am here 2");
-    if (mealTitle[i].innerHTML === title) {
+    if (mealTitle[i].innerText === title) {
       selectedIndex = i;
     }
   }
