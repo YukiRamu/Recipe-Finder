@@ -1,5 +1,6 @@
 /* ======================== Variable Declaration ======================== */
 //Recipe API
+//======Modification required===
 const baseURL = "https://api.edamam.com/search?q=";
 const apiiD = "93398462";
 const apiKey = "6440cc80aeb489ed0b5cdf7eda03a7fa";
@@ -8,6 +9,7 @@ const apiKey = "6440cc80aeb489ed0b5cdf7eda03a7fa";
 const searchKeyword = document.querySelector(".keyword");
 const cuisiine = document.querySelector(".cuisine");
 const searchBtn = document.querySelector(".search");
+const alertMsg = document.querySelectorAll(".alert");
 
 //display result
 const resultPanel = document.querySelector(".resultPanel");
@@ -26,6 +28,9 @@ const recipePanel = document.querySelector(".recipePanel");
 let appendHTMLForRecipe = "";
 let title = "";
 let singleObj = {};
+
+//bookmark
+const bookmarkLink = document.querySelector(".bookmarkLink");
 
 //countdown timer
 const timerBtn = document.getElementById("timerBtn");
@@ -63,14 +68,14 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
       if (resultArray.length === data.count) {
         console.log("hi index out of bounds here");
         //in case there is no more data to display
-        alert("No more recipe to display");  //change this to modal popup later
+        showAlert("No more recipe to display.", 1);
         console.log(resultArray);
         return false;
       }
 
       //forst load validation check
       if (data.count === 0) {
-        alert("No recipe found."); //change this to modal popup later
+        showAlert("No recipe found.", 0);
         clearInput();
         return false;
       } else if (data.count < lastIndex) {
@@ -89,22 +94,15 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         console.log(resultArray);
         displayResult();
       }
-
-      //planning: switch-case then assign necessary function for each case?
-      // switch (action) {
-      //   case diplay:
-      //     displayResult();
-      //     break;
-
-      //   default:
-      //     break;
-      // }
     })
-    .catch(() => {
-      console.error("Something went wrong. Unable to get recipe data")
+    .catch((error) => {
+      //errorの内容をThrowする --> to understand what causes the error
+      console.error(`Unable to get recipe data. Error = ${error}`);
+      //or redo the fetch again? Think how I want to handle the error. At least return it.
+      return error
     })
   return resultArray, keywordParam, firstIdxParam, lastIdxParam;
-}
+};
 
 //display search result
 //first 8 => load more
@@ -120,16 +118,7 @@ const displayResult = () => {
     `;
   }).join("");
   resultPanel.innerHTML = appendHTMLForResult;
-  console.log(appendHTML);
-}
-
-//show more results
-const showMore = () => {
-  console.log("Loading more");
-  //Add items to the resultArray
-
-  console.log(resultArray);
-}
+};
 
 //display recipe - when "view detail" is clicked
 const displayRecipe = async (title) => {
@@ -138,7 +127,7 @@ const displayRecipe = async (title) => {
   //Move to the next section when view detail is clicked
   const scrollToRecipe = async () => {
     console.log("#1 scroll to recipe");
-    gsap.to(window, { duration: 2, scrollTo: "#recipe" });
+    gsap.to(window, { duration: 2, scrollTo: "#recipe" }); //=====not working
   };
 
   try {
@@ -161,7 +150,6 @@ const displayRecipe = async (title) => {
       }
     }
     console.log("index is " + selectedIndex);
-
     console.log(resultArray[selectedIndex]);
 
     //create <li> tags - ingredients
@@ -179,7 +167,7 @@ const displayRecipe = async (title) => {
             <p class="title">${title}</p>
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
             <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
-            <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+            <button type="button" class="likeBtn" id="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
           <div class="displayRecipe">
             <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
@@ -193,14 +181,20 @@ const displayRecipe = async (title) => {
           </div>
         `;
     console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
-
-    //append before the time button
     recipePanel.innerHTML = appendHTMLForRecipe;
+    const likeBtn = document.querySelector(".likeBtn"); //for the bookmark button
 
+    //bookmark - Bookmark button on the recipe field
+    likeBtn.addEventListener("click", () => {
+      console.log("bookmark clicked")
+      //GSAP scrollTo plugin
+      //Move to the bookmark section when the search button is clicked
+      gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+    });
   } catch (error) {
     console.error("Failed to display the recipe detial");
   }
-}
+};
 
 //clear user input and temp value
 const clearInput = () => {
@@ -210,20 +204,29 @@ const clearInput = () => {
   appendHTMLForResult = "";
   ppendHTMLforIngrList = "";
   appendHTMLForRecipe = "";
+};
+
+//alert pop up
+const showAlert = (msg, idx) => {
+  console.log(idx);
+  alertMsg[idx].innerHTML = msg;
+  alertMsg[idx].style.display = "block";
 }
 
-//Open a new window for a countdown timer
-timerBtn.addEventListener("click", () => {
-  window.open("countdownTimer.html", "", "width=300, height=300");
-})
+const clearAlert = () => {
+  for (i = 0; i < alertMsg.length; i++) {
+    alertMsg[i].style.display = "none";
+  }
+}
 
 /* ============================== Function Call ============================== */
-//recipe search
+//recipe search - Search button
 searchBtn.addEventListener("click", () => {
+  clearAlert(); // clear alert if it is shown
   console.log(searchKeyword.value) //tomato
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
-    alert("This field is required. Number is not allowed.");
+    showAlert("This field is required. Number is not allowed", 0);
     clearInput();
   } else {
     //GSAP scrollTo plugin
@@ -232,16 +235,41 @@ searchBtn.addEventListener("click", () => {
     getRecipe(`${searchKeyword.value}`, 0, 8);
     clearInput();
   }
-})
+});
 
-//load more results
+//load more results - Show More button
 showMoreBtn.addEventListener("click", () => {
   //fetch data from the lastIndex of data to the next 8
   console.log(resultArray);
+  //GSAP scrollTo plugin
+  // Move to the next 8 results when the show more button is clicked
+  //convert
+  let viewHeight = document.documentElement.clientHeight; //vh to pixel
+  gsap.to(resultPanel, { duration: 2, scrollTo: { y: + 1000 } }); //=== no working need css animation
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
-})
+});
 
-/* ============================== Function Call ============================== */
+// //bookmark - Bookmark button on the recipe field
+// likeBtn.addEventListener("click", () => {
+//   console.log("bookmark clicked")
+//   //GSAP scrollTo plugin
+//   //Move to the bookmark section when the search button is clicked
+//   gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+// });
+
+//bookmark - Bookmark link in the header
+bookmarkLink.addEventListener("click", () => {
+  //GSAP scrollTo plugin
+  //Move to the bookmark section when the search button is clicked
+  gsap.to(window, { duration: 2, scrollTo: "#bookmark" }); //=== no working
+});
+
+//Open a new window for a countdown timer
+timerBtn.addEventListener("click", () => {
+  window.open("countdownTimer.html", "", "width=300, height=300");
+});
+
+/* ============================== Animation ============================== */
 //jQuery
 // Move to top button appears after 200 px scroll down the page
 $(window).scroll(function () {
@@ -255,7 +283,7 @@ $(window).scroll(function () {
 //GSAP scrollTo plugin
 toTop.addEventListener("click", () => {
   gsap.to(window, { duration: .5, scrollTo: "#header" });
-})
+});
 //another way with jQuery - keep as a reference
 // $(document).ready(function () {
 //   $("#toTop").click(function (event) {
@@ -264,8 +292,3 @@ toTop.addEventListener("click", () => {
 //     return false;
 //   });
 // });
-
-
-
-/*＝＝＝＝＝＝＝＝＝＝＝　To Think List ＝＝＝＝＝＝＝＝＝＝*/
-//１．最初のデータ表示が一番最初にExecuteされるように、Async/Awaitつける

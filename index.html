@@ -27,9 +27,11 @@
       <!--change to form later-->
       <div class="keywordSearch">
         <label for="#keyword">I want to make... </label>
-        <input type="text" name="keyword" class="keyword" placeholder="Enter keyword. i.e) fish, italian, sushi, tomato" required>
+        <input type="text" name="keyword" class="keyword" placeholder="Enter keyword. i.e) fish, italian, sushi, tomato"
+          required>
         <!--input idea : dishType dropdown-->
         <button type="submit" value="Search Recipe" class="search"><i class="fas fa-search"></i></button>
+        <p class="alert"></p>
       </div>
       <!-- <div>
         <label for="#cuisine">Cuisine: </label>
@@ -57,6 +59,7 @@
       </div>
 
       <!--display another eight items when the button is clicked-->
+      <p class="alert">alert sample</p>
       <button type="button" class="showMore">Show More</button>
     </section>
 
@@ -64,11 +67,11 @@
       <h2>Recipe</h2>
       <div class="recipePanel">
         <!--*************** Recipe detail here Below is a reference ***************-->
-        <ul class="dishInfo">
+        <!-- <ul class="dishInfo">
           <p class="title">Title of the dish</p>
           <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
           <li><i class="fas fa-utensils"></i> Serving size: 4</li>
-          <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+          <button type="button" class="likeBtn" id="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
         </ul>
         <div class="displayRecipe">
           <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
@@ -81,9 +84,10 @@
               <li>ingr1</li>
               <li>ingr1</li>
             </ul>
-            <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto"onclick = 'displayRecipe("Chicken")' target="_blank">view detail</a>
+            <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" onclick='displayRecipe("Chicken")'
+              target="_blank">view detail</a>
           </div>
-        </div>
+        </div> -->
         <!--***************Recipe detail until here***************-->
       </div>
 

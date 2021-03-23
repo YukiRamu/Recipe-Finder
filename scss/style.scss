@@ -2,14 +2,13 @@
 $textColor1: white;
 $bgColor1: white;
 
-$color1:#EBECE5;
-$color2:#ABADAF;
-$color3:#D76B34;
-$color4:#B34140;
-$color5:#D75A54;
-$color6:#97342B;
-$color7:#CC9456;
-
+$color1: #ebece5;
+$color2: #abadaf;
+$color3: #d76b34;
+$color4: #b34140;
+$color5: #d75a54;
+$color6: #97342b;
+$color7: #cc9456;
 
 @mixin flex {
   display: flex;
@@ -19,7 +18,7 @@ $color7:#CC9456;
 }
 h1 {
   font-size: 3em;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 h2 {
   font-size: 2em;
@@ -34,25 +33,38 @@ p {
   font-size: 1.5em;
 }
 .fa-heart {
-  color: palevioletred;
+  color: $color5;
 }
 a {
   text-decoration: none;
 }
+.alert {
+  display: none;
+  text-align: center;
+  font-size: 1em;
+  background-color: red;
+  color: white;
+  position: absolute;
+  left: 8%;
+  border-radius: 10vw;
+  width: 80%;
+}
 
 /* Main Styling */
 body {
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
   //header
   .header {
     text-align: center;
     background-image: url(../img/top.jpg);
     height: 100vh;
     overflow: hidden;
-    text-transform: uppercase;
+    h1 {
+      text-transform: uppercase;
+    }
     .bookmarkLink {
       position: absolute;
-      top:5%;
+      top: 5%;
       right: 5%;
     }
     .searchForm {
@@ -90,9 +102,9 @@ body {
           top: 10%;
           border-radius: 50vw;
           border: none;
-          text-transform: none; 
+          text-transform: none;
           border-style: none;
-         background-color: transparent;
+          background-color: transparent;
         }
       }
     }
@@ -137,7 +149,6 @@ body {
     }
     //recipe
     .recipe {
-      background-color: pink;
       min-height: 100vh;
       .recipePanel {
         .dishInfo {
@@ -183,7 +194,6 @@ body {
     }
     //bookmark list
     .bookmark {
-      background-color: lightsalmon;
       min-height: 100vh;
     }
   }
@@ -199,7 +209,7 @@ body {
       bottom: 10%;
       cursor: pointer;
       &:hover {
-        color: palevioletred;
+        color: $color5;
       }
     }
   }

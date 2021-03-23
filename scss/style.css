@@ -1,7 +1,7 @@
 /* Variables and Global styling */
 h1 {
   font-size: 3em;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 h2 {
@@ -20,16 +20,28 @@ p {
 }
 
 .fa-heart {
-  color: palevioletred;
+  color: #d75a54;
 }
 
 a {
   text-decoration: none;
 }
 
+.alert {
+  display: none;
+  text-align: center;
+  font-size: 1em;
+  background-color: red;
+  color: white;
+  position: absolute;
+  left: 8%;
+  border-radius: 10vw;
+  width: 80%;
+}
+
 /* Main Styling */
 body {
-  font-family: 'PT Serif', serif;
+  font-family: "PT Serif", serif;
 }
 
 body .header {
@@ -37,6 +49,9 @@ body .header {
   background-image: url(../img/top.jpg);
   height: 100vh;
   overflow: hidden;
+}
+
+body .header h1 {
   text-transform: uppercase;
 }
 
@@ -139,7 +154,6 @@ body .main .result .showMore {
 }
 
 body .main .recipe {
-  background-color: pink;
   min-height: 100vh;
 }
 
@@ -204,7 +218,6 @@ body .main .recipe .timerBtn {
 }
 
 body .main .bookmark {
-  background-color: lightsalmon;
   min-height: 100vh;
 }
 
@@ -223,6 +236,6 @@ body .footer .fa-chevron-circle-up {
 }
 
 body .footer .fa-chevron-circle-up:hover {
-  color: palevioletred;
+  color: #d75a54;
 }
 /*# sourceMappingURL=style.css.map */
