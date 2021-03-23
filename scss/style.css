@@ -30,6 +30,41 @@ body .header {
   overflow: hidden;
 }
 
+body .header .searchForm {
+  background-color: beige;
+  margin: auto;
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 5%;
+}
+
+body .header .searchForm label {
+  padding: 1em;
+  display: block;
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+
+body .header .searchForm .ingredients {
+  border-radius: 50vw;
+  border: none;
+  padding: 1em;
+  width: 80%;
+}
+
+body .header .searchForm .search {
+  border-radius: 50vw;
+  border: none;
+  padding: 1em;
+  width: 80%;
+}
+
 body .main .result {
   position: relative;
   min-height: 100vh;
@@ -79,12 +114,7 @@ body .main .recipe {
   min-height: 100vh;
 }
 
-body .main .recipe .title {
-  text-align: center;
-  padding: 0;
-}
-
-body .main .recipe .dishInfo {
+body .main .recipe .recipePanel .dishInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,32 +128,39 @@ body .main .recipe .dishInfo {
   text-align: center;
   list-style: none;
   padding: 0;
+  line-height: 100%;
 }
 
-body .main .recipe .dishInfo li {
+body .main .recipe .recipePanel .dishInfo .title {
+  text-align: center;
+  padding-right: 5em;
+  font-size: 2em;
+}
+
+body .main .recipe .recipePanel .dishInfo li {
   margin: 0.5em 1em;
 }
 
-body .main .recipe .dishInfo li i {
+body .main .recipe .recipePanel .dishInfo li i {
   padding-right: 0.5em;
 }
 
-body .main .recipe .dishInfo .likeBtn {
+body .main .recipe .recipePanel .dishInfo .likeBtn {
   padding: 0, 0.5em;
 }
 
-body .main .recipe .dishInfo .likeBtn i {
+body .main .recipe .recipePanel .dishInfo .likeBtn i {
   padding-right: 0.5em;
 }
 
-body .main .recipe .displayRecipe {
+body .main .recipe .recipePanel .displayRecipe {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
 }
 
-body .main .recipe .displayRecipe img {
+body .main .recipe .recipePanel .displayRecipe img {
   display: block;
   margin: auto;
   width: 40vw;
@@ -144,12 +181,19 @@ body .main .bookmark {
 
 body .footer {
   text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.3em;
 }
 
 body .footer .fa-chevron-circle-up {
-  position: absolute;
-  right: 0;
-  padding-bottom: 1em;
+  display: none;
+  position: fixed;
+  right: 5%;
+  bottom: 10%;
   cursor: pointer;
+}
+
+body .footer .fa-chevron-circle-up:hover {
+  color: palevioletred;
 }
 /*# sourceMappingURL=style.css.map */

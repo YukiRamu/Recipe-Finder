@@ -10,6 +10,7 @@
 
   <!--Icon: fontawesome-->
   <script src="https://kit.fontawesome.com/a62f436beb.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="./reset.css" />
   <link rel="stylesheet" href="./scss/style.css" />
 </head>
@@ -20,7 +21,7 @@
     <a href="#bookmark"><i class="fas fa-heart"></i></a>
 
     <!--recipe search form-->
-    <div>
+    <div class="searchForm">
       <!--change to form later-->
       <div>
         <label for="#ingredients">Dish: </label>
@@ -93,28 +94,31 @@
 
     <section class="recipe" id="recipe">
       <h2>Recipe</h2>
-      <!--***************Recipe detail here Below is a reference ***************-->
-      <!-- <p class="title">Title of the dish</p>
-      <ul class="dishInfo">
-        <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
-        <li><i class="fas fa-utensils"></i> Serving size: 4</li>
-        <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
-      </ul>
-      <div class="displayRecipe">
-        <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
-        <div class="detailInfo">
-          <p>ingredientLines</p>
-          <ul>
-            <li>ingr1</li>
-            <li>ingr1</li>
-            <li>ingr1</li>
-            <li>ingr1</li>
-            <li>ingr1</li>
-          </ul>
-          <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" target="_blank">view detail</a>
-        </div>
-      </div> -->
-      <!--***************Recipe detail until here***************-->
+      <div class="recipePanel">
+        <!--***************Recipe detail here Below is a reference ***************-->
+        <!-- <ul class="dishInfo">
+          <p class="title">Title of the dish</p>
+          <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
+          <li><i class="fas fa-utensils"></i> Serving size: 4</li>
+          <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+        </ul>
+        <div class="displayRecipe">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
+          <div class="detailInfo">
+            <p>ingredientLines</p>
+            <ul>
+              <li>ingr1</li>
+              <li>ingr1</li>
+              <li>ingr1</li>
+              <li>ingr1</li>
+              <li>ingr1</li>
+            </ul>
+            <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" target="_blank">view detail</a>
+          </div>
+        </div> -->
+        <!--***************Recipe detail until here***************-->
+     </div>
+
       <button type="button" class="timerBtn" id="timerBtn">Start Cooking</button>
       <!--***************Countdown timer here***************-->
 
@@ -125,7 +129,7 @@
       <!--***************Recipe photo and title only***************-->
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
         incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
-        veniam vel eaque.</p>
+        veniam vel eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum amet sint beatae cumque eveniet maiores doloremque placeat nisi, nulla iste odit dolores accusamus, libero delectus perspiciatis repellendus ea fugiat voluptatem!</p>
       <!--***************note taker***************-->
     </section>
 
@@ -133,12 +137,13 @@
 
   <!--footer-->
   <footer class="footer">
+    <i class="fas fa-chevron-circle-up fa-3x" id="toTop" onlick="scrollToTop()"></i>
     <h4>
       @Yuki Matsubara all right reserved. 2021/03.
       <a href="https://www.linkedin.com/in/yukimatsubara/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/YukiRamu" target="_blank"><i class="fab fa-github-square"></i></a>
     </h4>
-    <a id="toTop" href="#"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
+
   </footer>
   <!--GSAP Animation Library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>

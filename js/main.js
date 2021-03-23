@@ -13,13 +13,13 @@ const searchBtn = document.querySelector(".search");
 const resultPanel = document.querySelector(".resultPanel");
 let resultArray = [];
 let appendHTMLForResult = "";
-let appendHTMLforList = "";
+let appendHTMLforIngrList = "";
 
 const showMoreBtn = document.querySelector(".showMore");
 const moreItem = document.querySelectorAll(".moreItem");
 
 //display recipe detail
-const view = document.querySelector(".view");
+const recipePanel = document.querySelector(".recipePanel");
 let appendHTMLForRecipe = "";
 let title = "";
 let singleObj = {};
@@ -29,8 +29,6 @@ const timerBtn = document.getElementById("timerBtn");
 
 //animation
 const toTopBtn = document.querySelector("#toTop");
-// url example
-//"https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free"
 
 //filter to be added : &cuisineType=${cuisine}
 
@@ -50,11 +48,10 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
     .then((data) => {
       console.log(data);
 
-      //switch case maybe??
-
       if (data.count === 0) {
         alert("No recipe found."); //change this to modal popup
         clearInput();
+        return false;
       } else if (data.count < lastIndex) {
         //in case the data count is less than 8
         //create resultArray
@@ -96,8 +93,8 @@ const displayResult = () => {
     return `        
       <div class="itemPanel">
       <img src="${element.recipe.image}" alt="itemImg">
-      <p id="mealTitle">${element.recipe.label}</p>
-      <a href="#recipe" class = "view" onclick = "displayRecipe()">View detail</a>
+      <p class="mealTitle">${element.recipe.label}</p>
+      <a href="#recipe" class = "view" onclick = 'displayRecipe("${element.recipe.label}")'>View detail</a>
       </div>
     `;
   }).join("");
@@ -111,66 +108,90 @@ const displayResult = () => {
 // }
 
 //display recipe - when "view detail" is clicked
-const displayRecipe = () => {
+const displayRecipe = (title) => {
   //find the item to display
-  const mealTitle = document.getElementById("mealTitle");
-  console.log("hi I am here " );
-  console.log(mealTitle);
-  console.log(typeof(mealTitle));
-  title = mealTitle.textContent; //get meal title in string format
-  console.log("mealtitle is " + title);
-  singleObj = resultArray.find(obj => obj.recipe.label === title)// find an index of the object array of the selected item
-  console.log(singleObj);
+  const mealTitle = document.querySelectorAll(".mealTitle");
+  console.log("hi I am here ");
+  console.log(mealTitle);//NodeList
+  console.log(typeof (mealTitle));//Object
+
+  let selectedIndex = "";
+  for (let i = 0; i < mealTitle.length; i++) {
+    console.log("hi I am here 2");
+    if (mealTitle[i].innerHTML === title) {
+      selectedIndex = i;
+    }
+  }
+  console.log("index is " + selectedIndex);
+
+  console.log(resultArray[selectedIndex]);
 
   //create <li> tags - ingredients
-  appendHTMLforList = singleObj.recipe.ingredientLines.map((elem) => {
+  appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
     return `
       <li>${elem}</li>
     `;
   }).join("");
 
-  console.log(appendHTMLforList);
+  console.log(appendHTMLforIngrList);
 
   //create an entire append HTML
-  appendHTMLForRecipe = `
-      <p class="title">${title}</p>
+  appendHTMLForRecipe = `    
       <ul class="dishInfo">
-        <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(singleObj.recipe.calories)}</li>
-        <li><i class="fas fa-utensils"></i> Serving size: ${singleObj.recipe.yield}</li>
+        <p class="title">${title}</p>
+        <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
+        <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
         <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
       </ul>
       <div class="displayRecipe">
-        <img src="${singleObj.recipe.image}" alt="itemImg">
+        <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
         <div class="detailInfo">
           <p>Ingredients</p>
           <ul>
-          ${appendHTMLforList}
+          ${appendHTMLforIngrList}
           </ul>
-          <a href="${singleObj.recipe.url}" target="_blank"><i class="fas fa-seedling"></i>View detail</a>
+          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>View detail</a>
         </div>
       </div>
     `;
   console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
 
   //append before the time button
-  timerBtn.insertAdjacentHTML("beforebegin", appendHTMLForRecipe);
+  recipePanel.innerHTML = appendHTMLForRecipe;
 }
 
-//clear user input
+//clear user input and temp value
 const clearInput = () => {
   ingredient.value = "";
   cuisiine.value = "";
+  resultArray = [];
+  appendHTMLForResult = "";
+  ppendHTMLforIngrList = "";
+  appendHTMLForRecipe = "";
+}
+
+//scroll down
+const scrollBottom = () => {
+
+}
+
+//scroll to top
+const scrollToTop = () => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 /* =========Function Call ========= */
 //recipe search
 searchBtn.addEventListener("click", () => {
+  console.log(ingredient.value)
   //validation check
-  if ((ingredient.value === null) || !(isNaN)) {
+  if ((ingredient.value === "") || !(isNaN)) {
     alert("This field is required. Number is not allowed.");
-    ingredient.value = "";
+    clearInput();
   } else {
     getRecipe(`${ingredient.value}`, `0`, '8');
+    clearInput();
   }
 })
 
@@ -178,6 +199,23 @@ searchBtn.addEventListener("click", () => {
 // showMoreBtn.addEventListener("click", () => {
 //   showMore();
 // })
+
+// Move to top button appears after 200 px scroll down the page
+$(window).scroll(function () {
+  let height = $(window).scrollTop();
+  if (height > 200) {
+    $('#toTop').fadeIn();
+  } else {
+    $('#toTop').fadeOut();
+  }
+});
+$(document).ready(function () {
+  $("#toTop").click(function (event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+});
 
 
 /*＝＝＝＝＝＝＝＝＝＝＝　To Think List ＝＝＝＝＝＝＝＝＝＝*/

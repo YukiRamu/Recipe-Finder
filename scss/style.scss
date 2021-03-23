@@ -35,6 +35,36 @@ body {
     background-image: url(../img/top.jpg);
     height: 100vh;
     overflow: hidden;
+    .searchForm {
+      background-color: beige;
+      margin: auto;
+      width: 50%;
+      height: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 5%;
+      label {
+        padding: 1em;
+        display: block;
+        text-align: left;
+        width: 80%;
+        margin: auto;
+      }
+      .ingredients {
+        border-radius: 50vw;
+        border: none;
+        padding: 1em;
+        width: 80%;
+      }
+      .search {
+        border-radius: 50vw;
+        border: none;
+        padding: 1em;
+        width: 80%;
+      }
+    }
   }
   //main
   .main {
@@ -78,35 +108,40 @@ body {
     .recipe {
       background-color: pink;
       min-height: 100vh;
-      .title {
-        text-align: center;
-        padding: 0;
-      }
-      .dishInfo {
-        @include flex;
-        list-style: none;
-        padding: 0;
-        li {
-          margin: 0.5em 1em;
-          i {
-            padding-right: 0.5em;
+      .recipePanel {
+
+        .dishInfo {
+          @include flex;
+          list-style: none;
+          padding: 0;
+          line-height: 100%;
+          .title {
+            text-align: center;
+            padding-right: 5em;
+            font-size: 2em;
+          }
+          li {
+            margin: 0.5em 1em;
+            i {
+              padding-right: 0.5em;
+            }
+          }
+          .likeBtn {
+            padding: 0, 0.5em;
+            i {
+              padding-right: 0.5em;
+            }
           }
         }
-        .likeBtn {
-          padding: 0, 0.5em;
-          i {
-            padding-right: 0.5em;
+        .displayRecipe {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          img {
+            display: block;
+            margin: auto;
+            width: 40vw;
+            height: 60vh;
           }
-        }
-      }
-      .displayRecipe {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        img {
-          display: block;
-          margin: auto;
-          width: 40vw;
-          height: 60vh;
         }
       }
       .timerBtn {
@@ -125,12 +160,16 @@ body {
   //footer
   .footer {
     text-align: center;
+    margin-bottom: 1em;
+    font-size: 1.3em;
     .fa-chevron-circle-up {
-      position: absolute;
-      right: 0;
-      padding-bottom: 1em;
+      display: none;
+      position: fixed;
+      right: 5%;
+      bottom: 10%;
       cursor: pointer;
       &:hover {
+        color: palevioletred;
       }
     }
   }
