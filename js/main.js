@@ -9,13 +9,23 @@ const ingredient = document.querySelector(".ingredients");
 const cuisiine = document.querySelector(".cuisine");
 const searchBtn = document.querySelector(".search");
 
-//display
-const result = document.querySelector(".resultLine");
+//display result
+const resultPanel = document.querySelector(".resultPanel");
 let resultArray = [];
-let appendHTML = "";
+let appendHTMLForResult = "";
+let appendHTMLforList = "";
 
 const showMoreBtn = document.querySelector(".showMore");
 const moreItem = document.querySelectorAll(".moreItem");
+
+//display recipe detail
+const view = document.querySelector(".view");
+let appendHTMLForRecipe = "";
+let title = "";
+let singleObj = {};
+
+//countdown timer
+const timerBtn = document.getElementById("timerBtn");
 
 //animation
 const toTopBtn = document.querySelector("#toTop");
@@ -39,12 +49,22 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
+
+      //switch case maybe??
+
       if (data.count === 0) {
         alert("No recipe found."); //change this to modal popup
         clearInput();
+      } else if (data.count < lastIndex) {
+        //in case the data count is less than 8
+        //create resultArray
+        for (let i = 0; i < data.count; i++) {
+          resultArray.push(data.hits[i]);
+        }
+        console.log(resultArray);
+        displayResult();
       } else {
         //create resultArray
-        console.log("last index is " + lastIndex);
         for (let i = 0; i < lastIndex; i++) {
           resultArray.push(data.hits[i]);
         }
@@ -69,18 +89,19 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
 }
 
 //display search result
-//first 10 => load more
+//first 8 => load more
 const displayResult = () => {
-  //10 objects at one time
-  appendHTML = resultArray.map((element) => {
+  //8 objects at one time
+  appendHTMLForResult = resultArray.map((element) => {
     return `        
-  <div class="itemPanel">
-  <img src="${element.recipe.image}" alt="textImg">
-  <p>${element.recipe.label}</p>
-  </div>
-  `;
+      <div class="itemPanel">
+      <img src="${element.recipe.image}" alt="itemImg">
+      <p id="mealTitle">${element.recipe.label}</p>
+      <a href="#recipe" class = "view" onclick = "displayRecipe()">View detail</a>
+      </div>
+    `;
   }).join("");
-  result.innerHTML = appendHTML;
+  resultPanel.innerHTML = appendHTMLForResult;
   console.log(appendHTML);
 }
 
@@ -88,6 +109,52 @@ const displayResult = () => {
 // const showMore = () => {
 //   result.classList.toggle("moreResult");
 // }
+
+//display recipe - when "view detail" is clicked
+const displayRecipe = () => {
+  //find the item to display
+  const mealTitle = document.getElementById("mealTitle");
+  console.log("hi I am here " );
+  console.log(mealTitle);
+  console.log(typeof(mealTitle));
+  title = mealTitle.textContent; //get meal title in string format
+  console.log("mealtitle is " + title);
+  singleObj = resultArray.find(obj => obj.recipe.label === title)// find an index of the object array of the selected item
+  console.log(singleObj);
+
+  //create <li> tags - ingredients
+  appendHTMLforList = singleObj.recipe.ingredientLines.map((elem) => {
+    return `
+      <li>${elem}</li>
+    `;
+  }).join("");
+
+  console.log(appendHTMLforList);
+
+  //create an entire append HTML
+  appendHTMLForRecipe = `
+      <p class="title">${title}</p>
+      <ul class="dishInfo">
+        <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(singleObj.recipe.calories)}</li>
+        <li><i class="fas fa-utensils"></i> Serving size: ${singleObj.recipe.yield}</li>
+        <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+      </ul>
+      <div class="displayRecipe">
+        <img src="${singleObj.recipe.image}" alt="itemImg">
+        <div class="detailInfo">
+          <p>Ingredients</p>
+          <ul>
+          ${appendHTMLforList}
+          </ul>
+          <a href="${singleObj.recipe.url}" target="_blank"><i class="fas fa-seedling"></i>View detail</a>
+        </div>
+      </div>
+    `;
+  console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
+
+  //append before the time button
+  timerBtn.insertAdjacentHTML("beforebegin", appendHTMLForRecipe);
+}
 
 //clear user input
 const clearInput = () => {
@@ -99,11 +166,11 @@ const clearInput = () => {
 //recipe search
 searchBtn.addEventListener("click", () => {
   //validation check
-  if ((ingredient.value === null) || (isNaN)) {
+  if ((ingredient.value === null) || !(isNaN)) {
     alert("This field is required. Number is not allowed.");
     ingredient.value = "";
   } else {
-    getRecipe(`${ingredient.value}`, `0`, '10');
+    getRecipe(`${ingredient.value}`, `0`, '8');
   }
 })
 
@@ -111,3 +178,7 @@ searchBtn.addEventListener("click", () => {
 // showMoreBtn.addEventListener("click", () => {
 //   showMore();
 // })
+
+
+/*＝＝＝＝＝＝＝＝＝＝＝　To Think List ＝＝＝＝＝＝＝＝＝＝*/
+//１．最初のデータ表示が一番最初にExecuteされるように、Async/Awaitつける

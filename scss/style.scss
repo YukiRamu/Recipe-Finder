@@ -1,4 +1,4 @@
-/* Variables */
+/* Variables and Global styling */
 $textColor1: white;
 $bgColor1: white;
 
@@ -8,28 +8,49 @@ $bgColor1: white;
   flex-direction: row;
   text-align: center;
 }
-.fullscreen {
-  height: 100vh;
-  overflow: hidden;
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+button {
+  border-radius: 50vw;
+  border: none;
+}
+p {
+  font-size: 1.5em;
+}
+.fa-heart {
+  color: palevioletred;
 }
 
+/* Main Styling */
 body {
   //header
   .header {
     text-align: center;
     background-image: url(../img/top.jpg);
+    height: 100vh;
+    overflow: hidden;
   }
   //main
   .main {
+    //result
     .result {
       position: relative;
-      .resultLine {
+      min-height: 100vh;
+      .resultPanel {
         //@include flex;
         text-align: center;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
+        grid-gap: 1em;
         height: 75%;
+        padding: 0.5em;
         background-color: bisque;
         .itemPanel {
           margin: auto;
@@ -38,6 +59,7 @@ body {
           background-color: $bgColor1;
           img {
             height: 25vh;
+            width: 100%;
             object-fit: cover;
           }
         }
@@ -46,28 +68,63 @@ body {
         }
       }
       .showMore {
-        position: absolute;
-        bottom: 0;
-        left: 44%;
-        transform: translate(0%, -44%);
-        text-align: center;
-        margin: auto;
+        margin: 1em auto;
         display: block;
-        border: none;
-        border-radius: 50vw;
         padding: 0.5em 2em;
         font-size: 1.3em;
       }
     }
+    //recipe
     .recipe {
       background-color: pink;
+      min-height: 100vh;
+      .title {
+        text-align: center;
+        padding: 0;
+      }
+      .dishInfo {
+        @include flex;
+        list-style: none;
+        padding: 0;
+        li {
+          margin: 0.5em 1em;
+          i {
+            padding-right: 0.5em;
+          }
+        }
+        .likeBtn {
+          padding: 0, 0.5em;
+          i {
+            padding-right: 0.5em;
+          }
+        }
+      }
+      .displayRecipe {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        img {
+          display: block;
+          margin: auto;
+          width: 40vw;
+          height: 60vh;
+        }
+      }
+      .timerBtn {
+        margin: 1em auto;
+        display: block;
+        padding: 0.5em 2em;
+        font-size: 1.3em;
+      }
     }
+    //bookmark list
     .bookmark {
       background-color: lightsalmon;
+      min-height: 100vh;
     }
   }
   //footer
   .footer {
+    text-align: center;
     .fa-chevron-circle-up {
       position: absolute;
       right: 0;

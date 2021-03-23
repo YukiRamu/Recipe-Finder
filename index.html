@@ -15,17 +15,16 @@
 </head>
 
 <body>
-  <header class="header fullscreen">
+  <header class="header">
     <h1>Recipe Finder</h1>
     <a href="#bookmark"><i class="fas fa-heart"></i></a>
 
     <!--recipe search form-->
     <div>
       <!--change to form later-->
-      <p>Find your recipes</p>
       <div>
         <label for="#ingredients">Dish: </label>
-        <input type="text" name="ingredients" class="ingredients" placeholder="Enter any keyword" required>
+        <input type="text" name="ingredients" class="ingredients" placeholder="Search food" required>
       </div>
       <div>
         <label for="#cuisine">Cuisine: </label>
@@ -40,11 +39,11 @@
 
   <div class="main">
 
-    <section class="result fullscreen">
+    <section class="result">
       <h2>Result</h2>
-      <div class="resultLine">
+      <div class="resultPanel">
         <!--***************Recipe photos here***************-->
-        <!--display first ten-->
+        <!--display first eight-->
         <div class="itemPanel">
           <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="textImg">
           <p>Spatchcocked Saffron Chicken</p>
@@ -85,23 +84,43 @@
           <p>Spatchcocked Saffron Chicken</p>
           <a href="#">view detail</a>
         </div>
+        <!--***************Recipe photos here***************-->
       </div>
-      <!--display another ten items when the button is clicked-->
+
+      <!--display another eight items when the button is clicked-->
       <button type="button" class="showMore">Show More</button>
     </section>
 
-    <section class="recipe fullscreen">
+    <section class="recipe" id="recipe">
       <h2>Recipe</h2>
-      <!--***************Recipe detail here***************-->
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
-        incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
-        veniam vel eaque.</p>
-      <button type="button">Start Cooking</button>
-      <button type="button">Bookmark</button>
-      <!--c***************ountdown timer form***************-->
+      <!--***************Recipe detail here Below is a reference ***************-->
+      <!-- <p class="title">Title of the dish</p>
+      <ul class="dishInfo">
+        <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
+        <li><i class="fas fa-utensils"></i> Serving size: 4</li>
+        <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+      </ul>
+      <div class="displayRecipe">
+        <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
+        <div class="detailInfo">
+          <p>ingredientLines</p>
+          <ul>
+            <li>ingr1</li>
+            <li>ingr1</li>
+            <li>ingr1</li>
+            <li>ingr1</li>
+            <li>ingr1</li>
+          </ul>
+          <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" target="_blank">view detail</a>
+        </div>
+      </div> -->
+      <!--***************Recipe detail until here***************-->
+      <button type="button" class="timerBtn" id="timerBtn">Start Cooking</button>
+      <!--***************Countdown timer here***************-->
+
     </section>
 
-    <section class="bookmark fullscreen">
+    <section class="bookmark">
       <h2>Bookmark</h2>
       <!--***************Recipe photo and title only***************-->
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
@@ -119,7 +138,7 @@
       <a href="https://www.linkedin.com/in/yukimatsubara/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/YukiRamu" target="_blank"><i class="fab fa-github-square"></i></a>
     </h4>
-    <a id="toTop" href="#"><i class="fas fa-chevron-circle-up fa-3x"></i></a>  
+    <a id="toTop" href="#"><i class="fas fa-chevron-circle-up fa-3x"></i></a>
   </footer>
   <!--GSAP Animation Library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
