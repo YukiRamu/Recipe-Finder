@@ -134,52 +134,47 @@ const showMore = () => {
 //display recipe - when "view detail" is clicked
 const displayRecipe = async (title) => {
 
-  const createDisplayField = async () => {
-    console.log("moving on to step 2")
-    return await scrollToRecipe();
-  };
-
   //GSAP scrollTo plugin
   //Move to the next section when view detail is clicked
-  const scrollToRecipe = () => {
+  const scrollToRecipe = async () => {
     console.log("#1 scroll to recipe");
-    return new Promise((resolve, reject) => {
-      gsap.to(window, { duration: 1, scrollTo: "#recipe" });
-    });
+    gsap.to(window, { duration: 2, scrollTo: "#recipe" });
   };
 
-  createDisplayField()
-    .then( () => {
-      console.log("#2 displaying recipe");
-      //find the item to display
-      const mealTitle = document.querySelectorAll(".mealTitle");
-    
-      console.log(mealTitle);//NodeList
-      console.log(typeof (mealTitle));//Object
-      console.log("meal title is " + title);
-    
-      let selectedIndex = "";
-      for (let i = 0; i < mealTitle.length; i++) {
-        console.log("getting index");
-        if (mealTitle[i].innerText === title) {
-          selectedIndex = i;
-        }
+  try {
+    //1 scroll
+    await scrollToRecipe();
+    //2 display
+    console.log("#2 displaying recipe");
+    //find the item to display
+    const mealTitle = document.querySelectorAll(".mealTitle");
+
+    console.log(mealTitle);//NodeList
+    console.log(typeof (mealTitle));//Object
+    console.log("meal title is " + title);
+
+    let selectedIndex = "";
+    for (let i = 0; i < mealTitle.length; i++) {
+      console.log("getting index");
+      if (mealTitle[i].innerText === title) {
+        selectedIndex = i;
       }
-      console.log("index is " + selectedIndex);
-    
-      console.log(resultArray[selectedIndex]);
-    
-      //create <li> tags - ingredients
-      appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
-        return `
+    }
+    console.log("index is " + selectedIndex);
+
+    console.log(resultArray[selectedIndex]);
+
+    //create <li> tags - ingredients
+    appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
+      return `
           <li>${elem}</li>
         `;
-      }).join("");
-    
-      console.log(appendHTMLforIngrList);
-    
-      //create an entire append HTML
-      appendHTMLForRecipe = `    
+    }).join("");
+
+    console.log(appendHTMLforIngrList);
+
+    //create an entire append HTML
+    appendHTMLForRecipe = `    
           <ul class="dishInfo">
             <p class="title">${title}</p>
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
@@ -197,15 +192,14 @@ const displayRecipe = async (title) => {
             </div>
           </div>
         `;
-      console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
-    
-      //append before the time button
-      recipePanel.innerHTML = appendHTMLForRecipe;
-    })
-    .catch(() => {
-      console.error("Failed to display the recipe detial");
-    })
+    console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
 
+    //append before the time button
+    recipePanel.innerHTML = appendHTMLForRecipe;
+
+  } catch (error) {
+    console.error("Failed to display the recipe detial");
+  }
 }
 
 //clear user input and temp value
