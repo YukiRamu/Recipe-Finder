@@ -8,7 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE-Edge" />
   <!--Google font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=PT+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=PT+Serif&display=swap"
+    rel="stylesheet">
   <!--Icon: fontawesome-->
   <script src="https://kit.fontawesome.com/a62f436beb.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -24,16 +25,17 @@
     <!--recipe search form-->
     <div class="searchForm">
       <!--change to form later-->
-      <div>
-        <label for="#keyword">Keyword: </label>
+      <div class="keywordSearch">
+        <label for="#keyword">I want to make... </label>
         <input type="text" name="keyword" class="keyword" placeholder="Enter keyword. i.e) fish, italian, sushi, tomato" required>
+        <!--input idea : dishType dropdown-->
+        <button type="submit" value="Search Recipe" class="search"><i class="fas fa-search"></i></button>
       </div>
-      <div>
+      <!-- <div>
         <label for="#cuisine">Cuisine: </label>
         <input type="text" name="cuisine" class="cuisine" placeholder="Enter cuisine">
-      </div>
-      <!--input idea : dishType dropdown-->
-      <input type="submit" value="Search Recipe" class="search">
+
+      </div> -->
     </div>
     <!--change to form later-->
     <!--***************today's date and degital clock***************-->
@@ -62,7 +64,7 @@
       <h2>Recipe</h2>
       <div class="recipePanel">
         <!--*************** Recipe detail here Below is a reference ***************-->
-        <!-- <ul class="dishInfo">
+        <ul class="dishInfo">
           <p class="title">Title of the dish</p>
           <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
           <li><i class="fas fa-utensils"></i> Serving size: 4</li>
@@ -81,9 +83,9 @@
             </ul>
             <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" target="_blank">view detail</a>
           </div>
-        </div> -->
+        </div>
         <!--***************Recipe detail until here***************-->
-     </div>
+      </div>
 
       <button type="button" class="timerBtn" id="timerBtn">Start Cooking</button>
       <!--***************Countdown timer here***************-->
@@ -95,7 +97,9 @@
       <!--***************Recipe photo and title only***************-->
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
         incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
-        veniam vel eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum amet sint beatae cumque eveniet maiores doloremque placeat nisi, nulla iste odit dolores accusamus, libero delectus perspiciatis repellendus ea fugiat voluptatem!</p>
+        veniam vel eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum amet sint beatae cumque eveniet
+        maiores doloremque placeat nisi, nulla iste odit dolores accusamus, libero delectus perspiciatis repellendus ea
+        fugiat voluptatem!</p>
       <!--***************note taker***************-->
     </section>
 

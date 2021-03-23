@@ -2,6 +2,15 @@
 $textColor1: white;
 $bgColor1: white;
 
+$color1:#EBECE5;
+$color2:#ABADAF;
+$color3:#D76B34;
+$color4:#B34140;
+$color5:#D75A54;
+$color6:#97342B;
+$color7:#CC9456;
+
+
 @mixin flex {
   display: flex;
   justify-content: center;
@@ -56,24 +65,35 @@ body {
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 5%;
-      label {
-        padding: 1em;
-        display: block;
-        text-align: left;
-        width: 80%;
-        margin: auto;
-      }
-      .keyword {
-        border-radius: 50vw;
-        border: none;
-        padding: 1em;
-        width: 80%;
-      }
-      .search {
-        border-radius: 50vw;
-        border: none;
-        padding: 1em;
-        width: 80%;
+      .keywordSearch {
+        position: relative;
+        label {
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 1em;
+          display: block;
+          text-align: left;
+          width: 80%;
+          margin: auto;
+        }
+        .keyword {
+          border-radius: 50vw;
+          border: none;
+          padding: 1em;
+          margin-top: 3em;
+          width: 80%;
+        }
+        .search {
+          position: sticky;
+          right: 7%;
+          top: 10%;
+          border-radius: 50vw;
+          border: none;
+          text-transform: none; 
+          border-style: none;
+         background-color: transparent;
+        }
       }
     }
   }

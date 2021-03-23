@@ -59,7 +59,14 @@ body .header .searchForm {
   border-radius: 5%;
 }
 
-body .header .searchForm label {
+body .header .searchForm .keywordSearch {
+  position: relative;
+}
+
+body .header .searchForm .keywordSearch label {
+  position: absolute;
+  left: 0;
+  top: 0;
   padding: 1em;
   display: block;
   text-align: left;
@@ -67,18 +74,24 @@ body .header .searchForm label {
   margin: auto;
 }
 
-body .header .searchForm .keyword {
+body .header .searchForm .keywordSearch .keyword {
   border-radius: 50vw;
   border: none;
   padding: 1em;
+  margin-top: 3em;
   width: 80%;
 }
 
-body .header .searchForm .search {
+body .header .searchForm .keywordSearch .search {
+  position: -webkit-sticky;
+  position: sticky;
+  right: 7%;
+  top: 10%;
   border-radius: 50vw;
   border: none;
-  padding: 1em;
-  width: 80%;
+  text-transform: none;
+  border-style: none;
+  background-color: transparent;
 }
 
 body .main .result {
