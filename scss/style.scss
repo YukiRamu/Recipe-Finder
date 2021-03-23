@@ -36,7 +36,7 @@ body {
     height: 100vh;
     overflow: hidden;
     .searchForm {
-      background-color: beige;
+      background-color: rgba(245, 245, 220, 0.572);
       margin: auto;
       width: 50%;
       height: 80%;
@@ -52,7 +52,7 @@ body {
         width: 80%;
         margin: auto;
       }
-      .ingredients {
+      .keyword {
         border-radius: 50vw;
         border: none;
         padding: 1em;
@@ -109,7 +109,6 @@ body {
       background-color: pink;
       min-height: 100vh;
       .recipePanel {
-
         .dishInfo {
           @include flex;
           list-style: none;

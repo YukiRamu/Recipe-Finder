@@ -31,7 +31,7 @@ body .header {
 }
 
 body .header .searchForm {
-  background-color: beige;
+  background-color: rgba(245, 245, 220, 0.572);
   margin: auto;
   width: 50%;
   height: 80%;
@@ -51,7 +51,7 @@ body .header .searchForm label {
   margin: auto;
 }
 
-body .header .searchForm .ingredients {
+body .header .searchForm .keyword {
   border-radius: 50vw;
   border: none;
   padding: 1em;

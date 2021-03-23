@@ -1,22 +1,25 @@
-/* =========Variable Declaration ========= */
+/* ======================== Variable Declaration ======================== */
 //Recipe API
 const baseURL = "https://api.edamam.com/search?q=";
 const apiiD = "93398462";
 const apiKey = "6440cc80aeb489ed0b5cdf7eda03a7fa";
 
 //Obtain user input
-const ingredient = document.querySelector(".ingredients");
+const searchKeyword = document.querySelector(".keyword");
 const cuisiine = document.querySelector(".cuisine");
 const searchBtn = document.querySelector(".search");
 
 //display result
 const resultPanel = document.querySelector(".resultPanel");
-let resultArray = [];
+let resultArray = []; //to store populated data
+let keywordParam = ""; //to use parameter outside of the function block
+let firstIdxParam; // same as above
+let lastIdxParam; //same as above
 let appendHTMLForResult = "";
 let appendHTMLforIngrList = "";
 
+//load more
 const showMoreBtn = document.querySelector(".showMore");
-const moreItem = document.querySelectorAll(".moreItem");
 
 //display recipe detail
 const recipePanel = document.querySelector(".recipePanel");
@@ -32,13 +35,18 @@ const toTopBtn = document.querySelector("#toTop");
 
 //filter to be added : &cuisineType=${cuisine}
 
-/* =========Function Declaration ========= */
+/* ==========================Function Declaration =========================== */
 //Fetch API to get recipe data
-const getRecipe = (ingredients, firstIndex, lastIndex) => {
+const getRecipe = (keyword, firstIndex, lastIndex) => {
+  //store parameter
+  keywordParam = keyword;
+  firstIdxParam = firstIndex;
+  lastIdxParam = lastIndex;
+
   //fetch api
-  fetch(`${baseURL}${ingredients}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
+  fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
-      console.log(`${baseURL}${ingredients}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
+      console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
       if (!response.ok) {
         throw error(response.statusText);
       } else {
@@ -47,9 +55,22 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
+      console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
+      console.log("data count is " + data.count)
+      console.log("length of array is  " + resultArray.length);
 
+      //validation check for IndexOutOfBoundsException
+      if (resultArray.length === data.count) {
+        console.log("hi index out of bounds here");
+        //in case there is no more data to display
+        alert("No more recipe to display");  //change this to modal popup later
+        console.log(resultArray);
+        return false;
+      }
+
+      //forst load validation check
       if (data.count === 0) {
-        alert("No recipe found."); //change this to modal popup
+        alert("No recipe found."); //change this to modal popup later
         clearInput();
         return false;
       } else if (data.count < lastIndex) {
@@ -61,8 +82,8 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
         console.log(resultArray);
         displayResult();
       } else {
-        //create resultArray
-        for (let i = 0; i < lastIndex; i++) {
+        //create resultArray 8 items in each time
+        for (let i = 0; i < 8; i++) {
           resultArray.push(data.hits[i]);
         }
         console.log(resultArray);
@@ -82,7 +103,7 @@ const getRecipe = (ingredients, firstIndex, lastIndex) => {
     .catch(() => {
       console.error("Something went wrong. Unable to get recipe data")
     })
-  return resultArray;
+  return resultArray, keywordParam, firstIdxParam, lastIdxParam;
 }
 
 //display search result
@@ -94,7 +115,7 @@ const displayResult = () => {
       <div class="itemPanel">
       <img src="${element.recipe.image}" alt="itemImg">
       <p class="mealTitle">${element.recipe.label}</p>
-      <a href="#recipe" class = "view" onclick = 'displayRecipe("${element.recipe.label}")'>View detail</a>
+      <a href="#recipe" class = "view" onclick = 'displayRecipe("${element.recipe.label}")'>View Detail</a>
       </div>
     `;
   }).join("");
@@ -102,10 +123,13 @@ const displayResult = () => {
   console.log(appendHTML);
 }
 
-// //show more results
-// const showMore = () => {
-//   result.classList.toggle("moreResult");
-// }
+//show more results
+const showMore = () => {
+  console.log("Loading more");
+  //Add items to the resultArray
+
+  console.log(resultArray);
+}
 
 //display recipe - when "view detail" is clicked
 const displayRecipe = (title) => {
@@ -150,7 +174,7 @@ const displayRecipe = (title) => {
           <ul>
           ${appendHTMLforIngrList}
           </ul>
-          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>View detail</a>
+          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> View Recipe</a>
         </div>
       </div>
     `;
@@ -162,7 +186,7 @@ const displayRecipe = (title) => {
 
 //clear user input and temp value
 const clearInput = () => {
-  ingredient.value = "";
+  searchKeyword.value = "";
   cuisiine.value = "";
   resultArray = [];
   appendHTMLForResult = "";
@@ -181,24 +205,26 @@ const scrollToTop = () => {
   document.documentElement.scrollTop = 0;
 }
 
-/* =========Function Call ========= */
+/* ============================== Function Call ============================== */
 //recipe search
 searchBtn.addEventListener("click", () => {
-  console.log(ingredient.value)
+  console.log(searchKeyword.value)
   //validation check
-  if ((ingredient.value === "") || !(isNaN)) {
+  if ((searchKeyword.value === "") || !(isNaN)) {
     alert("This field is required. Number is not allowed.");
     clearInput();
   } else {
-    getRecipe(`${ingredient.value}`, `0`, '8');
+    getRecipe(`${searchKeyword.value}`, 0, 8);
     clearInput();
   }
 })
 
 //load more results
-// showMoreBtn.addEventListener("click", () => {
-//   showMore();
-// })
+showMoreBtn.addEventListener("click", () => {
+  //fetch data from the lastIndex of data to the next 8
+  console.log(resultArray);
+  getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
+})
 
 // Move to top button appears after 200 px scroll down the page
 $(window).scroll(function () {
