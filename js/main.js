@@ -132,89 +132,109 @@ const showMore = () => {
 }
 
 //display recipe - when "view detail" is clicked
-const displayRecipe = (title) => {
-  //find the item to display
-  const mealTitle = document.querySelectorAll(".mealTitle");
-  console.log("hi I am here ");
-  console.log(mealTitle);//NodeList
-  console.log(typeof (mealTitle));//Object
-  console.log("meal title is " + title);
+const displayRecipe = async (title) => {
 
-  let selectedIndex = "";
-  for (let i = 0; i < mealTitle.length; i++) {
-    console.log("hi I am here 2");
-    if (mealTitle[i].innerText === title) {
-      selectedIndex = i;
-    }
-  }
-  console.log("index is " + selectedIndex);
+  const createDisplayField = async () => {
+    console.log("moving on to step 2")
+    return await scrollToRecipe();
+  };
 
-  console.log(resultArray[selectedIndex]);
+  //GSAP scrollTo plugin
+  //Move to the next section when view detail is clicked
+  const scrollToRecipe = () => {
+    console.log("#1 scroll to recipe");
+    return new Promise((resolve, reject) => {
+      gsap.to(window, { duration: 1, scrollTo: "#recipe" });
+    });
+  };
 
-  //create <li> tags - ingredients
-  appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
-    return `
-      <li>${elem}</li>
-    `;
-  }).join("");
-
-  console.log(appendHTMLforIngrList);
-
-  //create an entire append HTML
-  appendHTMLForRecipe = `    
-      <ul class="dishInfo">
-        <p class="title">${title}</p>
-        <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
-        <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
-        <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
-      </ul>
-      <div class="displayRecipe">
-        <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
-        <div class="detailInfo">
-          <p>Ingredients</p>
-          <ul>
-          ${appendHTMLforIngrList}
+  createDisplayField()
+    .then( () => {
+      console.log("#2 displaying recipe");
+      //find the item to display
+      const mealTitle = document.querySelectorAll(".mealTitle");
+    
+      console.log(mealTitle);//NodeList
+      console.log(typeof (mealTitle));//Object
+      console.log("meal title is " + title);
+    
+      let selectedIndex = "";
+      for (let i = 0; i < mealTitle.length; i++) {
+        console.log("getting index");
+        if (mealTitle[i].innerText === title) {
+          selectedIndex = i;
+        }
+      }
+      console.log("index is " + selectedIndex);
+    
+      console.log(resultArray[selectedIndex]);
+    
+      //create <li> tags - ingredients
+      appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
+        return `
+          <li>${elem}</li>
+        `;
+      }).join("");
+    
+      console.log(appendHTMLforIngrList);
+    
+      //create an entire append HTML
+      appendHTMLForRecipe = `    
+          <ul class="dishInfo">
+            <p class="title">${title}</p>
+            <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
+            <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
+            <button type="button" class="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
-          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> View Recipe</a>
-        </div>
-      </div>
-    `;
-  console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
+          <div class="displayRecipe">
+            <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
+            <div class="detailInfo">
+              <p>Ingredients</p>
+              <ul>
+              ${appendHTMLforIngrList}
+              </ul>
+              <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> View Recipe</a>
+            </div>
+          </div>
+        `;
+      console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
+    
+      //append before the time button
+      recipePanel.innerHTML = appendHTMLForRecipe;
+    })
+    .catch(() => {
+      console.error("Failed to display the recipe detial");
+    })
 
-  //append before the time button
-  recipePanel.innerHTML = appendHTMLForRecipe;
 }
 
 //clear user input and temp value
 const clearInput = () => {
   searchKeyword.value = "";
-  cuisiine.value = "";
+  // cuisiine.value = "";
   resultArray = [];
   appendHTMLForResult = "";
   ppendHTMLforIngrList = "";
   appendHTMLForRecipe = "";
 }
 
-//scroll down
-const scrollBottom = () => {
-
-}
-
-//scroll to top
-const scrollToTop = () => {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+//Open a new window for a countdown timer
+timerBtn.addEventListener("click", () => {
+  window.open("countdownTimer.html", "", "width=300, height=300");
+})
 
 /* ============================== Function Call ============================== */
 //recipe search
 searchBtn.addEventListener("click", () => {
-  console.log(searchKeyword.value)
+  console.log(searchKeyword.value) //tomato
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
     alert("This field is required. Number is not allowed.");
     clearInput();
   } else {
+    //GSAP scrollTo plugin
+    // Move to the next section when the search button is clicked
+    gsap.to(window, { duration: .5, scrollTo: "#result" });
     getRecipe(`${searchKeyword.value}`, 0, 8);
     clearInput();
   }
@@ -227,6 +247,8 @@ showMoreBtn.addEventListener("click", () => {
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
 })
 
+/* ============================== Function Call ============================== */
+//jQuery
 // Move to top button appears after 200 px scroll down the page
 $(window).scroll(function () {
   let height = $(window).scrollTop();
@@ -236,13 +258,19 @@ $(window).scroll(function () {
     $('#toTop').fadeOut();
   }
 });
-$(document).ready(function () {
-  $("#toTop").click(function (event) {
-    event.preventDefault();
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-    return false;
-  });
-});
+//GSAP scrollTo plugin
+toTop.addEventListener("click", () => {
+  gsap.to(window, { duration: .5, scrollTo: "#header" });
+})
+//another way with jQuery - keep as a reference
+// $(document).ready(function () {
+//   $("#toTop").click(function (event) {
+//     event.preventDefault();
+//     $("html, body").animate({ scrollTop: 0 }, "slow");
+//     return false;
+//   });
+// });
+
 
 
 /*＝＝＝＝＝＝＝＝＝＝＝　To Think List ＝＝＝＝＝＝＝＝＝＝*/

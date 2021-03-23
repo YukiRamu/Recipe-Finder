@@ -11,5 +11,5 @@ To do list <br>
 <li>Countdown clock</li>
 <li>Note taker</li>
 <li>Move to top button</li>
-<li>GSAP Library</li>
+<li>GSAP Library - scrollTo plugin</li>
 </ul>
