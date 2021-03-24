@@ -4,13 +4,13 @@ Demo => https://yukiramu.github.io/Recipe-Finder/
 
 To do list <br>
 <ul>
-<li>Form validation and filter</li>
+<li>Form validation (null or number) and filter - filter not yet done</li>
 <li>Degital clock</li>
 <li>API - [done]</li>
 <li>Load more - [done]</li>
 <li>Loading modal - [done]</li>
 <li>Dark-light mode change</li>
-<li>Bookmark - [done]</li>
+<li>Bookmark (adding one by one, delete one item, duplication check) - [done]</li>
 <li>Countdown clock</li>
 <li>Display today's date</li>
 <li>Note taker</li>
