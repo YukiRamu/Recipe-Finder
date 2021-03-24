@@ -1,4 +1,26 @@
-/* Variables and Global styling */
+/* Variables */
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Global styling */
 h1 {
   font-size: 3em;
   font-family: "Merriweather", serif;
@@ -42,6 +64,51 @@ a {
 /* Main Styling */
 body {
   font-family: "PT Serif", serif;
+}
+
+body .loader {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-color: linear-gradient();
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+
+body .loader .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 40%;
+  left: 47%;
+  background-color: transparent;
+  border: 0.3em solid transparent;
+  border-top: 0.3em dotted #fca54f;
+  border-right: 0.3em dotted #fbd86e;
+  border-bottom: 0.3em dotted #dcfa79;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+}
+
+body .loader span {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 64%;
+  left: 51%;
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 body .header {
@@ -133,6 +200,32 @@ body .main .result .resultPanel .itemPanel {
   border-radius: 5%;
   border: 1em solid white;
   background-color: white;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 body .main .result .resultPanel .itemPanel img {
@@ -196,14 +289,14 @@ body .main .recipe .recipePanel .dishInfo .likeBtn i {
   padding-right: 0.5em;
 }
 
-body .main .recipe .recipePanel .displayRecipe {
+body .main .recipe .recipePanel .recipeInfo {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
 }
 
-body .main .recipe .recipePanel .displayRecipe img {
+body .main .recipe .recipePanel .recipeInfo img {
   display: block;
   margin: auto;
   width: 40vw;
@@ -219,6 +312,39 @@ body .main .recipe .timerBtn {
 
 body .main .bookmark {
   min-height: 100vh;
+}
+
+body .main .bookmark .bookmarkList .bookmarkItem {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  padding: 0.5em 0;
+  width: 70%;
+  margin: auto;
+}
+
+body .main .bookmark .bookmarkList .bookmarkItem .checkbox {
+  display: table-cell;
+  cursor: pointer;
+  border-radius: 50vw;
+  margin: auto;
+}
+
+body .main .bookmark .bookmarkList .bookmarkItem img {
+  width: 50%;
+}
+
+body .main .bookmark .bookmarkList .bookmarkItem p {
+  grid-column: span 2;
+  padding-top: 2em;
+}
+
+body .main .bookmark .delBtn {
+  margin: 1em auto;
+  display: block;
+  padding: 0.5em 2em;
+  font-size: 1.3em;
 }
 
 body .footer {

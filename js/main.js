@@ -18,7 +18,7 @@ let keywordParam = ""; //to use parameter outside of the function block
 let firstIdxParam; // same as above
 let lastIdxParam; //same as above
 let appendHTMLForResult = "";
-let appendHTMLforIngrList = "";
+let appendHTMLForIngrList = "";
 
 //load more
 const showMoreBtn = document.querySelector(".showMore");
@@ -28,15 +28,21 @@ const recipePanel = document.querySelector(".recipePanel");
 let appendHTMLForRecipe = "";
 let title = "";
 let singleObj = {};
+let titleParam = ""; //to use parameter outside of the function block
+let imgURLParam = "";// same as above
 
 //bookmark
-const bookmarkLink = document.querySelector(".bookmarkLink");
+const bookmarkLink = document.querySelector(".bookmarkLink"); //a link on header
+let bookmarkArray = []; //array of object
+const bookmarkList = document.querySelector(".bookmarkList");
+let appendHTMLForBookmark = "";
 
 //countdown timer
 const timerBtn = document.getElementById("timerBtn");
 
 //animation
-const toTopBtn = document.querySelector("#toTop");
+const toTopBtn = document.querySelector("#toTop"); // move to top button
+const loader = document.querySelector(".loader"); // loading modal
 
 //filter to be added : &cuisineType=${cuisine}
 
@@ -118,6 +124,7 @@ const displayResult = () => {
     `;
   }).join("");
   resultPanel.innerHTML = appendHTMLForResult;
+  stopLoader();
 };
 
 //display recipe - when "view detail" is clicked
@@ -153,13 +160,13 @@ const displayRecipe = async (title) => {
     console.log(resultArray[selectedIndex]);
 
     //create <li> tags - ingredients
-    appendHTMLforIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
+    appendHTMLForIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
       return `
           <li>${elem}</li>
         `;
     }).join("");
 
-    console.log(appendHTMLforIngrList);
+    console.log(appendHTMLForIngrList);
 
     //create an entire append HTML
     appendHTMLForRecipe = `    
@@ -167,14 +174,14 @@ const displayRecipe = async (title) => {
             <p class="title">${title}</p>
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
             <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
-            <button type="button" class="likeBtn" id="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+            <button type="button" class="likeBtn" id="likeBtn" onclick="displayBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
-          <div class="displayRecipe">
+          <div class="recipeInfo">
             <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
             <div class="detailInfo">
               <p>Ingredients</p>
               <ul>
-              ${appendHTMLforIngrList}
+              ${appendHTMLForIngrList}
               </ul>
               <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> View Recipe</a>
             </div>
@@ -182,21 +189,46 @@ const displayRecipe = async (title) => {
         `;
     console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
     recipePanel.innerHTML = appendHTMLForRecipe;
-    const likeBtn = document.querySelector(".likeBtn"); //for the bookmark button
 
-    //bookmark - Bookmark button on the recipe field
-    likeBtn.addEventListener("click", () => {
-      console.log("bookmark clicked")
-      //GSAP scrollTo plugin
-      //Move to the bookmark section when the search button is clicked
-      gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-    });
+    //store parameter and return
+    titleParam = title;
+    imgURLParam = resultArray[selectedIndex].recipe.image;
+    return titleParam, imgURLParam;
+
   } catch (error) {
     console.error("Failed to display the recipe detial");
   }
 };
 
-//clear user input and temp value
+//display bookmark list
+//bookmark - Add selected item to Bookmark
+const displayBookmark = () => {
+  console.log("bookmark clicked");
+  console.log("want to add to bookmark " + titleParam + imgURLParam);
+  //GSAP scrollTo plugin
+  //Move to the bookmark section when the bookmark icon is clicked
+  gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+  //add an item to an array
+  bookmarkArray.unshift(
+    {
+      "title": `${titleParam}`,
+      "imgURL": `${imgURLParam}`
+    })
+  console.log(bookmarkArray);
+  //create html
+  appendHTMLForBookmark = bookmarkArray.map((element) => {
+    return `
+    <div class="bookmarkItem">
+      <input type="checkbox" name="checkbox" class="checkbox">
+      <img src="${element.imgURL}" alt="itemImg">
+      <p>${element.title}</p>
+    </div>
+    `
+  }).join("");
+  bookmarkList.innerHTML = appendHTMLForBookmark;
+};
+
+//clear user input and temp values
 const clearInput = () => {
   searchKeyword.value = "";
   // cuisiine.value = "";
@@ -219,16 +251,25 @@ const clearAlert = () => {
   }
 }
 
+//loader - 2s
+const activateLoader = () => {
+  loader.style.display = "block";
+}
+const stopLoader = () => {
+  loader.style.display = "none";
+}
+
 /* ============================== Function Call ============================== */
 //recipe search - Search button
 searchBtn.addEventListener("click", () => {
-  clearAlert(); // clear alert if it is shown
+  clearAlert(); // clear alert if it is already shown
   console.log(searchKeyword.value) //tomato
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
     showAlert("This field is required. Number is not allowed", 0);
     clearInput();
   } else {
+    activateLoader();
     //GSAP scrollTo plugin
     // Move to the next section when the search button is clicked
     gsap.to(window, { duration: .5, scrollTo: "#result" });
@@ -239,6 +280,7 @@ searchBtn.addEventListener("click", () => {
 
 //load more results - Show More button
 showMoreBtn.addEventListener("click", () => {
+  activateLoader();
   //fetch data from the lastIndex of data to the next 8
   console.log(resultArray);
   //GSAP scrollTo plugin
@@ -248,14 +290,6 @@ showMoreBtn.addEventListener("click", () => {
   gsap.to(resultPanel, { duration: 2, scrollTo: { y: + 1000 } }); //=== no working need css animation
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
 });
-
-// //bookmark - Bookmark button on the recipe field
-// likeBtn.addEventListener("click", () => {
-//   console.log("bookmark clicked")
-//   //GSAP scrollTo plugin
-//   //Move to the bookmark section when the search button is clicked
-//   gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-// });
 
 //bookmark - Bookmark link in the header
 bookmarkLink.addEventListener("click", () => {

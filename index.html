@@ -18,13 +18,19 @@
 </head>
 
 <body>
+  <!--loading animation-->
+  <div class="loader">
+    <div class="spinner"></div>
+    <span>loading...</span>
+  </div>
+
+  <!--header-->
   <header class="header" id="header">
     <h1>Simple and Tasty Recipes</h1>
     <a href="#bookmark" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
 
     <!--recipe search form-->
     <div class="searchForm">
-      <!--change to form later-->
       <div class="keywordSearch">
         <label for="#keyword">I want to make... </label>
         <input type="text" name="keyword" class="keyword" placeholder="Enter keyword. i.e) fish, italian, sushi, tomato"
@@ -33,13 +39,12 @@
         <button type="submit" value="Search Recipe" class="search"><i class="fas fa-search"></i></button>
         <p class="alert"></p>
       </div>
-      <!-- <div>
+      <!-- <div> //filtering to be implemented
         <label for="#cuisine">Cuisine: </label>
         <input type="text" name="cuisine" class="cuisine" placeholder="Enter cuisine">
-
       </div> -->
     </div>
-    <!--change to form later-->
+
     <!--***************today's date and degital clock***************-->
   </header>
 
@@ -60,7 +65,7 @@
 
       <!--display another eight items when the button is clicked-->
       <p class="alert">alert sample</p>
-      <button type="button" class="showMore">Show More</button>
+      <button type="button" class="showMore"><i class="fas fa-chevron-down"></i> Show More</button>
     </section>
 
     <section class="recipe" id="recipe">
@@ -71,9 +76,9 @@
           <p class="title">Title of the dish</p>
           <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
           <li><i class="fas fa-utensils"></i> Serving size: 4</li>
-          <button type="button" class="likeBtn" id="likeBtn"><i class="fas fa-heart"></i>Bookmark</button>
+          <button type="button" class="likeBtn" id="likeBtn" onclick="displayBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
         </ul>
-        <div class="displayRecipe">
+        <div class="recipeInfo">
           <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
           <div class="detailInfo">
             <p>ingredientLines</p>
@@ -91,7 +96,7 @@
         <!--***************Recipe detail until here***************-->
       </div>
 
-      <button type="button" class="timerBtn" id="timerBtn">Start Cooking</button>
+      <button type="button" class="timerBtn" id="timerBtn"><i class="far fa-clock"></i> Start Cooking</button>
       <!--***************Countdown timer here***************-->
 
     </section>
@@ -99,11 +104,25 @@
     <section class="bookmark" id="bookmark">
       <h2>Bookmark</h2>
       <!--***************Recipe photo and title only***************-->
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo placeat inventore nemo, impedit nulla commodi
-        incidunt consequatur, quidem harum mollitia dolorem similique praesentium perspiciatis ad itaque architecto
-        veniam vel eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum amet sint beatae cumque eveniet
-        maiores doloremque placeat nisi, nulla iste odit dolores accusamus, libero delectus perspiciatis repellendus ea
-        fugiat voluptatem!</p>
+      <div class="bookmarkList">
+        <div class="bookmarkItem">
+          <input type="checkbox" name="checkbox" class="checkbox">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+          <p>Spaghetti Carbonara</p>
+        </div>
+        <div class="bookmarkItem">
+          <input type="checkbox" name="checkbox" class="checkbox">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+        </div>
+        <div class="bookmarkItem">
+          <input type="checkbox" name="checkbox" class="checkbox">
+          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+          <p>Spaghetti pasta pasta</p>
+        </div>
+      </div>
+
+      <button type="button" class="delBtn"><i class="fas fa-trash-alt"></i> Delete</button>
       <!--***************note taker***************-->
     </section>
 
@@ -113,12 +132,13 @@
   <footer class="footer">
     <i class="fas fa-chevron-circle-up fa-3x" id="toTop" onlick="scrollToTop()"></i>
     <h4>
-      @Yuki Matsubara all right reserved. 2021/03.
+      @Yuki Matsubara all right reserved. 2021/03. Powered by Edamam API
       <a href="https://www.linkedin.com/in/yukimatsubara/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/YukiRamu" target="_blank"><i class="fab fa-github-square"></i></a>
     </h4>
 
   </footer>
+
   <!--GSAP Animation Library-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
