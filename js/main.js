@@ -36,6 +36,7 @@ const bookmarkLink = document.querySelector(".bookmarkLink"); //a link on header
 let bookmarkArray = []; //array of object
 const bookmarkList = document.querySelector(".bookmarkList");
 let appendHTMLForBookmark = "";
+const delBtn = document.querySelector(".delBtn");//bookmark delete
 
 //countdown timer
 const timerBtn = document.getElementById("timerBtn");
@@ -200,15 +201,14 @@ const displayRecipe = async (title) => {
   }
 };
 
-//display bookmark list
-//bookmark - Add selected item to Bookmark
+//display bookmark list - Add
 const displayBookmark = () => {
   console.log("bookmark clicked");
   console.log("want to add to bookmark " + titleParam + imgURLParam);
   //GSAP scrollTo plugin
   //Move to the bookmark section when the bookmark icon is clicked
   gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-  //add an item to an array
+  //add selected item(s) to an array
   bookmarkArray.unshift(
     {
       "title": `${titleParam}`,
@@ -226,16 +226,49 @@ const displayBookmark = () => {
     `
   }).join("");
   bookmarkList.innerHTML = appendHTMLForBookmark;
+  return bookmarkArray
 };
+
+//delete bookmark list
+const deleteBookmark = () => {
+  console.log("delete clicked");
+  console.log(bookmarkArray);
+  const currentBookmark = document.querySelectorAll(".bookmarkItem");
+  console.log(currentBookmark);
+  let newBookmarkArray = [];
+  //check if the checkbox is checked 
+  for (i = 0; i < currentBookmark.length; i++) {
+    if (currentBookmark[i].firstElementChild.checked) {
+      //Ok to delete - bookmarkArray[i]
+      console.log(bookmarkArray[i]); //object
+      bookmarkArray.splice(i, 1);
+
+      //immutably delete the item ---- not working
+      // newBookmarkArray = bookmarkArray.filter((array, idx)=> {
+      //   array !== i; // create a new array with values except for the deleteIndex
+      // })
+      console.log(bookmarkArray);
+
+      //display bookmark again
+      //create html
+      appendHTMLForBookmark = bookmarkArray.map((element) => {
+        return `
+          <div class="bookmarkItem">
+            <input type="checkbox" name="checkbox" class="checkbox">
+            <img src="${element.imgURL}" alt="itemImg">
+            <p>${element.title}</p>
+          </div>
+          `
+      }).join("");
+      bookmarkList.innerHTML = appendHTMLForBookmark;
+    }
+  }
+}
 
 //clear user input and temp values
 const clearInput = () => {
   searchKeyword.value = "";
-  // cuisiine.value = "";
   resultArray = [];
-  appendHTMLForResult = "";
-  ppendHTMLforIngrList = "";
-  appendHTMLForRecipe = "";
 };
 
 //alert pop up
@@ -302,6 +335,11 @@ bookmarkLink.addEventListener("click", () => {
 timerBtn.addEventListener("click", () => {
   window.open("countdownTimer.html", "", "width=300, height=300");
 });
+
+//delete bookmark
+delBtn.addEventListener("click", () => {
+  deleteBookmark();
+})
 
 /* ============================== Animation ============================== */
 //jQuery
