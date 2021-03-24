@@ -12,6 +12,7 @@ const searchBtn = document.querySelector(".search");
 const alertMsg = document.querySelectorAll(".alert");
 
 //display result
+const resultSection = document.querySelector(".result");
 const resultPanel = document.querySelector(".resultPanel");
 let resultArray = []; //to store populated data
 let keywordParam = ""; //to use parameter outside of the function block
@@ -23,7 +24,8 @@ let appendHTMLForIngrList = "";
 //load more
 const showMoreBtn = document.querySelector(".showMore");
 
-//display recipe detail
+//display recipe
+const recipeSection = document.querySelector(".recipe");
 const recipePanel = document.querySelector(".recipePanel");
 let appendHTMLForRecipe = "";
 let title = "";
@@ -130,12 +132,14 @@ const displayResult = () => {
 
 //display recipe - when "view detail" is clicked
 const displayRecipe = async (title) => {
+  //show recipe section
+  recipeSection.style.display = "block";
 
   //GSAP scrollTo plugin
   //Move to the next section when view detail is clicked
   const scrollToRecipe = async () => {
     console.log("#1 scroll to recipe");
-    gsap.to(window, { duration: 2, scrollTo: "#recipe" }); //=====not working
+    gsap.to(window, { duration: 2, scrollTo: "#recipe" }); //=====not working, css fadeIn animation currently applied
   };
 
   try {
@@ -303,6 +307,8 @@ searchBtn.addEventListener("click", () => {
     clearInput();
   } else {
     activateLoader();
+    //show result section
+    resultSection.style.display = "block";
     //GSAP scrollTo plugin
     // Move to the next section when the search button is clicked
     gsap.to(window, { duration: .5, scrollTo: "#result" });
@@ -320,7 +326,7 @@ showMoreBtn.addEventListener("click", () => {
   // Move to the next 8 results when the show more button is clicked
   //convert
   let viewHeight = document.documentElement.clientHeight; //vh to pixel
-  gsap.to(resultPanel, { duration: 2, scrollTo: { y: + 1000 } }); //=== no working need css animation
+  gsap.to(resultPanel, { duration: 2, scrollTo: { y: + 1000 } }); //=== not working need css animation. may not need?? better without??
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
 });
 
@@ -328,7 +334,7 @@ showMoreBtn.addEventListener("click", () => {
 bookmarkLink.addEventListener("click", () => {
   //GSAP scrollTo plugin
   //Move to the bookmark section when the search button is clicked
-  gsap.to(window, { duration: 2, scrollTo: "#bookmark" }); //=== no working
+  gsap.to(window, { duration: 2, scrollTo: "#bookmark" }); //=== not working
 });
 
 //Open a new window for a countdown timer

@@ -179,6 +179,7 @@ body {
   .main {
     //result
     .result {
+      display: none;
       position: relative;
       min-height: 100vh;
       .resultPanel {
@@ -190,7 +191,6 @@ body {
         grid-gap: 1em;
         height: 75%;
         padding: 0.5em;
-        background-color: bisque;
         .itemPanel {
           margin: auto;
           border-radius: 5%;
@@ -216,8 +216,11 @@ body {
     }
     //recipe
     .recipe {
+      display: none;
       min-height: 100vh;
+      
       .recipePanel {
+        @include animationFadeIn;
         .dishInfo {
           @include flex;
           list-style: none;

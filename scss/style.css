@@ -177,6 +177,7 @@ body .header .searchForm .keywordSearch .search {
 }
 
 body .main .result {
+  display: none;
   position: relative;
   min-height: 100vh;
 }
@@ -192,7 +193,6 @@ body .main .result .resultPanel {
   grid-gap: 1em;
   height: 75%;
   padding: 0.5em;
-  background-color: bisque;
 }
 
 body .main .result .resultPanel .itemPanel {
@@ -247,7 +247,28 @@ body .main .result .showMore {
 }
 
 body .main .recipe {
+  display: none;
   min-height: 100vh;
+}
+
+body .main .recipe .recipePanel {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 body .main .recipe .recipePanel .dishInfo {
