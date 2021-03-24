@@ -180,7 +180,7 @@ const displayRecipe = async (title) => {
             <p class="title">${title}</p>
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
             <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
-            <button type="button" class="likeBtn" id="likeBtn" onclick="displayBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
+            <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
           <div class="recipeInfo">
             <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
@@ -207,28 +207,21 @@ const displayRecipe = async (title) => {
 };
 
 /* display bookmark list - Add */
-const displayBookmark = () => {
+const addBookmark = () => {
   console.log("bookmark clicked");
   console.log("want to add to bookmark " + titleParam + imgURLParam);
-  //duplication check
-  console.log(bookmarkArray);
-  if (bookmarkArray.includes(titleParam)) {
-    //show pop up - Already in the list
-console.log("Item is already in the bookmark list");
 
-
-
-  } else {
+  if (bookmarkArray.length === 0) {
+    //adding to bookmark for the first tie
     //GSAP scrollTo plugin
     //Move to the bookmark section when the bookmark icon is clicked
     gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-    //add selected item(s) to an array
+    //add a selected item to an array
     bookmarkArray.unshift(
       {
         "title": `${titleParam}`,
         "imgURL": `${imgURLParam}`
       })
-    console.log(bookmarkArray);
     //create html
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
@@ -240,7 +233,41 @@ console.log("Item is already in the bookmark list");
     `
     }).join("");
     bookmarkList.innerHTML = appendHTMLForBookmark;
+  } else {
+    //item(s) already in the bookmark
+    //duplication check
+    for (i = 0; i < bookmarkArray.length; i++) {
+      if (bookmarkArray[i].title === titleParam) {
+        //show pop up - Already in the list
+        alert("an Item is already in the bookmark list"); //=======change to popup
+        console.log(bookmarkArray[i].title)
+      } else {
+        //Add a new item and break the loop
+        //GSAP scrollTo plugin
+        //Move to the bookmark section when the bookmark icon is clicked
+        gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+        //add a selected item to an array
+        bookmarkArray.unshift(
+          {
+            "title": `${titleParam}`,
+            "imgURL": `${imgURLParam}`
+          })
+        console.log(bookmarkArray);
+        //create html
+        appendHTMLForBookmark = bookmarkArray.map((element) => {
+          return `
+            <div class="bookmarkItem">
+              <input type="checkbox" name="checkbox" class="checkbox">
+              <img src="${element.imgURL}" alt="itemImg">
+              <p>${element.title}</p>
+            </div>
+            `
+        }).join("");
+        break;
+      }
+    }
   }
+
   return bookmarkArray;
 };
 
