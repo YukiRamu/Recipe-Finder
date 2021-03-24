@@ -21,6 +21,8 @@ To do list <br>
 Additional To do list <br>
 <ul>
 <li>Bookmark - delete all</li>
+<li>Bookmark - keep storing the items even after the window refresh</li>
 <li>Bookmark added pop-up</li>
 <li>back button on Recipe field => back to the last position of the result</li>
+<li>Add item id (random number) to the array of objects - for now an item name is used for a unique identifier</li>
 </ul>
