@@ -60,7 +60,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   //fetch api
   fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
-      console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
+     // console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
       if (!response.ok) {
         throw error(response.statusText);
       } else {
@@ -69,17 +69,17 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
-      console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
-      console.log("data count is " + data.count)
-      console.log("length of array is  " + resultArray.length);
+     // console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
+     // console.log("data count is " + data.count)
+     // console.log("length of array is  " + resultArray.length);
 
       //validation check for IndexOutOfBoundsException
       if (resultArray.length === data.count) {
-        console.log("hi index out of bounds here");
+      //  console.log("hi index out of bounds here");
         //in case there is no more data to display
         showAlert("No more recipe to display.", 1);
         stopLoader();
-        console.log(resultArray);
+      //  console.log(resultArray);
         return false;
       }
 
@@ -94,14 +94,14 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         for (let i = 0; i < data.count; i++) {
           resultArray.push(data.hits[i]);
         }
-        console.log(resultArray);
+       // console.log(resultArray);
         displayResult();
       } else {
         //create resultArray 8 items in each time
         for (let i = 0; i < 8; i++) {
           resultArray.push(data.hits[i]);
         }
-        console.log(resultArray);
+       // console.log(resultArray);
         displayResult();
       }
     })
@@ -139,7 +139,7 @@ const displayRecipe = async (title) => {
   //GSAP scrollTo plugin
   //Move to the next section when view detail is clicked
   const scrollToRecipe = async () => {
-    console.log("#1 scroll to recipe");
+   // console.log("#1 scroll to recipe");
     gsap.to(window, { duration: 2, scrollTo: "#recipe" }); //=====not working, css fadeIn animation currently applied
   };
 
@@ -147,13 +147,13 @@ const displayRecipe = async (title) => {
     //1 scroll
     await scrollToRecipe();
     //2 display
-    console.log("#2 displaying recipe");
+    //console.log("#2 displaying recipe");
     //find the item to display
     const mealTitle = document.querySelectorAll(".mealTitle");
 
-    console.log(mealTitle);//NodeList
-    console.log(typeof (mealTitle));//Object
-    console.log("meal title is " + title);
+   // console.log(mealTitle);//NodeList
+   // console.log(typeof (mealTitle));//Object
+   // console.log("meal title is " + title);
 
     let selectedIndex = "";
     for (let i = 0; i < mealTitle.length; i++) {
@@ -162,8 +162,8 @@ const displayRecipe = async (title) => {
         selectedIndex = i;
       }
     }
-    console.log("index is " + selectedIndex);
-    console.log(resultArray[selectedIndex]);
+   // console.log("index is " + selectedIndex);
+  //  console.log(resultArray[selectedIndex]);
 
     //create <li> tags - ingredients
     appendHTMLForIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
@@ -172,7 +172,7 @@ const displayRecipe = async (title) => {
         `;
     }).join("");
 
-    console.log(appendHTMLForIngrList);
+  //  console.log(appendHTMLForIngrList);
 
     //create an entire append HTML
     appendHTMLForRecipe = `    
@@ -193,7 +193,7 @@ const displayRecipe = async (title) => {
             </div>
           </div>
         `;
-    console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
+   // console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
     recipePanel.innerHTML = appendHTMLForRecipe;
 
     //store parameter and return
@@ -208,8 +208,8 @@ const displayRecipe = async (title) => {
 
 /* display bookmark list - Add */
 const addBookmark = () => {
-  console.log("bookmark clicked");
-  console.log("want to add to bookmark " + titleParam + imgURLParam);
+  console.log("bookmark icon is clicked");
+  console.log("I want to add to bookmark " + titleParam + " and " + imgURLParam);
 
   if (bookmarkArray.length === 0) {
     //adding to bookmark for the first tie
@@ -239,9 +239,16 @@ const addBookmark = () => {
     for (i = 0; i < bookmarkArray.length; i++) {
       if (bookmarkArray[i].title === titleParam) {
         //show pop up - Already in the list
-        alert("an Item is already in the bookmark list"); //=======change to popup
-        console.log(bookmarkArray[i].title)
-      } else {
+        console.log("Item below is already in the bookmark list"); //=======change to popup
+        console.log(bookmarkArray[i].title);
+        console.log(bookmarkArray);
+      } else { //リストに入ってないものをリストにいれる
+        //====================== ISSUE HERE=====================
+        // Second time or after, ALWAYS comes into the else statement
+        // although if statement is executed
+        //===========================================================
+        console.log("before adding a new item to bookmark list");
+        console.log(bookmarkArray);
         //Add a new item and break the loop
         //GSAP scrollTo plugin
         //Move to the bookmark section when the bookmark icon is clicked
@@ -263,6 +270,7 @@ const addBookmark = () => {
             </div>
             `
         }).join("");
+        bookmarkList.innerHTML = appendHTMLForBookmark;
         break;
       }
     }
@@ -343,7 +351,7 @@ const stopLoader = () => {
 /* recipe search - Search button */
 searchBtn.addEventListener("click", () => {
   clearAlert(); // clear alert if it is already shown
-  console.log(searchKeyword.value) //tomato
+  //console.log(searchKeyword.value) //tomato
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
     showAlert("This field is required. Number is not allowed", 0);
