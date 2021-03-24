@@ -24,6 +24,7 @@
 h1 {
   font-size: 3em;
   font-family: "Merriweather", serif;
+  font-weight: bold;
 }
 
 h2 {
@@ -42,7 +43,7 @@ p {
 }
 
 .fa-heart {
-  color: #d75a54;
+  color: #b34140;
 }
 
 a {
@@ -86,14 +87,14 @@ body .loader .spinner {
   left: 47%;
   background-color: transparent;
   border: 0.3em solid transparent;
-  border-top: 0.3em dotted #fca54f;
-  border-right: 0.3em dotted #fbd86e;
-  border-bottom: 0.3em dotted #dcfa79;
+  border-top: 0.3em dotted #b85712;
+  border-right: 0.3em dotted #dfa42a;
+  border-bottom: 0.3em dotted #497e9a;
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
+  -webkit-animation: spin 2.5s linear infinite;
+          animation: spin 2.5s linear infinite;
 }
 
 body .loader span {
@@ -113,67 +114,88 @@ body .loader span {
 
 body .header {
   text-align: center;
-  background-image: url(../img/top.jpg);
+  background-image: url(../img/top2.jpg);
   height: 100vh;
   overflow: hidden;
 }
 
 body .header h1 {
   text-transform: uppercase;
+  color: #dfc65a;
+  margin-left: auto;
+  width: 50%;
+  z-index: 1;
+  top: 16%;
+  position: relative;
+  font-size: 5em;
 }
 
 body .header .bookmarkLink {
   position: absolute;
   top: 5%;
   right: 5%;
+  z-index: 100;
 }
 
 body .header .searchForm {
-  background-color: rgba(245, 245, 220, 0.572);
+  background-color: rgba(12, 39, 53, 0.9);
   margin: auto;
   width: 50%;
-  height: 80%;
+  height: 100%;
   position: absolute;
-  top: 50%;
+  top: 0%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  border-radius: 5%;
 }
 
 body .header .searchForm .keywordSearch {
   position: relative;
+  height: 100%;
 }
 
 body .header .searchForm .keywordSearch label {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
   padding: 1em;
   display: block;
   text-align: left;
   width: 80%;
   margin: auto;
+  color: #dfc65a;
+  font-size: 2em;
 }
 
 body .header .searchForm .keywordSearch .keyword {
   border-radius: 50vw;
   border: none;
   padding: 1em;
-  margin-top: 3em;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 70%;
+  position: absolute;
   width: 80%;
 }
 
 body .header .searchForm .keywordSearch .search {
-  position: -webkit-sticky;
-  position: sticky;
-  right: 7%;
-  top: 10%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  top: 70%;
+  left: 83%;
   border-radius: 50vw;
   border: none;
   text-transform: none;
   border-style: none;
   background-color: transparent;
+}
+
+body .header .searchForm .keywordSearch .search .fa-search {
+  color: #dfc65a;
+  font-size: 1.5em;
 }
 
 body .main .result {
@@ -383,6 +405,6 @@ body .footer .fa-chevron-circle-up {
 }
 
 body .footer .fa-chevron-circle-up:hover {
-  color: #d75a54;
+  color: #b34140;
 }
 /*# sourceMappingURL=style.css.map */

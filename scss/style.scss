@@ -2,6 +2,7 @@
 $textColor1: white;
 $bgColor1: white;
 
+//Color pattern 1
 $color1: #ebece5;
 $color2: #abadaf;
 $color3: #d76b34;
@@ -9,6 +10,17 @@ $color4: #b34140;
 $color5: #d75a54;
 $color6: #97342b;
 $color7: #cc9456;
+
+//Color pattern 2
+$color8: #04080c;
+$color9: #434846;
+$color10: #5a280b;
+$color11: #b85712;
+$color12: #dfc65a;
+$color13: #dfa42a;
+$color14: #497e9a;
+$color15: #c9c9ba;
+$base: rgba(12, 39, 53, 0.9);
 
 @mixin flex {
   display: flex;
@@ -51,6 +63,7 @@ $color7: #cc9456;
 h1 {
   font-size: 3em;
   font-family: "Merriweather", serif;
+  font-weight: bold;
 }
 h2 {
   font-size: 2em;
@@ -65,7 +78,7 @@ p {
   font-size: 1.5em;
 }
 .fa-heart {
-  color: $color5;
+  color: $color4;
 }
 a {
   text-decoration: none;
@@ -101,13 +114,13 @@ body {
       left: 47%;
       background-color: transparent;
       border: 0.3em solid transparent;
-      border-top: 0.3em dotted #fca54f;
-      border-right: 0.3em dotted#fbd86e;
-      border-bottom: 0.3em dotted#dcfa79;
+      border-top: 0.3em dotted $color11;
+      border-right: 0.3em dotted $color13;
+      border-bottom: 0.3em dotted $color14;
       border-radius: 50%;
       width: 80px;
       height: 80px;
-      animation: spin 2s linear infinite;
+      animation: spin 2.5s linear infinite;
     }
     span {
       position: absolute;
@@ -124,53 +137,71 @@ body {
   //header
   .header {
     text-align: center;
-    background-image: url(../img/top.jpg);
+    background-image: url(../img/top2.jpg);
     height: 100vh;
     overflow: hidden;
     h1 {
       text-transform: uppercase;
+      color: $color12;
+      margin-left: auto;
+      width: 50%;
+      z-index: 1;
+      top: 16%;
+      position: relative;
+      font-size: 5em;
     }
     .bookmarkLink {
       position: absolute;
       top: 5%;
       right: 5%;
+      z-index: 100;
     }
     .searchForm {
-      background-color: rgba(245, 245, 220, 0.572);
+      background-color: $base;
       margin: auto;
       width: 50%;
-      height: 80%;
+      height: 100%;
       position: absolute;
-      @include centering;
-      border-radius: 5%;
+      top: 0%;
+      left: 50%;
       .keywordSearch {
         position: relative;
+        height: 100%;
         label {
           position: absolute;
           left: 0;
-          top: 0;
+          top: 50%;
           padding: 1em;
           display: block;
           text-align: left;
           width: 80%;
           margin: auto;
+          color: $color12;
+          font-size: 2em;
         }
         .keyword {
           border-radius: 50vw;
           border: none;
           padding: 1em;
-          margin-top: 3em;
+          @include centering;
+          top: 70%;
+          position: absolute;
           width: 80%;
         }
         .search {
-          position: sticky;
-          right: 7%;
-          top: 10%;
+          @include centering;
+          position: absolute;
+          top: 70%;
+          left: 83%;
           border-radius: 50vw;
           border: none;
           text-transform: none;
           border-style: none;
           background-color: transparent;
+          .fa-search {
+            color: $color12;
+            font-size: 1.5em;
+          }
         }
       }
     }
@@ -218,7 +249,7 @@ body {
     .recipe {
       display: none;
       min-height: 100vh;
-      
+
       .recipePanel {
         @include animationFadeIn;
         .dishInfo {
@@ -307,7 +338,7 @@ body {
       bottom: 10%;
       cursor: pointer;
       &:hover {
-        color: $color5;
+        color: $color4;
       }
     }
   }
