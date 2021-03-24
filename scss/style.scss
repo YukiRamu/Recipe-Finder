@@ -1,12 +1,10 @@
 /* Variables */
-$textColor1: white;
-$bgColor1: white;
 
 //Color pattern 1
 $color1: #ebece5;
 $color2: #abadaf;
 $color3: #d76b34;
-$color4: #b34140;
+$color4: #b34140; // in use
 $color5: #d75a54;
 $color6: #97342b;
 $color7: #cc9456;
@@ -16,11 +14,11 @@ $color8: #04080c;
 $color9: #434846;
 $color10: #5a280b;
 $color11: #b85712;
-$color12: #dfc65a;
+$color12: #E1C736;// in use
 $color13: #dfa42a;
 $color14: #497e9a;
-$color15: #c9c9ba;
-$base: rgba(12, 39, 53, 0.9);
+$color15: #F1F4F1;
+$base: rgba(12, 39, 53, 0.9);//in use
 
 @mixin flex {
   display: flex;
@@ -85,12 +83,13 @@ a {
 }
 .alert {
   display: none;
+  position: absolute;
+  @include centering;
+  top: 75%;
   text-align: center;
   font-size: 1em;
-  background-color: red;
-  color: white;
-  position: absolute;
-  left: 8%;
+  background-color: $color4;
+  color: $color12;
   border-radius: 10vw;
   width: 80%;
 }
@@ -114,9 +113,9 @@ body {
       left: 47%;
       background-color: transparent;
       border: 0.3em solid transparent;
-      border-top: 0.3em dotted $color11;
-      border-right: 0.3em dotted $color13;
-      border-bottom: 0.3em dotted $color14;
+      border-top: 0.3em dotted $color4;
+      border-right: 0.3em dotted $color4;
+      border-bottom: 0.3em dotted $color4;
       border-radius: 50%;
       width: 80px;
       height: 80px;
@@ -124,7 +123,7 @@ body {
     }
     span {
       position: absolute;
-      color: white;
+      color: $color15; 
       @include centering;
       top: 64%;
       left: 51%;
@@ -225,8 +224,8 @@ body {
         .itemPanel {
           margin: auto;
           border-radius: 5%;
-          border: 1em solid $bgColor1;
-          background-color: $bgColor1;
+          border: 1em solid yellow; //change to variable
+          background-color: yellow; //change to variable
           @include animationFadeIn;
           img {
             height: 25vh;
@@ -296,7 +295,13 @@ body {
     //bookmark list
     .bookmark {
       min-height: 100vh;
+      color: white; // change to variable
+      background-image: url(../img/bg1.jpg);
+      h2 {
+        
+      }
       .bookmarkList {
+
         .bookmarkItem {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -336,6 +341,7 @@ body {
       position: fixed;
       right: 5%;
       bottom: 10%;
+      color: $color12;
       cursor: pointer;
       &:hover {
         color: $color4;

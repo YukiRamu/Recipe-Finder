@@ -50,7 +50,7 @@ const loader = document.querySelector(".loader"); // loading modal
 //filter to be added : &cuisineType=${cuisine}
 
 /* ==========================Function Declaration =========================== */
-//Fetch API to get recipe data
+/* Fetch API to get recipe data */
 const getRecipe = (keyword, firstIndex, lastIndex) => {
   //store parameter
   keywordParam = keyword;
@@ -78,11 +78,12 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         console.log("hi index out of bounds here");
         //in case there is no more data to display
         showAlert("No more recipe to display.", 1);
+        stopLoader();
         console.log(resultArray);
         return false;
       }
 
-      //forst load validation check
+      //first load validation check
       if (data.count === 0) {
         showAlert("No recipe found.", 0);
         clearInput();
@@ -113,7 +114,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   return resultArray, keywordParam, firstIdxParam, lastIdxParam;
 };
 
-//display search result
+/* display search result */
 //first 8 => load more
 const displayResult = () => {
   //8 objects at one time
@@ -130,7 +131,7 @@ const displayResult = () => {
   stopLoader();
 };
 
-//display recipe - when "view detail" is clicked
+/* display recipe - when "view detail" is clicked */
 const displayRecipe = async (title) => {
   //show recipe section
   recipeSection.style.display = "block";
@@ -205,35 +206,45 @@ const displayRecipe = async (title) => {
   }
 };
 
-//display bookmark list - Add
+/* display bookmark list - Add */
 const displayBookmark = () => {
   console.log("bookmark clicked");
   console.log("want to add to bookmark " + titleParam + imgURLParam);
-  //GSAP scrollTo plugin
-  //Move to the bookmark section when the bookmark icon is clicked
-  gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-  //add selected item(s) to an array
-  bookmarkArray.unshift(
-    {
-      "title": `${titleParam}`,
-      "imgURL": `${imgURLParam}`
-    })
+  //duplication check
   console.log(bookmarkArray);
-  //create html
-  appendHTMLForBookmark = bookmarkArray.map((element) => {
-    return `
+  if (bookmarkArray.includes(titleParam)) {
+    //show pop up - Already in the list
+console.log("Item is already in the bookmark list");
+
+
+
+  } else {
+    //GSAP scrollTo plugin
+    //Move to the bookmark section when the bookmark icon is clicked
+    gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+    //add selected item(s) to an array
+    bookmarkArray.unshift(
+      {
+        "title": `${titleParam}`,
+        "imgURL": `${imgURLParam}`
+      })
+    console.log(bookmarkArray);
+    //create html
+    appendHTMLForBookmark = bookmarkArray.map((element) => {
+      return `
     <div class="bookmarkItem">
       <input type="checkbox" name="checkbox" class="checkbox">
       <img src="${element.imgURL}" alt="itemImg">
       <p>${element.title}</p>
     </div>
     `
-  }).join("");
-  bookmarkList.innerHTML = appendHTMLForBookmark;
-  return bookmarkArray
+    }).join("");
+    bookmarkList.innerHTML = appendHTMLForBookmark;
+  }
+  return bookmarkArray;
 };
 
-//delete bookmark list
+/* delete bookmark list */
 const deleteBookmark = () => {
   console.log("delete clicked");
   console.log(bookmarkArray);
@@ -269,35 +280,40 @@ const deleteBookmark = () => {
   }
 }
 
-//clear user input and temp values
+/* clear user input and temp values */
 const clearInput = () => {
   searchKeyword.value = "";
   resultArray = [];
 };
 
-//alert pop up
+/* alert pop up - idx for specify which alert class in html tags */
+//show alert
 const showAlert = (msg, idx) => {
   console.log(idx);
   alertMsg[idx].innerHTML = msg;
   alertMsg[idx].style.display = "block";
 }
 
+//clear alert
 const clearAlert = () => {
   for (i = 0; i < alertMsg.length; i++) {
     alertMsg[i].style.display = "none";
   }
 }
 
-//loader - 2s
+/* loader - 2s */
+//activate
 const activateLoader = () => {
   loader.style.display = "block";
 }
+
+//stop
 const stopLoader = () => {
   loader.style.display = "none";
 }
 
 /* ============================== Function Call ============================== */
-//recipe search - Search button
+/* recipe search - Search button */
 searchBtn.addEventListener("click", () => {
   clearAlert(); // clear alert if it is already shown
   console.log(searchKeyword.value) //tomato
@@ -317,7 +333,7 @@ searchBtn.addEventListener("click", () => {
   }
 });
 
-//load more results - Show More button
+/* load more results - Show More button */
 showMoreBtn.addEventListener("click", () => {
   activateLoader();
   //fetch data from the lastIndex of data to the next 8
@@ -330,26 +346,26 @@ showMoreBtn.addEventListener("click", () => {
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
 });
 
-//bookmark - Bookmark link in the header
+/* bookmark - Bookmark link in the header */
 bookmarkLink.addEventListener("click", () => {
   //GSAP scrollTo plugin
   //Move to the bookmark section when the search button is clicked
   gsap.to(window, { duration: 2, scrollTo: "#bookmark" }); //=== not working
 });
 
-//Open a new window for a countdown timer
+/* Open a new window for a countdown timer */
 timerBtn.addEventListener("click", () => {
   window.open("countdownTimer.html", "", "width=300, height=300");
 });
 
-//delete bookmark
+/* delete bookmark */
 delBtn.addEventListener("click", () => {
   deleteBookmark();
 })
 
 /* ============================== Animation ============================== */
 //jQuery
-// Move to top button appears after 200 px scroll down the page
+/* Move to top button appears after 200 px scroll down the page */
 $(window).scroll(function () {
   let height = $(window).scrollTop();
   if (height > 200) {
@@ -362,7 +378,8 @@ $(window).scroll(function () {
 toTop.addEventListener("click", () => {
   gsap.to(window, { duration: .5, scrollTo: "#header" });
 });
-//another way with jQuery - keep as a reference
+
+//==== keep for ref purpose - another way with jQuery - keep as a reference
 // $(document).ready(function () {
 //   $("#toTop").click(function (event) {
 //     event.preventDefault();
