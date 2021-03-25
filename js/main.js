@@ -288,35 +288,25 @@ const deleteBookmark = () => {
   console.log("delete clicked");
   console.log(bookmarkArray);
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
-  let deleteIndex = [];
-   let recipeTitle = [];
+  let recipeTitleArray = [];
   let newBookmarkArray = [];
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
       //Ok to delete - bookmarkArray[i]
-      // console.log(bookmarkArray[i]); //1 object
-       //recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
-      //console.log(recipeTitle);
-     // bookmarkArray.splice(i, 1);
+      recipeTitleArray.push(bookmarkArray[i].title); //recipe name to be deleted (string)
+      newBookmarkArray = bookmarkArray.filter(i => recipeTitleArray.every(rt => rt !== i.title));
 
+      //============= Error Code for reference : only checking one item ==================
       // newBookmarkArray = bookmarkArray.filter((item => {
       //   console.log(item.title); //1 object
       //   recipeTitle[i].indexOf(item.title) === -1;
       // }));
-      recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted (string)
-newBookmarkArray = bookmarkArray.filter(i => recipeTitle.every(rt => rt !== i.title))
-      //remember the index(s) to be deleted
-      //deleteIndex.push(i);
-      //console.log("multiple deletion: index to be deleted is ",deleteIndex);
     }
   }
-  // deleteIndex.forEach((id) => {
-  //   bookmarkArray.splice(id,1);
-  // });
-   console.log("after delete is ", newBookmarkArray);
-   bookmarkArray = newBookmarkArray;
-   console.log("new bookmarkArray is ", bookmarkArray);
+  console.log("after delete is ", newBookmarkArray);
+  bookmarkArray = newBookmarkArray;
+  console.log("new bookmarkArray is ", bookmarkArray);
   //display bookmark again
   //create html
   appendHTMLForBookmark = bookmarkArray.map((element) => {
