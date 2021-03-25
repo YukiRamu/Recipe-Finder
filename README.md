@@ -22,8 +22,8 @@ Demo => https://yukiramu.github.io/Recipe-Finder/
 <ul>
 <li>Clean up SCSS</li>
 <li>Alert() to popup - item is already in the bookmark and bookmark added</li>
-<li>Bookmark - delete more than 2 items</li>
-<li>Bookmark - delete all</li>
+<li>Bookmark - delete more than 2 items - [done] : array.every()</li>
+<li>Bookmark - delete all - [done]: array.every()</li>
 <li>Second time+ display recipe animation - fadeIn</li>
 <li>Escape invalid recipe names with /" and /' ==> displayRecipe last index issue will be solved</li>
 <li>[issue]CSS overflow layout collapsion - large bookmark list</li>
