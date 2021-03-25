@@ -23,6 +23,9 @@ Additional To do list <br>
 <li>Alert - item is already in the bookmark</li>
 <li>Bookmark - delete more than 2 items</li>
 <li>Bookmark - delete all</li>
+<li>Second time+ display recipe animation/li>
+<li>[issue]CSS overflow layout collapsion</li>
+<li>[issue]displayRecipe() issue - a recipe name with "" or ''</li>
 <li>Bookmark - keep storing the items even after the window refresh</li>
 <li>Bookmark added pop-up</li>
 <li>back button on Recipe field => back to the last position of the result</li>
