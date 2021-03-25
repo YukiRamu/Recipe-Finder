@@ -60,7 +60,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   //fetch api
   fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
-       console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
+      console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
       if (!response.ok) {
         throw error(response.statusText);
       } else {
@@ -71,7 +71,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
       console.log(data);
       // console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
       // console.log("data count is " + data.count)
-       console.log("length of array is  " + resultArray.length);
+      console.log("length of array is  " + resultArray.length);
 
       //validation check for IndexOutOfBoundsException
       if (resultArray.length === data.count) {
@@ -123,7 +123,7 @@ const displayResult = () => {
       <div class="itemPanel">
       <img src="${element.recipe.image}" alt="itemImg">
       <p class="mealTitle">${element.recipe.label}</p>
-      <a href="#recipe" class = "view" onclick = 'displayRecipe("${element.recipe.label}")'>View Detail</a>
+      <a href="#recipe" class = "view" onclick = "displayRecipe('${element.recipe.label}')">View Detail</a>
       </div>
     `;
   }).join("");
@@ -135,13 +135,17 @@ const displayResult = () => {
 const displayRecipe = async (title) => {
   clearAlert(); //if it is shown
   //show recipe section
+  if (recipeSection.style.display === "block") {
+    recipeSection.style.display = "none";
+    recipeSection.style.display = "block";
+  }
   recipeSection.style.display = "block";
 
-  //GSAP scrollTo plugin
+  //GSAP scrollTo plugin ----******* might be deleted
   //Move to the next section when view detail is clicked
   const scrollToRecipe = async () => {
     // console.log("#1 scroll to recipe");
-    gsap.to(window, { duration: 2, scrollTo: "#recipe" }); //=====not working, css fadeIn animation currently applied
+    gsap.to(window, { duration: 2, scrollTo: "#recipePanel" }); //=====not working
   };
 
   try {
@@ -186,12 +190,12 @@ const displayRecipe = async (title) => {
             <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
           <div class="recipeInfo">
-            <p>Ingredients</p>
+            <p><i class="fas fa-pepper-hot"></i>Ingredients:</p>
             <ul>
               ${appendHTMLForIngrList}
             </ul>
-            <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>Start Cooking</a>
           </div>
+          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>Make them</a>
         </div>
         `;
     // console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
@@ -364,7 +368,7 @@ const deleteBookmark = () => {
 /* clear user input and temp values */
 const clearInput = () => {
   searchKeyword.value = "";
-  resultArray = [];
+ // resultArray = [];
 };
 
 /* alert pop up - idx for specify which alert class in html tags */
@@ -418,12 +422,7 @@ searchBtn.addEventListener("click", () => {
 showMoreBtn.addEventListener("click", () => {
   activateLoader();
   //fetch data from the lastIndex of data to the next 8
-  console.log(resultArray);
-  //GSAP scrollTo plugin
-  // Move to the next 8 results when the show more button is clicked
-  //convert
-  let viewHeight = document.documentElement.clientHeight; //vh to pixel
-  gsap.to(resultPanel, { duration: 2, scrollTo: { y: + 1000 } }); //=== not working need css animation. may not need?? better without??
+  console.log("resultArray is ", resultArray);
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
 });
 
@@ -431,7 +430,7 @@ showMoreBtn.addEventListener("click", () => {
 bookmarkLink.addEventListener("click", () => {
   //GSAP scrollTo plugin
   //Move to the bookmark section when the search button is clicked
-  gsap.to(window, { duration: 2, scrollTo: "#bookmark" }); //=== not working
+  gsap.to(window, { duration: 1, scrollTo: "#bookmark" }); 
 });
 
 /* Open a new window for a countdown timer */

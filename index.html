@@ -27,7 +27,7 @@
   <!--header-->
   <header class="header" id="header">
     <h1>Simple and Tasty Recipes</h1>
-    <a href="#bookmark" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
+    <a href="#" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
 
     <!--recipe search form-->
     <div class="searchForm">
@@ -71,62 +71,79 @@
     </section>
 
     <section class="recipe" id="recipe">
-      <div class="recipePanel">
+      <div class="recipePanel" id="recipePanel">
         <!--*************** Recipe detail here Below is a reference ***************-->
+
         <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
+
+
         <div class="detailInfo">
-          <h2 class="title">Title of the dish</h2>
+
+          <h2 class="title">JUICY AND TENDER ITALIAN-AMERICAN MEATBALLS IN RED SAUCE RECIPE</h2>
+
           <ul class="dishInfo">
             <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
             <li><i class="fas fa-utensils"></i> Serving size: 4</li>
             <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i
                 class="fas fa-heart"></i>Bookmark</button>
           </ul>
+
           <div class="recipeInfo">
-            <p>ingredientLines</p>
+            <p><i class="fas fa-pepper-hot"></i>ingredients:</p>
             <ul>
-              <li>ingredientLines1</li>
-              <li>ingredientLines2</li>
-              <li>ingredientLines3</li>
-              <li>ingredientLines4</li>
-              <li>Lorem ipsum dolor sit amet</li>
+              <li>1 packet unflavored gelatin (optional, see note above)</li>
+              <li>1/2 cup homemade chicken stock or low-sodium broth (optional, see note above)</li>
+              <li>4 ounces fresh white bread, crusts removed and bread cut into 1/</li>
+              <li>2-inch cubes (about 2 unpacked cups)</li>
+              <li> 1/3 cup buttermilk, plus more as needed</li>
+              <li>1 medium onion, minced</li>
+              
             </ul>
-            <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" onclick='displayRecipe("Chicken")'
-              target="_blank">Start Cooking</a>
           </div>
+
+          <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" onclick='displayRecipe("Chicken")'
+            target="_blank">Make them</a>
+
+
         </div>
+
         <!--***************Recipe detail until here***************-->
       </div>
 
-      <button type="button" class="timerBtn" id="timerBtn"><i class="far fa-clock"></i> Make them</button>
+      <button type="button" class="timerBtn" id="timerBtn"><i class="far fa-clock"></i>Start timer</button>
       <!--***************Countdown timer here***************-->
     </section>
 
     <section class="bookmark" id="bookmark">
-      <h2>Bookmark</h2>
 
-      <div class="bookmarkList">
-        <!--*************** Insert bookmark list here ***************-->
-        <div class="bookmarkItem">
-          <input type="checkbox" name="checkbox" class="checkbox">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
-          <p>Spaghetti Carbonara</p>
+      <div class="bookmarkContainer">
+
+        <h2>Bookmark</h2>
+
+        <div class="bookmarkList">
+          <!--*************** Insert bookmark list here ***************-->
+          <div class="bookmarkItem">
+            <input type="checkbox" name="checkbox" class="checkbox">
+            <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+            <p>Spaghetti Carbonara</p>
+          </div>
+          <div class="bookmarkItem">
+            <input type="checkbox" name="checkbox" class="checkbox">
+            <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+            <p>Lorem ipsum dolor sit amet consectetur</p>
+          </div>
+          <div class="bookmarkItem">
+            <input type="checkbox" name="checkbox" class="checkbox">
+            <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
+            <p>Spaghetti pasta pasta</p>
+          </div>
+          <!--*************** Insert bookmark list here ***************-->
         </div>
-        <div class="bookmarkItem">
-          <input type="checkbox" name="checkbox" class="checkbox">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
-          <p>Lorem ipsum dolor sit amet consectetur</p>
-        </div>
-        <div class="bookmarkItem">
-          <input type="checkbox" name="checkbox" class="checkbox">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a-s.jpg" alt="itemImg">
-          <p>Spaghetti pasta pasta</p>
-        </div>
-        <!--*************** Insert bookmark list here ***************-->
+
+        <button type="button" class="delBtn"><i class="fas fa-trash-alt"></i> Delete</button>
       </div>
 
-      <button type="button" class="delBtn"><i class="fas fa-trash-alt"></i> Delete</button>
-      <!--***************note taker***************-->
+      <!--*************** JS app note taker to be added here ***************-->
     </section>
 
   </div>

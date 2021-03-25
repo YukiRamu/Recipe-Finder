@@ -292,8 +292,8 @@ body .main .result .showMoreContainer .showMore {
 }
 
 body .main .recipe {
-  display: block;
-  height: auto;
+  display: none;
+  min-height: 100vh;
   position: relative;
   background-image: url(../img/bg7.jpg);
   color: #04080c;
@@ -319,9 +319,8 @@ body .main .recipe .recipePanel {
       -ms-flex-direction: row;
           flex-direction: row;
   text-align: center;
-  position: relative;
-  min-height: 100vh;
-  height: auto;
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes fadeIn {
@@ -334,27 +333,26 @@ body .main .recipe .recipePanel {
 }
 
 body .main .recipe .recipePanel img {
+  margin: auto 3em;
+  margin-top: 3em;
   display: block;
-  width: 40%;
-  height: 80%;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  padding: 3em;
+  width: 35%;
+  height: 70%;
+  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
+          box-shadow: 0.5em 0.5em 1em #04080c;
 }
 
 body .main .recipe .recipePanel .detailInfo {
   margin-left: auto;
   width: 60%;
+  height: 100%;
 }
 
 body .main .recipe .recipePanel .detailInfo .title {
   position: relative;
   width: 130%;
-  top: 3%;
   left: -30%;
+  margin-top: 1em;
   background-color: rgba(12, 39, 53, 0.9);
   padding: 0.5em;
   text-align: left;
@@ -376,11 +374,8 @@ body .main .recipe .recipePanel .detailInfo .dishInfo {
   text-align: center;
   list-style: none;
   padding: 0;
-  line-height: 100%;
-  top: 26%;
-  right: 5%;
+  margin: 0;
   font-size: 1.3em;
-  position: absolute;
 }
 
 body .main .recipe .recipePanel .detailInfo .dishInfo li {
@@ -402,8 +397,8 @@ body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
 }
 
 body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
-  -webkit-animation: underLine .5s;
-          animation: underLine .5s;
+  -webkit-animation: underLine 0.5s;
+          animation: underLine 0.5s;
 }
 
 @-webkit-keyframes underLine {
@@ -433,22 +428,31 @@ body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn i {
 }
 
 body .main .recipe .recipePanel .detailInfo .recipeInfo {
-  position: absolute;
-  top: 31%;
-  width: 60%;
+  width: 100%;
   text-align: left;
-  padding-left: 2.5em;
+  padding-right: 2em;
 }
 
 body .main .recipe .recipePanel .detailInfo .recipeInfo p {
   font-weight: bold;
+  margin: 0;
+}
+
+body .main .recipe .recipePanel .detailInfo .recipeInfo p .fa-pepper-hot {
+  padding-right: 0.5em;
+  color: #497e9a;
 }
 
 body .main .recipe .recipePanel .detailInfo .recipeInfo ul {
   padding-bottom: 1em;
+  margin: 0;
 }
 
-body .main .recipe .recipePanel .detailInfo .recipeInfo a {
+body .main .recipe .recipePanel .detailInfo a {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   text-decoration: none;
   background-color: rgba(12, 39, 53, 0.9);
   -webkit-box-shadow: 0 0 1.2em #04080c;
@@ -456,6 +460,7 @@ body .main .recipe .recipePanel .detailInfo .recipeInfo a {
   padding: 0.5em 2em;
   font-size: 1.3em;
   margin-top: 1em;
+  margin-bottom: 1.8em;
   color: #e1c736;
 }
 
@@ -477,7 +482,7 @@ body .main .recipe .timerBtn {
 body .main .bookmark {
   min-height: 100vh;
   color: white;
-  background-image: url(../img/bg5.jpg);
+  background-image: url(../img/bg6.jpg);
 }
 
 body .main .bookmark .bookmarkList .bookmarkItem {

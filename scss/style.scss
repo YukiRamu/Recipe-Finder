@@ -261,50 +261,49 @@ body {
     }
     //recipe
     .recipe {
-      display: block;
-      height: auto;
+      display: none;
+      min-height: 100vh;
       position: relative;
       background-image: url(../img/bg7.jpg);
       color: $color8;
       .recipePanel {
         @include animationFadeIn;
         @include flex;
-        position: relative;
-        min-height: 100vh;
-        height: auto;
+        height: 100%;
+        width: 100%;
+        ///flex left side
+
         img {
+          margin: auto 3em;
+          margin-top: 3em;
           display: block;
-          width: 40%;
-          height: 80%;
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          padding: 3em;
+          width: 35%;
+          height: 70%;
+          box-shadow: 0.5em 0.5em 1em $color8;
         }
+
         .detailInfo {
           margin-left: auto;
           width: 60%;
+          height: 100%;
           .title {
             position: relative;
             width: 130%;
-            top: 3%;
             left: -30%;
+            margin-top: 1em;
             background-color: $base;
             padding: 0.5em;
             text-align: left;
             font-size: 2.5em;
             color: $color12;
           }
+
           .dishInfo {
             @include flex;
             list-style: none;
             padding: 0;
-            line-height: 100%;
-            top: 26%;
-            right: 5%;
+            margin: 0;
             font-size: 1.3em;
-            position: absolute;
             li {
               margin: 0.5em 1em;
               color: $color3;
@@ -335,27 +334,35 @@ body {
               }
             }
           }
+
           .recipeInfo {
-            position: absolute;
-            top: 31%;
-            width: 60%;
+            width: 100%;
             text-align: left;
-            padding-left: 2.5em;
+            padding-right: 2em;
             p {
               font-weight: bold;
+              margin: 0;
+              .fa-pepper-hot {
+                padding-right: 0.5em;
+                color: $color14;
+              }
             }
             ul {
               padding-bottom: 1em;
+              margin: 0;
             }
-            a {
-              text-decoration: none;
-              background-color: $base;
-              box-shadow: 0 0 1.2em $color8;
-              padding: 0.5em 2em;
-              font-size: 1.3em;
-              margin-top: 1em;
-              color: $color12;
-            }
+          }
+          a {
+            display: block;
+            width: fit-content;
+            text-decoration: none;
+            background-color: $base;
+            box-shadow: 0 0 1.2em $color8;
+            padding: 0.5em 2em;
+            font-size: 1.3em;
+            margin-top: 1em;
+            margin-bottom: 1.8em;
+            color: $color12;
           }
         }
       }
@@ -377,7 +384,7 @@ body {
     .bookmark {
       min-height: 100vh;
       color: white; // change to variable
-      background-image: url(../img/bg5.jpg);
+      background-image: url(../img/bg6.jpg);
       .bookmarkList {
         .bookmarkItem {
           display: grid;
