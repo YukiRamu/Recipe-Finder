@@ -69,17 +69,12 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
-      // console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
-      // console.log("data count is " + data.count)
-      console.log("length of array is  " + resultArray.length);
 
       //validation check for IndexOutOfBoundsException
       if (resultArray.length === data.count) {
-        //  console.log("hi index out of bounds here");
         //in case there is no more data to display
         showAlert("No more recipe to display.", 1);
         stopLoader();
-        //  console.log(resultArray);
         return false;
       }
 
@@ -89,19 +84,33 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         clearInput();
         return false;
       } else if (data.count < lastIndex) {
-        //in case the data count is less than 8
+        //in case the data count is less than 16. To avoid undefined objects in an array
         //create resultArray
         for (let i = 0; i < data.count; i++) {
-          resultArray.push(data.hits[i]);
+          //invalid recipe name check (single and double quote)
+          if ((data.hits[i].recipe.label.indexOf("'")!= -1) || data.hits[i].recipe.label.indexOf('"')!= -1) {
+            ;
+          } else {
+            resultArray.push(data.hits[i]);
+          }
         }
         // console.log(resultArray);
         displayResult();
       } else {
-        //create resultArray 8 items in each time
-        for (let i = 0; i < 8; i++) {
-          resultArray.push(data.hits[i]);
+        //create resultArray 16 items in each time 
+        for (let i = 0; i < 16; i++) {
+          console.log(data.hits.length)
+         console.log(data.hits[i].recipe.label.indexOf("'"));
+         console.log(data.hits[i].recipe.label.indexOf('"'));
+
+          //invalid recipe name check (single and double quote)
+          if ((data.hits[i].recipe.label.indexOf("'")!= -1) || data.hits[i].recipe.label.indexOf('"')!= -1) {
+            ;
+          } else {
+            resultArray.push(data.hits[i]);
+          }
         }
-        // console.log(resultArray);
+         console.log("resultArray is " , resultArray);
         displayResult();
       }
     })
@@ -115,9 +124,9 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
 };
 
 /* display search result */
-//first 8 => load more
+//first 16 => load more
 const displayResult = () => {
-  //8 objects at one time
+  //16 objects at one time
   appendHTMLForResult = resultArray.map((element) => {
     return `        
       <div class="itemPanel">
@@ -260,7 +269,6 @@ const addBookmark = () => {
       //show pop up - Already in the list
       alert("Item below is already in the bookmark list"); //=======to be changed to popup screen
     } else {
-      //リストに入ってないものをリストにいれる
       console.log("before unshift ", bookmarkArray);
       //GSAP scrollTo plugin
       //Move to the bookmark section when the bookmark icon is clicked
@@ -284,46 +292,6 @@ const addBookmark = () => {
       }).join("");
       bookmarkList.innerHTML = appendHTMLForBookmark;
     }
-
-    //=====================Error Code =========================
-    // for (i = 0; i < bookmarkArray.length; i++) {
-    //   if (bookmarkArray[i].title === titleParam) {
-    //     //show pop up - Already in the list
-    //     console.log("Item below is already in the bookmark list"); //=======change to popup
-    //     console.log(bookmarkArray[i].title);
-    //     console.log("current bookmark ", bookmarkArray);
-    //     break; //need to break if it finds the item already in the bookmark list
-    //   } else { //リストに入ってないものをリストにいれる
-    //     //====================== ISSUE HERE=====================
-    //     // Second time or after, ALWAYS comes into the else statement
-    //     // although if statement is executed
-    //     //===========================================================
-    //     console.log("before unshift ", bookmarkArray);
-    //     //Add a new item and break the loop
-    //     //GSAP scrollTo plugin
-    //     //Move to the bookmark section when the bookmark icon is clicked
-    //     gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
-    //     //add a selected item to an array
-    //     bookmarkArray.unshift(
-    //       {
-    //         "title": `${titleParam}`,
-    //         "imgURL": `${imgURLParam}`
-    //       })
-    //     console.log("After unshift ", bookmarkArray);
-    //     //create html
-    //     appendHTMLForBookmark = bookmarkArray.map((element) => {
-    //       return `
-    //         <div class="bookmarkItem">
-    //           <input type="checkbox" name="checkbox" class="checkbox">
-    //           <img src="${element.imgURL}" alt="itemImg">
-    //           <p>${element.title}</p>
-    //         </div>
-    //         `
-    //     }).join("");
-    //     bookmarkList.innerHTML = appendHTMLForBookmark;
-    //     break;
-    //   }
-    // }
   }
 
   return bookmarkArray;
@@ -335,7 +303,6 @@ const deleteBookmark = () => {
   console.log(bookmarkArray);
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
   console.log(currentBookmark);
-  let newBookmarkArray = [];
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
@@ -368,7 +335,6 @@ const deleteBookmark = () => {
 /* clear user input and temp values */
 const clearInput = () => {
   searchKeyword.value = "";
- // resultArray = [];
 };
 
 /* alert pop up - idx for specify which alert class in html tags */
@@ -410,10 +376,12 @@ searchBtn.addEventListener("click", () => {
     activateLoader();
     //show result section
     resultSection.style.display = "block";
+    //clear previous search result
+    resultArray = [];
     //GSAP scrollTo plugin
     // Move to the next section when the search button is clicked
     gsap.to(window, { duration: .5, scrollTo: "#result" });
-    getRecipe(`${searchKeyword.value}`, 0, 8);
+    getRecipe(`${searchKeyword.value}`, 0, 16);
     clearInput();
   }
 });
@@ -421,16 +389,16 @@ searchBtn.addEventListener("click", () => {
 /* load more results - Show More button */
 showMoreBtn.addEventListener("click", () => {
   activateLoader();
-  //fetch data from the lastIndex of data to the next 8
+  //fetch data from the lastIndex of data to the next 16
   console.log("resultArray is ", resultArray);
-  getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 8);
+  getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 16);
 });
 
 /* bookmark - Bookmark link in the header */
 bookmarkLink.addEventListener("click", () => {
   //GSAP scrollTo plugin
   //Move to the bookmark section when the search button is clicked
-  gsap.to(window, { duration: 1, scrollTo: "#bookmark" }); 
+  gsap.to(window, { duration: 1, scrollTo: "#bookmark" });
 });
 
 /* Open a new window for a countdown timer */
