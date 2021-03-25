@@ -2,7 +2,7 @@
 
 Demo => https://yukiramu.github.io/Recipe-Finder/
 
-To do list <br>
+<h2>To do list</h2>
 <ul>
 <li>Form validation (null or number) and filter - filter not yet done</li>
 <li>Degital clock</li>
@@ -13,20 +13,21 @@ To do list <br>
 <li>Bookmark (adding one by one, delete one item, duplication check) - [done]</li>
 <li>Countdown clock</li>
 <li>Display today's date</li>
-<li>Note taker</li>
+<li>Note taker JS app</li>
 <li>Move to top button - [done]</li>
 <li>GSAP Library - scrollTo plugin</li>
 </ul>
 
-Additional To do list <br>
+<h2>Additional to do list</h2>
 <ul>
-<li>Alert - item is already in the bookmark</li>
+<li>Clean up SCSS</li>
+<li>Alert() to popup - item is already in the bookmark and bookmark added</li>
 <li>Bookmark - delete more than 2 items</li>
 <li>Bookmark - delete all</li>
-<li>Second time+ display recipe animation</li>
-<li>[issue]CSS overflow layout collapsion - bookmark list</li>
+<li>Second time+ display recipe animation - fadeIn</li>
+<li>Escape invalid recipe names with /" and /' ==> displayRecipe last index issue will be solved</li>
+<li>[issue]CSS overflow layout collapsion - large bookmark list</li>
 <li>Bookmark - keep storing the items even after the window refresh</li>
-<li>Bookmark added pop-up</li>
 <li>back button on Recipe field => back to the last position of the result</li>
 <li>Add item id (random number) to the array of objects - for now an item name is used for a unique identifier</li>
 </ul>
