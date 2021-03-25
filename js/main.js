@@ -60,7 +60,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   //fetch api
   fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
-      console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
       if (!response.ok) {
         throw error(response.statusText);
       } else {
@@ -70,40 +69,47 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
     .then((data) => {
       console.log(data);
 
-      //validation check for IndexOutOfBoundsException
-      if (resultArray.length === data.count) {
-        //in case there is no more data to display
-        showAlert("No more recipe to display.", 1);
+      /* Logic to display the result
+      // #1 : Is it a first load and no recipe found?
+      // #2 : IndexOutOfBounds (no more recipe found) ?
+      // #3 : Is the data length smaller than the default 16? - avoid "undefined"
+      // #4 : Show 16 items each time
+      // => Too many if-else, better to simplify
+       */
+      if ((resultArray.length === data.count) && (data.count === 0)) {
+        //#1
         stopLoader();
-        return false;
-      }
-
-      //first load validation check
-      if (data.count === 0) {
         showAlert("No recipe found.", 0);
         clearInput();
         return false;
+      } else if (resultArray.length === data.count) {
+        //#2
+        showAlert("No more recipe to display.", 1);
+        stopLoader();
+        return false;
       } else if (data.count < lastIndex) {
-        //in case the data count is less than 16. To avoid undefined objects in an array
+        //#3
         //create resultArray
         for (let i = 0; i < data.count; i++) {
           //invalid recipe name check (single and double quote)
+          //might be able to handle with ESCAPE stuff
           if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
             ;
           } else {
             resultArray.push(data.hits[i]);
           }
         }
-        // console.log(resultArray);
         displayResult();
       } else {
-        //create resultArray 16 items in each time 
+        //#4
+        //create resultArray 16 items each time 
         for (let i = 0; i < 16; i++) {
-          console.log(data.hits.length)
-          console.log(data.hits[i].recipe.label.indexOf("'"));
-          console.log(data.hits[i].recipe.label.indexOf('"'));
+          //console.log(data.hits.length)
+         // console.log(data.hits[i].recipe.label.indexOf("'"));
+         // console.log(data.hits[i].recipe.label.indexOf('"'));
 
           //invalid recipe name check (single and double quote)
+          //might be able to handle with ESCAPE stuff
           if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
             ;
           } else {
@@ -115,9 +121,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
       }
     })
     .catch((error) => {
-      //errorの内容をThrowする --> to understand what causes the error
       console.error(`Unable to get recipe data. Error = ${error}`);
-      //or redo the fetch again? Think how I want to handle the error. At least return it.
       return error
     })
   return resultArray, keywordParam, firstIdxParam, lastIdxParam;
@@ -142,42 +146,31 @@ const displayResult = () => {
 
 /* display recipe - when "view detail" is clicked */
 const displayRecipe = async (title) => {
-  clearAlert(); //if it is shown
+  clearAlert(); //if it is already shown
+
   //show recipe section
-  if (recipeSection.style.display === "block") {
-    recipeSection.style.display = "none";
-    recipeSection.style.display = "block";
-  }
   recipeSection.style.display = "block";
 
   //GSAP scrollTo plugin ----******* might be deleted
   //Move to the next section when view detail is clicked
   const scrollToRecipe = async () => {
-    // console.log("#1 scroll to recipe");
     gsap.to(window, { duration: 2, scrollTo: "#recipePanel" }); //=====not working
   };
 
   try {
     //1 scroll
     await scrollToRecipe();
-    //2 display
-    //console.log("#2 displaying recipe");
-    //find the item to display
-    const mealTitle = document.querySelectorAll(".mealTitle");
 
-    // console.log(mealTitle);//NodeList
-    // console.log(typeof (mealTitle));//Object
-    // console.log("meal title is " + title);
+    //2 display
+    //find one item index to display
+    const mealTitle = document.querySelectorAll(".mealTitle"); //all items in the result
 
     let selectedIndex = "";
     for (let i = 0; i < mealTitle.length; i++) {
-      console.log("getting index");
-      if (mealTitle[i].innerText === title) {
+      if (mealTitle[i].innerText === title) { //same tile with the parameter
         selectedIndex = i;
       }
     }
-    // console.log("index is " + selectedIndex);
-    //  console.log(resultArray[selectedIndex]);
 
     //create <li> tags - ingredients
     appendHTMLForIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
@@ -186,9 +179,7 @@ const displayRecipe = async (title) => {
         `;
     }).join("");
 
-    //  console.log(appendHTMLForIngrList);
-
-    //create an entire append HTML
+    //create an entire append HTML and assign
     appendHTMLForRecipe = `    
         <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
         <div class="detailInfo">
@@ -207,14 +198,13 @@ const displayRecipe = async (title) => {
           <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>Make them</a>
         </div>
         `;
-    // console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
+
     recipePanel.innerHTML = appendHTMLForRecipe;
 
     //store parameter and return
     titleParam = title;
     imgURLParam = resultArray[selectedIndex].recipe.image;
 
-    console.log("recipe field is displayed", bookmarkArray);
     return titleParam, imgURLParam;
 
   } catch (error) {
@@ -230,9 +220,6 @@ const addBookmark = () => {
 
   if (bookmarkArray.length === 0) {
     //adding to bookmark for the first time
-    //GSAP scrollTo plugin
-    //Move to the bookmark section when the bookmark icon is clicked
-    //gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
     //add a selected item to an array
     bookmarkArray.unshift(
       {
@@ -253,33 +240,29 @@ const addBookmark = () => {
   } else {
     //more than one items already in the bookmark
     //duplication check
+
+    //set an item object you want to add
     let targetItem = {
       title: `${titleParam}`,
       imgURL: `${imgURLParam}`
     };
 
-    console.log(targetItem.title, targetItem.imgURL);
-
+    //check the target item is already in the list
     let trueOrfalse = bookmarkArray.some(elem => {
       return elem.title === targetItem.title
     });
-    console.log(trueOrfalse);
 
     if (trueOrfalse) {
       //show pop up - Already in the list
       alert("Item below is already in the bookmark list"); //=======to be changed to popup screen
     } else {
-      console.log("before unshift ", bookmarkArray);
-      //GSAP scrollTo plugin
-      //Move to the bookmark section when the bookmark icon is clicked
-      //gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
       //add a selected item to an array
       bookmarkArray.unshift(
         {
           "title": `${titleParam}`,
           "imgURL": `${imgURLParam}`
         })
-      console.log("After unshift ", bookmarkArray);
+
       //create html
       appendHTMLForBookmark = bookmarkArray.map((element) => {
         return `
@@ -293,7 +276,6 @@ const addBookmark = () => {
       bookmarkList.innerHTML = appendHTMLForBookmark;
     }
   }
-
   return bookmarkArray;
 };
 
@@ -303,14 +285,14 @@ const deleteBookmark = () => {
   console.log(bookmarkArray);
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
   let deleteIndex = [];
- // let recipeTitle = [];
+  // let recipeTitle = [];
   //let newBookmarkArray = [];
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
       //Ok to delete - bookmarkArray[i]
       console.log(bookmarkArray[i]); //1 object
-//recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
+      //recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
       //console.log(recipeTitle);
       bookmarkArray.splice(i, 1);
       // newBookmarkArray = bookmarkArray.filter((item => {
@@ -325,7 +307,7 @@ const deleteBookmark = () => {
   // deleteIndex.forEach((id) => {
   //   bookmarkArray.splice(id,1);
   // });
- // console.log("after delete is ", newBookmarkArray);
+  // console.log("after delete is ", newBookmarkArray);
   //display bookmark again
   //create html
   appendHTMLForBookmark = bookmarkArray.map((element) => {
@@ -375,7 +357,7 @@ const stopLoader = () => {
 /* recipe search - Search button */
 searchBtn.addEventListener("click", () => {
   clearAlert(); // clear alert if it is already shown
-  //console.log(searchKeyword.value) //tomato
+
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
     showAlert("This field is required. Number is not allowed", 0);
