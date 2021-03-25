@@ -50,7 +50,7 @@
   <div class="main">
 
     <section class="result" id="result">
-      <h2>Result</h2>
+      <h2>Gallery</h2>
       <div class="resultPanel">
         <!--*************** Recipe photos here. Below is a reference ***************-->
         <!--display first eight-->
@@ -63,39 +63,42 @@
       </div>
 
       <!--display another eight items when the button is clicked-->
-      <p class="alert">alert sample</p>
-      <button type="button" class="showMore"><i class="fas fa-chevron-down"></i> Show More</button>
+      <div class="showMoreContainer">
+        <p class="alert">alert sample</p>
+        <button type="button" class="showMore"><i class="fas fa-chevron-down"></i> Show More</button>
+      </div>
+
     </section>
 
     <section class="recipe" id="recipe">
-      <h2>Recipe</h2>
       <div class="recipePanel">
         <!--*************** Recipe detail here Below is a reference ***************-->
-        <!-- <ul class="dishInfo">
-          <p class="title">Title of the dish</p>
-          <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
-          <li><i class="fas fa-utensils"></i> Serving size: 4</li>
-          <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
-        </ul>
-        <div class="recipeInfo">
-          <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
-          <div class="detailInfo">
+        <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
+        <div class="detailInfo">
+          <h2 class="title">Title of the dish</h2>
+          <ul class="dishInfo">
+            <li><i class="fas fa-balance-scale-right"></i> Calories: 1600</li>
+            <li><i class="fas fa-utensils"></i> Serving size: 4</li>
+            <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i
+                class="fas fa-heart"></i>Bookmark</button>
+          </ul>
+          <div class="recipeInfo">
             <p>ingredientLines</p>
             <ul>
-              <li>ingr1</li>
-              <li>ingr1</li>
-              <li>ingr1</li>
-              <li>ingr1</li>
-              <li>ingr1</li>
+              <li>ingredientLines1</li>
+              <li>ingredientLines2</li>
+              <li>ingredientLines3</li>
+              <li>ingredientLines4</li>
+              <li>Lorem ipsum dolor sit amet</li>
             </ul>
             <a href="https://food52.com/recipes/32384-apres-thanksgiving-risotto" onclick='displayRecipe("Chicken")'
-              target="_blank">view detail</a>
+              target="_blank">Start Cooking</a>
           </div>
-        </div> -->
+        </div>
         <!--***************Recipe detail until here***************-->
       </div>
 
-      <button type="button" class="timerBtn" id="timerBtn"><i class="far fa-clock"></i> Start Cooking</button>
+      <button type="button" class="timerBtn" id="timerBtn"><i class="far fa-clock"></i> Make them</button>
       <!--***************Countdown timer here***************-->
     </section>
 

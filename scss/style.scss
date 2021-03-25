@@ -2,7 +2,7 @@
 
 //Color pattern 1
 $color1: #ebece5;
-$color2: #abadaf;
+$color2: #e3e3e3;
 $color3: #d76b34;
 $color4: #b34140; // in use
 $color5: #d75a54;
@@ -14,11 +14,11 @@ $color8: #04080c;
 $color9: #434846;
 $color10: #5a280b;
 $color11: #b85712;
-$color12: #E1C736;// in use
+$color12: #e1c736; // in use
 $color13: #dfa42a;
-$color14: #497e9a;
-$color15: #F1F4F1;
-$base: rgba(12, 39, 53, 0.9);//in use
+$color14: #497e9a; // in use
+$color15: #f1f4f1; // in use
+$base: rgba(12, 39, 53, 0.9); //in use
 
 @mixin flex {
   display: flex;
@@ -77,6 +77,9 @@ p {
 }
 .fa-heart {
   color: $color4;
+  &:hover {
+    color: $color14;
+  }
 }
 a {
   text-decoration: none;
@@ -123,7 +126,7 @@ body {
     }
     span {
       position: absolute;
-      color: $color15; 
+      color: $color15;
       @include centering;
       top: 64%;
       left: 51%;
@@ -142,6 +145,7 @@ body {
     h1 {
       text-transform: uppercase;
       color: $color12;
+      text-shadow: 0 0 0.3em $color15;
       margin-left: auto;
       width: 50%;
       z-index: 1;
@@ -186,6 +190,7 @@ body {
           top: 70%;
           position: absolute;
           width: 80%;
+          box-shadow: 0 0 1.2em $color8;
         }
         .search {
           @include centering;
@@ -212,6 +217,8 @@ body {
       display: none;
       position: relative;
       min-height: 100vh;
+      background-image: url(../img/bg7.jpg);
+      background-size: cover;
       .resultPanel {
         //@include flex;
         text-align: center;
@@ -237,71 +244,141 @@ body {
           margin: 0;
         }
       }
-      .showMore {
-        margin: 1em auto;
-        display: block;
-        padding: 0.5em 2em;
-        font-size: 1.3em;
+      .showMoreContainer {
+        position: relative;
+        height: 100%;
+        padding: 1em 0;
+        .alert {
+          top: 3%;
+        }
+        .showMore {
+          margin: auto;
+          display: block;
+          padding: 0.5em 2em;
+          font-size: 1.3em;
+        }
       }
     }
     //recipe
     .recipe {
-      display: none;
-      min-height: 100vh;
-
+      display: block;
+      height: auto;
+      position: relative;
+      background-image: url(../img/bg7.jpg);
+      color: $color8;
       .recipePanel {
         @include animationFadeIn;
-        .dishInfo {
-          @include flex;
-          list-style: none;
-          padding: 0;
-          line-height: 100%;
-          .title {
-            text-align: center;
-            padding-right: 5em;
-            font-size: 2em;
-          }
-          li {
-            margin: 0.5em 1em;
-            i {
-              padding-right: 0.5em;
-            }
-          }
-          .likeBtn {
-            padding: 0, 0.5em;
-            i {
-              padding-right: 0.5em;
-            }
-          }
+        @include flex;
+        position: relative;
+        min-height: 100vh;
+        height: auto;
+        img {
+          display: block;
+          width: 40%;
+          height: 80%;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          padding: 3em;
         }
-        .recipeInfo {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          img {
-            display: block;
-            margin: auto;
-            width: 40vw;
-            height: 60vh;
+        .detailInfo {
+          margin-left: auto;
+          width: 60%;
+          .title {
+            position: relative;
+            width: 130%;
+            top: 3%;
+            left: -30%;
+            background-color: $base;
+            padding: 0.5em;
+            text-align: left;
+            font-size: 2.5em;
+            color: $color12;
+          }
+          .dishInfo {
+            @include flex;
+            list-style: none;
+            padding: 0;
+            line-height: 100%;
+            top: 26%;
+            right: 5%;
+            font-size: 1.3em;
+            position: absolute;
+            li {
+              margin: 0.5em 1em;
+              color: $color3;
+              font-weight: bold;
+              i {
+                padding-right: 0.5em;
+                color: $color14;
+              }
+            }
+            .likeBtn {
+              padding: 0, 0.5em;
+              background-color: transparent;
+              color: $color3;
+              font-weight: bold;
+              &:hover {
+                animation: underLine 0.5s;
+              }
+              @keyframes underLine {
+                from {
+                  transform: scale(1);
+                }
+                to {
+                  transform: scale(2);
+                }
+              }
+              i {
+                padding-right: 0.5em;
+              }
+            }
+          }
+          .recipeInfo {
+            position: absolute;
+            top: 31%;
+            width: 60%;
+            text-align: left;
+            padding-left: 2.5em;
+            p {
+              font-weight: bold;
+            }
+            ul {
+              padding-bottom: 1em;
+            }
+            a {
+              text-decoration: none;
+              background-color: $base;
+              box-shadow: 0 0 1.2em $color8;
+              padding: 0.5em 2em;
+              font-size: 1.3em;
+              margin-top: 1em;
+              color: $color12;
+            }
           }
         }
       }
       .timerBtn {
+        position: absolute;
+        bottom: 2%;
+        left: 13%;
         margin: 1em auto;
         display: block;
         padding: 0.5em 2em;
         font-size: 1.3em;
+        color: $color12;
+        background-color: $base;
+        box-shadow: 0 0 1.2em $color8;
+        border-radius: 0;
       }
     }
     //bookmark list
     .bookmark {
       min-height: 100vh;
       color: white; // change to variable
-      background-image: url(../img/bg1.jpg);
-      h2 {
-        
-      }
+      background-image: url(../img/bg5.jpg);
       .bookmarkList {
-
         .bookmarkItem {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -334,17 +411,25 @@ body {
   //footer
   .footer {
     text-align: center;
-    margin-bottom: 1em;
+    padding: 0.5em 0;
     font-size: 1.3em;
+    background-color: $base;
+    color: $color12;
     .fa-chevron-circle-up {
       display: none;
       position: fixed;
       right: 5%;
       bottom: 10%;
-      color: $color12;
+      color: $color4;
       cursor: pointer;
       &:hover {
-        color: $color4;
+        color: $color14;
+      }
+    }
+    h4 > a {
+      color: $color4;
+      &:hover {
+        color: $color14;
       }
     }
   }

@@ -60,7 +60,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   //fetch api
   fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
-      // console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
+       console.log(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`);
       if (!response.ok) {
         throw error(response.statusText);
       } else {
@@ -71,7 +71,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
       console.log(data);
       // console.log("firstIndex is " + firstIndex + " lastIndex is " + lastIndex)//0-8
       // console.log("data count is " + data.count)
-      // console.log("length of array is  " + resultArray.length);
+       console.log("length of array is  " + resultArray.length);
 
       //validation check for IndexOutOfBoundsException
       if (resultArray.length === data.count) {
@@ -133,6 +133,7 @@ const displayResult = () => {
 
 /* display recipe - when "view detail" is clicked */
 const displayRecipe = async (title) => {
+  clearAlert(); //if it is shown
   //show recipe section
   recipeSection.style.display = "block";
 
@@ -176,22 +177,22 @@ const displayRecipe = async (title) => {
 
     //create an entire append HTML
     appendHTMLForRecipe = `    
+        <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
+        <div class="detailInfo">
+          <h2 class="title">${title}</h2>
           <ul class="dishInfo">
-            <p class="title">${title}</p>
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
             <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
             <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
           <div class="recipeInfo">
-            <img src="${resultArray[selectedIndex].recipe.image}" alt="itemImg">
-            <div class="detailInfo">
-              <p>Ingredients</p>
-              <ul>
+            <p>Ingredients</p>
+            <ul>
               ${appendHTMLForIngrList}
-              </ul>
-              <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> View Recipe</a>
-            </div>
+            </ul>
+            <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>Start Cooking</a>
           </div>
+        </div>
         `;
     // console.log("appendHTMLForRecipe is ..... " + appendHTMLForRecipe);
     recipePanel.innerHTML = appendHTMLForRecipe;
