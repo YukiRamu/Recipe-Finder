@@ -224,22 +224,22 @@ body {
         text-align: center;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        
-        grid-gap: 1em;
+        grid-gap: 2em;
         height: 75%;
         padding: 0.5em;
         .itemPanel {
           margin: auto;
-         box-shadow: 0.5em 0.5em 1em $color8;
+          box-shadow: 0.5em 0.5em 1em $color8;
           @include animationFadeIn;
           img {
-            height: 25vh;
+            height: 35vh;
             width: 100%;
             object-fit: cover;
           }
         }
         p {
-          margin: 0;
+          padding: 0.5em;
+          width: 100%;
         }
       }
       .showMoreContainer {
@@ -273,7 +273,6 @@ body {
         @include flex;
         height: 100%;
         width: 100%;
-        ///flex left side
 
         img {
           margin: auto 3em;
@@ -321,9 +320,9 @@ body {
               color: $color3;
               font-weight: bold;
               &:hover {
-                animation: underLine 0.5s;
+                animation: scaleup 0.5s;
               }
-              @keyframes underLine {
+              @keyframes scaleup {
                 from {
                   transform: scale(1);
                 }
@@ -392,6 +391,7 @@ body {
       .bookmarkContainer {
         background-color: rgba(255, 255, 255, 0.613);
         width: 90%;
+        height: 75%;
         position: absolute;
         @include centering;
         h2 {
@@ -399,6 +399,7 @@ body {
           background-color: $base;
           position: relative;
           left: -6%;
+          top: -10%;
           width: 70%;
           padding: 0.5em;
           font-size: 2.5em;

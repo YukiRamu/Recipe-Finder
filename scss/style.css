@@ -222,7 +222,7 @@ body .main .result .resultPanel {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1em;
+  grid-gap: 2em;
   height: 75%;
   padding: 0.5em;
 }
@@ -260,14 +260,15 @@ body .main .result .resultPanel .itemPanel {
 }
 
 body .main .result .resultPanel .itemPanel img {
-  height: 25vh;
+  height: 35vh;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 body .main .result .resultPanel p {
-  margin: 0;
+  padding: 0.5em;
+  width: 100%;
 }
 
 body .main .result .showMoreContainer {
@@ -397,11 +398,11 @@ body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
 }
 
 body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
-  -webkit-animation: underLine 0.5s;
-          animation: underLine 0.5s;
+  -webkit-animation: scaleup 0.5s;
+          animation: scaleup 0.5s;
 }
 
-@-webkit-keyframes underLine {
+@-webkit-keyframes scaleup {
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -412,7 +413,7 @@ body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
   }
 }
 
-@keyframes underLine {
+@keyframes scaleup {
   from {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -488,6 +489,7 @@ body .main .bookmark {
 body .main .bookmark .bookmarkContainer {
   background-color: rgba(255, 255, 255, 0.613);
   width: 90%;
+  height: 75%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -500,6 +502,7 @@ body .main .bookmark .bookmarkContainer h2 {
   background-color: rgba(12, 39, 53, 0.9);
   position: relative;
   left: -6%;
+  top: -10%;
   width: 70%;
   padding: 0.5em;
   font-size: 2.5em;

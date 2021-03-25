@@ -88,7 +88,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         //create resultArray
         for (let i = 0; i < data.count; i++) {
           //invalid recipe name check (single and double quote)
-          if ((data.hits[i].recipe.label.indexOf("'")!= -1) || data.hits[i].recipe.label.indexOf('"')!= -1) {
+          if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
             ;
           } else {
             resultArray.push(data.hits[i]);
@@ -100,17 +100,17 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         //create resultArray 16 items in each time 
         for (let i = 0; i < 16; i++) {
           console.log(data.hits.length)
-         console.log(data.hits[i].recipe.label.indexOf("'"));
-         console.log(data.hits[i].recipe.label.indexOf('"'));
+          console.log(data.hits[i].recipe.label.indexOf("'"));
+          console.log(data.hits[i].recipe.label.indexOf('"'));
 
           //invalid recipe name check (single and double quote)
-          if ((data.hits[i].recipe.label.indexOf("'")!= -1) || data.hits[i].recipe.label.indexOf('"')!= -1) {
+          if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
             ;
           } else {
             resultArray.push(data.hits[i]);
           }
         }
-         console.log("resultArray is " , resultArray);
+        console.log("resultArray is ", resultArray);
         displayResult();
       }
     })
@@ -232,7 +232,7 @@ const addBookmark = () => {
     //adding to bookmark for the first time
     //GSAP scrollTo plugin
     //Move to the bookmark section when the bookmark icon is clicked
-    gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+    //gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
     //add a selected item to an array
     bookmarkArray.unshift(
       {
@@ -272,7 +272,7 @@ const addBookmark = () => {
       console.log("before unshift ", bookmarkArray);
       //GSAP scrollTo plugin
       //Move to the bookmark section when the bookmark icon is clicked
-      gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
+      //gsap.to(window, { duration: .5, scrollTo: "#bookmark" });
       //add a selected item to an array
       bookmarkArray.unshift(
         {
@@ -302,34 +302,42 @@ const deleteBookmark = () => {
   console.log("delete clicked");
   console.log(bookmarkArray);
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
-  console.log(currentBookmark);
+  let deleteIndex = [];
+ // let recipeTitle = [];
+  //let newBookmarkArray = [];
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
       //Ok to delete - bookmarkArray[i]
-      console.log(bookmarkArray[i]); //object
+      console.log(bookmarkArray[i]); //1 object
+//recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
+      //console.log(recipeTitle);
       bookmarkArray.splice(i, 1);
-
-      //immutably delete the item ---- not working
-      // newBookmarkArray = bookmarkArray.filter((array, idx)=> {
-      //   array !== i; // create a new array with values except for the deleteIndex
-      // })
-      console.log(bookmarkArray);
-
-      //display bookmark again
-      //create html
-      appendHTMLForBookmark = bookmarkArray.map((element) => {
-        return `
-          <div class="bookmarkItem">
-            <input type="checkbox" name="checkbox" class="checkbox">
-            <img src="${element.imgURL}" alt="itemImg">
-            <p>${element.title}</p>
-          </div>
-          `
-      }).join("");
-      bookmarkList.innerHTML = appendHTMLForBookmark;
+      // newBookmarkArray = bookmarkArray.filter((item => {
+      //   console.log(item.title); //1 object
+      //   recipeTitle[i].indexOf(item.title) === -1;
+      // }));
+      //remember the index(s) to be deleted
+      //deleteIndex.push(i);
+      //console.log("multiple deletion: index to be deleted is ",deleteIndex);
     }
   }
+  // deleteIndex.forEach((id) => {
+  //   bookmarkArray.splice(id,1);
+  // });
+ // console.log("after delete is ", newBookmarkArray);
+  //display bookmark again
+  //create html
+  appendHTMLForBookmark = bookmarkArray.map((element) => {
+    return `
+      <div class="bookmarkItem">
+        <input type="checkbox" name="checkbox" class="checkbox">
+        <img src="${element.imgURL}" alt="itemImg">
+        <p>${element.title}</p>
+      </div>
+      `
+  }).join("");
+  bookmarkList.innerHTML = appendHTMLForBookmark;
 }
 
 /* clear user input and temp values */
