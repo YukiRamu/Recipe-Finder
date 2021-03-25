@@ -239,6 +239,7 @@ const addBookmark = () => {
     `
     }).join("");
     bookmarkList.innerHTML = appendHTMLForBookmark;
+    alert("🔖 Bookmark added😊");//====planning to change to the popup screen
   } else {
     //more than one items already in the bookmark
     //duplication check
@@ -256,7 +257,7 @@ const addBookmark = () => {
 
     if (trueOrfalse) {
       //show pop up - Already in the list
-      alert("Item below is already in the bookmark list"); //=======to be changed to popup screen
+      alert("Item below is already in the bookmark list"); //====planning to change to the popup screen
     } else {
       //add a selected item to an array
       bookmarkArray.unshift(
@@ -276,6 +277,7 @@ const addBookmark = () => {
          `
       }).join("");
       bookmarkList.innerHTML = appendHTMLForBookmark;
+      alert("🔖 Bookmark added😊"); //====planning to change to the popup screen
     }
   }
   return bookmarkArray;
@@ -287,20 +289,23 @@ const deleteBookmark = () => {
   console.log(bookmarkArray);
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
   let deleteIndex = [];
-  // let recipeTitle = [];
-  //let newBookmarkArray = [];
+   let recipeTitle = [];
+  let newBookmarkArray = [];
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
       //Ok to delete - bookmarkArray[i]
-      console.log(bookmarkArray[i]); //1 object
-      //recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
+      // console.log(bookmarkArray[i]); //1 object
+       //recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted
       //console.log(recipeTitle);
-      bookmarkArray.splice(i, 1);
+     // bookmarkArray.splice(i, 1);
+
       // newBookmarkArray = bookmarkArray.filter((item => {
       //   console.log(item.title); //1 object
       //   recipeTitle[i].indexOf(item.title) === -1;
       // }));
+      recipeTitle.push(bookmarkArray[i].title); //recipe name to be deleted (string)
+newBookmarkArray = bookmarkArray.filter(i => recipeTitle.every(rt => rt !== i.title))
       //remember the index(s) to be deleted
       //deleteIndex.push(i);
       //console.log("multiple deletion: index to be deleted is ",deleteIndex);
@@ -309,7 +314,9 @@ const deleteBookmark = () => {
   // deleteIndex.forEach((id) => {
   //   bookmarkArray.splice(id,1);
   // });
-  // console.log("after delete is ", newBookmarkArray);
+   console.log("after delete is ", newBookmarkArray);
+   bookmarkArray = newBookmarkArray;
+   console.log("new bookmarkArray is ", bookmarkArray);
   //display bookmark again
   //create html
   appendHTMLForBookmark = bookmarkArray.map((element) => {

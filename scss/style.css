@@ -216,6 +216,17 @@ body .main .result {
   background-size: cover;
 }
 
+body .main .result h2 {
+  color: #e1c736;
+  background-color: rgba(12, 39, 53, 0.9);
+  position: relative;
+  left: -6%;
+  top: -10%;
+  width: 70%;
+  padding: 0.5em;
+  font-size: 2.5em;
+}
+
 body .main .result .resultPanel {
   text-align: center;
   display: -ms-grid;
