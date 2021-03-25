@@ -34,7 +34,6 @@ h2 {
 }
 
 button {
-  border-radius: 50vw;
   border: none;
 }
 
@@ -232,9 +231,8 @@ body .main .result .resultPanel {
 
 body .main .result .resultPanel .itemPanel {
   margin: auto;
-  border-radius: 5%;
-  border: 1em solid yellow;
-  background-color: yellow;
+  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
+          box-shadow: 0.5em 0.5em 1em #04080c;
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: 2s;
@@ -289,6 +287,10 @@ body .main .result .showMoreContainer .showMore {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
+  color: #e1c736;
+  background-color: rgba(12, 39, 53, 0.9);
+  -webkit-box-shadow: 0 0 1.2em #04080c;
+          box-shadow: 0 0 1.2em #04080c;
 }
 
 body .main .recipe {
@@ -476,16 +478,36 @@ body .main .recipe .timerBtn {
   background-color: rgba(12, 39, 53, 0.9);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
-  border-radius: 0;
 }
 
 body .main .bookmark {
+  position: relative;
   min-height: 100vh;
-  color: white;
+  color: #04080c;
   background-image: url(../img/bg6.jpg);
 }
 
-body .main .bookmark .bookmarkList .bookmarkItem {
+body .main .bookmark .bookmarkContainer {
+  background-color: rgba(255, 255, 255, 0.613);
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+body .main .bookmark .bookmarkContainer h2 {
+  color: #e1c736;
+  background-color: rgba(12, 39, 53, 0.9);
+  position: relative;
+  left: -6%;
+  width: 70%;
+  padding: 0.5em;
+  font-size: 2.5em;
+}
+
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
@@ -495,27 +517,31 @@ body .main .bookmark .bookmarkList .bookmarkItem {
   margin: auto;
 }
 
-body .main .bookmark .bookmarkList .bookmarkItem .checkbox {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   display: table-cell;
   cursor: pointer;
   border-radius: 50vw;
   margin: auto;
 }
 
-body .main .bookmark .bookmarkList .bookmarkItem img {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
 }
 
-body .main .bookmark .bookmarkList .bookmarkItem p {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
   grid-column: span 2;
   padding-top: 2em;
 }
 
-body .main .bookmark .delBtn {
+body .main .bookmark .bookmarkContainer .delBtn {
   margin: 1em auto;
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
+  color: #e1c736;
+  background-color: rgba(12, 39, 53, 0.9);
+  -webkit-box-shadow: 0 0 1.2em #04080c;
+          box-shadow: 0 0 1.2em #04080c;
 }
 
 body .footer {
