@@ -89,6 +89,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         return false;
       } else if (data.count < lastIndex) {
         //#3
+        showRecipeGallery();
         //create resultArray
         for (let i = 0; i < data.count; i++) {
           //invalid recipe name check (single and double quote)
@@ -102,11 +103,12 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         displayResult();
       } else {
         //#4
+        showRecipeGallery();
         //create resultArray 16 items each time 
         for (let i = 0; i < 16; i++) {
           //console.log(data.hits.length)
-         // console.log(data.hits[i].recipe.label.indexOf("'"));
-         // console.log(data.hits[i].recipe.label.indexOf('"'));
+          // console.log(data.hits[i].recipe.label.indexOf("'"));
+          // console.log(data.hits[i].recipe.label.indexOf('"'));
 
           //invalid recipe name check (single and double quote)
           //might be able to handle with ESCAPE stuff
@@ -342,6 +344,17 @@ const clearAlert = () => {
   }
 }
 
+/* Show result field */
+const showRecipeGallery = () => {
+  //show result section
+  resultSection.style.display = "block";
+  //clear previous search result
+  resultArray = [];
+  //GSAP scrollTo plugin
+  // Move to the next section when the search button is clicked
+  gsap.to(window, { duration: .5, scrollTo: "#result" });
+}
+
 /* loader - 2s */
 //activate
 const activateLoader = () => {
@@ -364,13 +377,6 @@ searchBtn.addEventListener("click", () => {
     clearInput();
   } else {
     activateLoader();
-    //show result section
-    resultSection.style.display = "block";
-    //clear previous search result
-    resultArray = [];
-    //GSAP scrollTo plugin
-    // Move to the next section when the search button is clicked
-    gsap.to(window, { duration: .5, scrollTo: "#result" });
     getRecipe(`${searchKeyword.value}`, 0, 16);
     clearInput();
   }
