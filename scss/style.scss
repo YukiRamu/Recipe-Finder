@@ -6,7 +6,7 @@ $color2: #e3e3e3;
 $color3: #d76b34;
 $color4: #b34140; // in use
 $color5: #d75a54;
-$color6: #97342b;
+$color6: #97342b; // in use
 $color7: #cc9456;
 
 //Color pattern 2
@@ -190,6 +190,7 @@ body {
           position: absolute;
           width: 80%;
           box-shadow: 0 0 1.2em $color8;
+          font-size: 1.3em;
         }
         .search {
           @include centering;
@@ -219,29 +220,29 @@ body {
       min-height: 100vh;
       background-image: url(../img/bg7.jpg);
       background-size: cover;
-
       h2 {
+        position: absolute;
+        top: 1%;
+        left: -6%;
         color: $color12;
         background-color: $base;
-        position: relative;
-        left: -6%;
-        top: -10%;
         width: 70%;
         padding: 0.5em;
         font-size: 2.5em;
-
       }
-
       .resultPanel {
         //@include flex;
         text-align: center;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 2em;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 4em;
         height: 75%;
         padding: 0.5em;
+        padding-top: 13%;
+        padding-left: 5%;
+        padding-right: 5%;
         .itemPanel {
-          margin: auto;
+          min-height: 50vh;
           box-shadow: 0.5em 0.5em 1em $color8;
           @include animationFadeIn;
           img {
@@ -251,8 +252,28 @@ body {
           }
         }
         p {
-          padding: 0.5em;
-          width: 100%;
+          margin-bottom: 0;
+          margin: auto;
+          padding: 1em;
+          color: $color6;
+          font-size: 1.5em;
+          font-weight: bold;
+          width: 90%;
+        }
+        .view {
+          display: block;
+          width: 50%;
+          margin: auto;
+          margin-bottom: 1.2em;
+          background-color: $color12;
+          text-decoration: none;
+          color: $base;
+          font-size: 1.2em;
+          box-shadow: 0 0 1.2em $color8;
+          &:hover {
+            background-color: $color4;
+            color: $color15;
+          }
         }
       }
       .showMoreContainer {
@@ -263,13 +284,13 @@ body {
           top: 3%;
         }
         .showMore {
-          margin: auto;
+          margin: 1em auto;
           display: block;
           padding: 0.5em 2em;
           font-size: 1.3em;
           color: $color12;
           background-color: $base;
-          box-shadow: 0 0 1.2em $color8;
+          box-shadow: 0 0 1em $color8;
         }
       }
     }
