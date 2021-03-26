@@ -15,7 +15,7 @@ Demo => https://yukiramu.github.io/Recipe-Finder/
 <li>Display today's date</li>
 <li>Note taker JS app</li>
 <li>Move to top button - [done]</li>
-<li>GSAP Library - scrollTo plugin</li>
+<li>GSAP Library - scrollTo plugin => plan changed. Window.scrollTo()</li>
 </ul>
 
 <h2>Additional to do list</h2>
