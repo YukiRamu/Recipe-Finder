@@ -27,7 +27,17 @@
   <!--header-->
   <header class="header" id="header">
     <h1>Simple and Tasty Recipes</h1>
-    <a href="#" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
+    <nav class="navBar">
+      <!--bookmark link-->
+      <a href="#" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
+      <!--dark-light mode change-->
+      <div class="modeChange">
+        <input type="checkbox" class="darkLight" id="darkLight">
+        <label for="darkLight" class="darkLightLabel">
+          <div class="ball"></div>
+        </label>
+      </div>
+    </nav>
 
     <!--recipe search form-->
     <div class="searchForm">
@@ -35,12 +45,12 @@
         <label for="#keyword">I want to make... </label>
         <input type="text" name="keyword" class="keyword" placeholder="Enter keyword. i.e) fish, italian, sushi, tomato"
           required>
-        <!--input idea : dishType dropdown-->
         <button type="submit" value="Search Recipe" class="search"><i class="fas fa-search"></i></button>
         <p class="alert"></p>
       </div>
 
       <!--  ====planning to change to the popup screen
+        //input idea : dishType dropdown
         <div> 
         <label for="#cuisine">Cuisine: </label>
         <input type="text" name="cuisine" class="cuisine" placeholder="Enter cuisine">

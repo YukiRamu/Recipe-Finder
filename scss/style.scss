@@ -4,14 +4,14 @@
 $color1: #ebece5;
 $color2: #e3e3e3;
 $color3: #d76b34;
-$color4: #b34140; // in use
+$color4: #ca4d4a; // in use
 $color5: #d75a54;
 $color6: #97342b; // in use
 $color7: #cc9456;
 
 //Color pattern 2
 $color8: #04080c;
-$color9: #434846;
+$color9: #434846; // in use
 $color10: #5a280b;
 $color11: #b85712;
 $color12: #e1c736; // in use
@@ -51,6 +51,46 @@ $base: rgba(12, 39, 53, 0.9); //in use
   }
 }
 
+@keyframes flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  2% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  4% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  19% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  21% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  23% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+
+  80% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  83% {
+    opacity: 0.4;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  87% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+}
+
 @mixin centering {
   top: 50%;
   left: 50%;
@@ -76,6 +116,7 @@ p {
 }
 .fa-heart {
   color: $color4;
+  z-index: 100;
   &:hover {
     color: $color14;
   }
@@ -135,7 +176,7 @@ body {
       text-transform: uppercase;
     }
   }
-  //header
+  /* header */
   .header {
     text-align: center;
     background-image: url(../img/top2.jpg);
@@ -147,17 +188,54 @@ body {
       text-shadow: 0 0 0.3em $color15;
       margin-left: auto;
       width: 50%;
-      z-index: 1;
+      z-index: 200;
       top: 16%;
       position: relative;
       font-size: 5em;
     }
-    .bookmarkLink {
+    .navBar {
+      @include flex;
+      z-index: 300;
       position: absolute;
       top: 5%;
-      right: 5%;
-      z-index: 100;
+      right: 0;
+      width: 25%;
+      //bookmark link
+      .bookmarkLink {
+        animation: flicker 2s linear infinite;
+      }
+      //dark-light mode change
+      .modeChange {
+        width: 25%;
+        margin-left: 2em;
+        .darkLight {
+          display: none;
+        }
+        .darkLightLabel {
+          border-radius: 50vw;
+          background-color: $color15;
+          width: 100%;
+          height: 100%;
+          height: 75%;
+          display: block;
+          margin-top: 0.3em;
+          .ball {
+            position: relative;
+            top: 12%;
+            left: 7%;
+            width: 45%;
+            height: 80%;
+            background-color: $base;
+            border-radius: 50%;
+            cursor: pointer;
+            &:hover {
+              border: 0.2em solid $color12;
+            }
+          }
+        }
+      }
     }
+    //recipe search form
     .searchForm {
       background-color: $base;
       margin: auto;
@@ -166,6 +244,7 @@ body {
       position: absolute;
       top: 0%;
       left: 50%;
+      z-index: 100;
       .keywordSearch {
         position: relative;
         height: 100%;

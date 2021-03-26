@@ -20,6 +20,84 @@
   }
 }
 
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  2% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  4% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  19% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  21% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  23% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  80% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  83% {
+    opacity: 0.4;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  87% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  2% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  4% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  19% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  21% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  23% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  80% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  83% {
+    opacity: 0.4;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  87% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+}
+
 /* Global styling */
 h1 {
   font-size: 3em;
@@ -42,7 +120,8 @@ p {
 }
 
 .fa-heart {
-  color: #b34140;
+  color: #ca4d4a;
+  z-index: 100;
 }
 
 .fa-heart:hover {
@@ -63,7 +142,7 @@ a {
   top: 75%;
   text-align: center;
   font-size: 1em;
-  background-color: #b34140;
+  background-color: #ca4d4a;
   color: #e1c736;
   border-radius: 10vw;
   width: 80%;
@@ -72,6 +151,7 @@ a {
 /* Main Styling */
 body {
   font-family: "PT Serif", serif;
+  /* header */
 }
 
 body .loader {
@@ -94,9 +174,9 @@ body .loader .spinner {
   left: 47%;
   background-color: transparent;
   border: 0.3em solid transparent;
-  border-top: 0.3em dotted #b34140;
-  border-right: 0.3em dotted #b34140;
-  border-bottom: 0.3em dotted #b34140;
+  border-top: 0.3em dotted #ca4d4a;
+  border-right: 0.3em dotted #ca4d4a;
+  border-bottom: 0.3em dotted #ca4d4a;
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -132,17 +212,68 @@ body .header h1 {
   text-shadow: 0 0 0.3em #f1f4f1;
   margin-left: auto;
   width: 50%;
-  z-index: 1;
+  z-index: 200;
   top: 16%;
   position: relative;
   font-size: 5em;
 }
 
-body .header .bookmarkLink {
+body .header .navBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  z-index: 300;
   position: absolute;
   top: 5%;
-  right: 5%;
-  z-index: 100;
+  right: 0;
+  width: 25%;
+}
+
+body .header .navBar .bookmarkLink {
+  -webkit-animation: flicker 2s linear infinite;
+          animation: flicker 2s linear infinite;
+}
+
+body .header .navBar .modeChange {
+  width: 25%;
+  margin-left: 2em;
+}
+
+body .header .navBar .modeChange .darkLight {
+  display: none;
+}
+
+body .header .navBar .modeChange .darkLightLabel {
+  border-radius: 50vw;
+  background-color: #f1f4f1;
+  width: 100%;
+  height: 100%;
+  height: 75%;
+  display: block;
+  margin-top: 0.3em;
+}
+
+body .header .navBar .modeChange .darkLightLabel .ball {
+  position: relative;
+  top: 12%;
+  left: 7%;
+  width: 45%;
+  height: 80%;
+  background-color: rgba(12, 39, 53, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+body .header .navBar .modeChange .darkLightLabel .ball:hover {
+  border: 0.2em solid #e1c736;
 }
 
 body .header .searchForm {
@@ -153,6 +284,7 @@ body .header .searchForm {
   position: absolute;
   top: 0%;
   left: 50%;
+  z-index: 100;
 }
 
 body .header .searchForm .keywordSearch {
@@ -306,7 +438,7 @@ body .main .result .resultPanel .view {
 }
 
 body .main .result .resultPanel .view:hover {
-  background-color: #b34140;
+  background-color: #ca4d4a;
   color: #f1f4f1;
 }
 
@@ -611,7 +743,7 @@ body .footer .fa-chevron-circle-up {
   position: fixed;
   right: 5%;
   bottom: 10%;
-  color: #b34140;
+  color: #ca4d4a;
   cursor: pointer;
 }
 
@@ -620,7 +752,7 @@ body .footer .fa-chevron-circle-up:hover {
 }
 
 body .footer h4 > a {
-  color: #b34140;
+  color: #ca4d4a;
 }
 
 body .footer h4 > a:hover {
