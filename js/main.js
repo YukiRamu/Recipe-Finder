@@ -72,77 +72,113 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
       console.log("data count is ", data.count);
 
       /* Logic to display the result
-      // #1 : Is it a first load and no recipe found?
-      // #2 : Handle IndexOutOfBounds Exception (no more recipe found) 
+      // Case 1 : Where the search button is clicked
+      // #1 : No recipe found?
+      // #2 : When the data length is smaller than the default 16
+      // #3 : Show 16 items each time
+      //
+      // Case 2 : Where the show more button is clicked
+      // #1 : Handle IndexOutOfBounds Exception (no more recipe found) 
       // *Note) for now if condition includes "resultArray.length + data.hits.length > data.count".
       //        Because I haven't implemented the method to include recipe names with single/double quote.
       //        Currently they are omitted from the result. That's why the length of a resultArray sometimes
       //        smaller than 16. When it is upgraded, DON'T FORGET to remove the if condition above
-      // #3 : Is the data length smaller than the default 16? - avoid "undefined" at the first load
-      // #4 : Show 16 items each time
-      // => Too many if-else, better to simplify
+      // #2 : Show 16 items each time
        */
-      if ((resultArray.length === data.count) && (data.count === 0)) {
-        //#1
-        stopLoader();
-        showAlert("No recipe found.", 0);
-        clearInput();
-        return false;
-      } else if ((resultArray.length + data.hits.length === data.count) || (resultArray.length + data.hits.length > data.count)) {
-        console.log("hi2")
-        //#2
-        showAlert("No more recipe to display.", 1);
-        stopLoader();
-        return false;
-      } else if (data.count < lastIndex) {
-        //#3
-        //show result section
-        resultSection.style.display = "block";
+      switch (resultArray.length === 0) {
+        case true: // search button
+          if (data.count === 0) {
+            //#1
+            stopLoader();
+            showAlert("No recipe found.", 0);
+            clearInput();
+            return false;
+          } else if (data.count < lastIndex) {
+            //#2
+            //show result section
+            resultSection.style.display = "block";
 
-        //smooth scroll - calculate Y coordinate
-        smoothScroll();
+            //smooth scroll - calculate Y coordinate
+            console.log(resultSection.getBoundingClientRect());
+            smoothScroll();
 
-        //create resultArray
-        for (let i = 0; i < data.count; i++) {
-          //invalid recipe name check (single and double quote)
-          //might be able to handle with ESCAPE stuff
-          if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
-            ;
+            //create resultArray
+            for (let i = 0; i < data.count; i++) {
+              //invalid recipe name check (single and double quote)
+              //might be able to handle with ESCAPE stuff
+              if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
+                ;
+              } else {
+                resultArray.push(data.hits[i]);
+              }
+            }
+            displayResult();
           } else {
-            resultArray.push(data.hits[i]);
+            //#3
+            //show result section
+            resultSection.style.display = "block";
+
+            //smooth scroll - calculate Y coordinate
+            console.log(resultSection.getBoundingClientRect());
+            smoothScroll();
+
+            //create resultArray 16 items each time 
+            for (let i = 0; i < data.hits.length; i++) {
+
+              //invalid recipe name check (single and double quote)
+              //might be able to handle with ESCAPE stuff
+              if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
+                ;
+              } else {
+                resultArray.push(data.hits[i]);
+              }
+            }
+            console.log("resultArray is ", resultArray);
+            displayResult();
           }
-        }
-        displayResult();
-      } else {
-        //#4
-        //show result section
-        resultSection.style.display = "block";
+          break;
+        case false://show more button
+          if ((resultArray.length + data.hits.length === data.count) || (resultArray.length + data.hits.length > data.count)) {
+            console.log("hi hi I'm here ");
+            //#1
+            console.log(resultSection.getBoundingClientRect());
+            //smooth scroll - calculate Y coordinate
+            smoothScroll();
 
-        console.log(resultSection.getBoundingClientRect());
-
-        //smooth scroll - calculate Y coordinate
-        smoothScroll();
-
-        //create resultArray 16 items each time 
-        for (let i = 0; i < 16; i++) {
-          //console.log(data.hits.length)
-          // console.log(data.hits[i].recipe.label.indexOf("'"));
-          // console.log(data.hits[i].recipe.label.indexOf('"'));
-
-          //invalid recipe name check (single and double quote)
-          //might be able to handle with ESCAPE stuff
-          if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
-            ;
+            showAlert("No more recipe to display.", 1);
+            stopLoader();
+            return false;
           } else {
-            resultArray.push(data.hits[i]);
+            //#2
+            //show result section
+            resultSection.style.display = "block";
+
+            //smooth scroll - calculate Y coordinate
+            console.log(resultSection.getBoundingClientRect());
+            smoothScroll();
+
+            //create resultArray 16 items each time 
+            for (let i = 0; i < data.hits.length; i++) {
+
+              //invalid recipe name check (single and double quote)
+              //might be able to handle with ESCAPE stuff
+              if ((data.hits[i].recipe.label.indexOf("'") != -1) || data.hits[i].recipe.label.indexOf('"') != -1) {
+                ;
+              } else {
+                resultArray.push(data.hits[i]);
+              }
+            }
+            console.log("resultArray is ", resultArray);
+            displayResult();
           }
-        }
-        console.log("resultArray is ", resultArray);
-        displayResult();
+          break;
+        default:
+          break;
       }
     })
     .catch((error) => {
       console.error(`Unable to get recipe data. Error = ${error}`);
+      stopLoader();
       return error
     })
   return resultArray, keywordParam, firstIdxParam, lastIdxParam;
@@ -171,12 +207,6 @@ const displayRecipe = async (title) => {
 
   //show recipe section
   recipeSection.style.display = "block";
-
-  //GSAP scrollTo plugin ----******* might be deleted
-  //Move to the next section when view detail is clicked
-  const scrollToRecipe = async () => {
-    gsap.to(window, { duration: 2, scrollTo: "#recipePanel" }); //=====not working
-  };
 
   try {
     //1 scroll
@@ -235,9 +265,6 @@ const displayRecipe = async (title) => {
 
 /* display bookmark list - Add */
 const addBookmark = () => {
-
-  console.log("bookmark icon is clicked. current bookmark is ", bookmarkArray);
-  console.log("I want to add to bookmark " + titleParam + " and " + imgURLParam);
 
   if (bookmarkArray.length === 0) {
     //adding to bookmark for the first time
@@ -304,8 +331,7 @@ const addBookmark = () => {
 
 /* delete bookmark list */
 const deleteBookmark = () => {
-  console.log("delete clicked");
-  console.log(bookmarkArray);
+
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
   let recipeTitleArray = [];
   let newBookmarkArray = [];
@@ -323,9 +349,9 @@ const deleteBookmark = () => {
       // }));
     }
   }
-  console.log("after delete is ", newBookmarkArray);
+
   bookmarkArray = newBookmarkArray;
-  console.log("new bookmarkArray is ", bookmarkArray);
+
   //display bookmark again
   //create html
   appendHTMLForBookmark = bookmarkArray.map((element) => {
@@ -348,7 +374,6 @@ const clearInput = () => {
 /* alert pop up - idx for specify which alert class in html tags */
 //show alert
 const showAlert = (msg, idx) => {
-  console.log(idx);
   alertMsg[idx].innerHTML = msg;
   alertMsg[idx].style.display = "block";
 }
@@ -367,7 +392,7 @@ const smoothScroll = () => {
   // When the show more button is clicked, webpage shows the bottom of the result section
   */
   let position = resultSection.getBoundingClientRect().bottom - resultSection.getBoundingClientRect().y
-  window.scrollTo(0, position); 
+  window.scrollTo(0, position);
 }
 
 /* loader - 2s */
@@ -410,8 +435,6 @@ showMoreBtn.addEventListener("click", () => {
   //fetch data from the lastIndex of data to the next 16
   console.log("resultArray is ", resultArray);
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 16);
-  console.log(resultSection.getBoundingClientRect());
-
 });
 
 /* bookmark - Bookmark link in the header */
@@ -447,7 +470,7 @@ toTop.addEventListener("click", () => {
   gsap.to(window, { duration: .5, scrollTo: "#header" });
 });
 
-//==== keep for ref purpose - another way with jQuery - keep as a reference
+//==== keep for ref purpose - another way with jQuery - keep this as a reference
 // $(document).ready(function () {
 //   $("#toTop").click(function (event) {
 //     event.preventDefault();
