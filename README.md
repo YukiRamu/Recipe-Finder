@@ -16,13 +16,13 @@
 <li>Function call</li>
 </ol>
 
-<h4>1. Variable Declaration</h4>
+<h4>&nbsp&nbsp1. Variable Declaration</h4>
 
-<h4>2. Function Declaration</h4>
+<h4>&nbsp&nbsp2. Function Declaration</h4>
 
 ![image](https://user-images.githubusercontent.com/76931326/112599634-73782d80-8dcd-11eb-8817-09edc431eb2a.png)
 
-<h4>2. Function call</h4>
+<h4>&nbsp&nbsp3. Function call</h4>
 
 ![image](https://user-images.githubusercontent.com/76931326/112600265-33657a80-8dce-11eb-9e3f-ce9c2380927a.png)
 
