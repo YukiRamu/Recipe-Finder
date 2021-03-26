@@ -3,8 +3,8 @@
 
 <h3 align="left">💡Features for Users:</h3>
 <ul>
-<li>Recipe search with any keyword</li>
-<li>View detail of a recipe</li>
+<li>Recipe search with any keywords</li>
+<li>View the detail of recipes</li>
 <li>Bookmark (add and delete)</li>
 </ul>
 
