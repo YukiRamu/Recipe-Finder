@@ -229,6 +229,7 @@ body .main .result h2 {
 }
 
 body .main .result .resultPanel {
+  background-color: #f1f1f490;
   text-align: center;
   display: -ms-grid;
   display: grid;
@@ -334,7 +335,7 @@ body .main .recipe {
   display: none;
   min-height: 100vh;
   position: relative;
-  background-image: url(../img/bg7.jpg);
+  background-image: url(../img/bg7_.jpg);
   color: #04080c;
 }
 
@@ -525,34 +526,37 @@ body .main .bookmark {
 }
 
 body .main .bookmark .bookmarkContainer {
-  background-color: rgba(255, 255, 255, 0.613);
   width: 90%;
-  height: 75%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  margin: auto;
+  position: relative;
+  min-height: 100vh;
 }
 
 body .main .bookmark .bookmarkContainer h2 {
   color: #e1c736;
   background-color: rgba(12, 39, 53, 0.9);
-  position: relative;
+  position: absolute;
+  top: 1%;
   left: -6%;
-  top: -10%;
   width: 70%;
   padding: 0.5em;
   font-size: 2.5em;
 }
 
+body .main .bookmark .bookmarkContainer .bookmarkList {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 10%;
+  background-color: rgba(255, 255, 255, 0.613);
+}
+
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   padding: 0.5em 0;
-  width: 70%;
+  width: 100%;
   margin: auto;
 }
 
@@ -563,16 +567,27 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   margin: auto;
 }
 
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
+  display: none;
+}
+
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
+  display: block;
+  -webkit-box-shadow: 0 0 1.2em #04080c;
+          box-shadow: 0 0 1.2em #04080c;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
-  grid-column: span 2;
-  padding-top: 2em;
+  grid-column: span 3;
+  margin-right: auto;
+  font-size: 2em;
 }
 
 body .main .bookmark .bookmarkContainer .delBtn {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
   margin: 1em auto;
   display: block;
   padding: 0.5em 2em;

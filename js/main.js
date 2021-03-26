@@ -68,8 +68,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
-      console.log("resultArray.length is ", resultArray.length)
-      console.log("data count is ", data.count);
 
       /* Logic to display the result
       // Case 1 : Where the search button is clicked
@@ -99,7 +97,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
             resultSection.style.display = "block";
 
             //smooth scroll - calculate Y coordinate
-            console.log(resultSection.getBoundingClientRect());
             smoothScroll();
 
             //create resultArray
@@ -119,7 +116,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
             resultSection.style.display = "block";
 
             //smooth scroll - calculate Y coordinate
-            console.log(resultSection.getBoundingClientRect());
             smoothScroll();
 
             //create resultArray 16 items each time 
@@ -133,15 +129,12 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
                 resultArray.push(data.hits[i]);
               }
             }
-            console.log("resultArray is ", resultArray);
             displayResult();
           }
           break;
         case false://show more button
           if ((resultArray.length + data.hits.length === data.count) || (resultArray.length + data.hits.length > data.count)) {
-            console.log("hi hi I'm here ");
             //#1
-            console.log(resultSection.getBoundingClientRect());
             //smooth scroll - calculate Y coordinate
             smoothScroll();
 
@@ -154,7 +147,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
             resultSection.style.display = "block";
 
             //smooth scroll - calculate Y coordinate
-            console.log(resultSection.getBoundingClientRect());
             smoothScroll();
 
             //create resultArray 16 items each time 
@@ -168,7 +160,6 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
                 resultArray.push(data.hits[i]);
               }
             }
-            console.log("resultArray is ", resultArray);
             displayResult();
           }
           break;
@@ -205,7 +196,6 @@ const displayResult = () => {
 const displayRecipe = async (title) => {
   clearAlert(); //if it is already shown
 
-  console.log("seleced recipe title is " , title);
   //show recipe section
   recipeSection.style.display = "block";
 
@@ -220,8 +210,7 @@ const displayRecipe = async (title) => {
         selectedIndex = i;
       }
     }
-    
-    console.log(selectedIndex);
+
     //create <li> tags - ingredients
     appendHTMLForIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
       return `
@@ -277,7 +266,8 @@ const addBookmark = () => {
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
     <div class="bookmarkItem">
-      <input type="checkbox" name="checkbox" class="checkbox">
+      <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox"></label>
       <img src="${element.imgURL}" alt="itemImg">
       <p>${element.title}</p>
     </div>
@@ -315,7 +305,8 @@ const addBookmark = () => {
       appendHTMLForBookmark = bookmarkArray.map((element) => {
         return `
          <div class="bookmarkItem">
-           <input type="checkbox" name="checkbox" class="checkbox">
+          <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+          <label for="checkbox"></label>
            <img src="${element.imgURL}" alt="itemImg">
            <p>${element.title}</p>
          </div>
@@ -356,7 +347,8 @@ const deleteBookmark = () => {
   appendHTMLForBookmark = bookmarkArray.map((element) => {
     return `
       <div class="bookmarkItem">
-        <input type="checkbox" name="checkbox" class="checkbox">
+        <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox"></label>
         <img src="${element.imgURL}" alt="itemImg">
         <p>${element.title}</p>
       </div>
@@ -432,7 +424,6 @@ searchBtn.addEventListener("click", () => {
 showMoreBtn.addEventListener("click", () => {
   activateLoader();
   //fetch data from the lastIndex of data to the next 16
-  console.log("resultArray is ", resultArray);
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 16);
 });
 

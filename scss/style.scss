@@ -231,7 +231,7 @@ body {
         font-size: 2.5em;
       }
       .resultPanel {
-        //@include flex;
+        background-color: #f1f1f490;
         text-align: center;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -300,14 +300,13 @@ body {
       display: none;
       min-height: 100vh;
       position: relative;
-      background-image: url(../img/bg7.jpg);
+      background-image: url(../img/bg7_.jpg);
       color: $color8;
       .recipePanel {
         @include animationFadeIn;
         @include flex;
         height: 100%;
         width: 100%;
-
         img {
           margin: auto 3em;
           margin-top: 3em;
@@ -421,29 +420,31 @@ body {
       min-height: 100vh;
       color: $color8; // change to variable
       background-image: url(../img/bg6.jpg);
-
       .bookmarkContainer {
-        background-color: rgba(255, 255, 255, 0.613);
         width: 90%;
-        height: 75%;
-        position: absolute;
-        @include centering;
+        margin: auto;
+        position: relative;
+        min-height: 100vh;
         h2 {
           color: $color12;
           background-color: $base;
-          position: relative;
+          position: absolute;
+          top: 1%;
           left: -6%;
-          top: -10%;
           width: 70%;
           padding: 0.5em;
           font-size: 2.5em;
         }
         .bookmarkList {
+          min-height: 100vh;
+          width: 100%;
+          padding-top: 10%;
+          background-color: rgba(255, 255, 255, 0.613);
           .bookmarkItem {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             padding: 0.5em 0;
-            width: 70%;
+            width: 100%;
             margin: auto;
             .checkbox {
               display: table-cell;
@@ -451,16 +452,25 @@ body {
               border-radius: 50vw;
               margin: auto;
             }
+            label {
+              display: none;
+            }
             img {
               width: 50%;
+              display: block;
+              box-shadow: 0 0 1.2em $color8;
             }
             p {
-              grid-column: span 2;
-              padding-top: 2em;
+              grid-column: span 3;
+              margin-right: auto;
+              font-size: 2em;
             }
           }
         }
         .delBtn {
+          position: absolute;
+          bottom: 0;
+          right: 10%;
           margin: 1em auto;
           display: block;
           padding: 0.5em 2em;
