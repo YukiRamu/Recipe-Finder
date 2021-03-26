@@ -68,11 +68,17 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
     })
     .then((data) => {
       console.log(data);
+      console.log("resultArray.length is ", resultArray.length)
+      console.log("data count is ", data.count);
 
       /* Logic to display the result
       // #1 : Is it a first load and no recipe found?
-      // #2 : IndexOutOfBounds (no more recipe found) ?
-      // #3 : Is the data length smaller than the default 16? - avoid "undefined"
+      // #2 : Handle IndexOutOfBounds Exception (no more recipe found) 
+      // *Note) for now if condition includes "resultArray.length + data.hits.length > data.count".
+      //        Because I haven't implemented the method to include recipe names with single/double quote.
+      //        Currently they are omitted from the result. That's why the length of a resultArray sometimes
+      //        smaller than 16. When it is upgraded, DON'T FORGET to remove the if condition above
+      // #3 : Is the data length smaller than the default 16? - avoid "undefined" at the first load
       // #4 : Show 16 items each time
       // => Too many if-else, better to simplify
        */
@@ -82,14 +88,20 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         showAlert("No recipe found.", 0);
         clearInput();
         return false;
-      } else if (resultArray.length === data.count) {
+      } else if ((resultArray.length + data.hits.length === data.count) || (resultArray.length + data.hits.length > data.count)) {
+        console.log("hi2")
         //#2
         showAlert("No more recipe to display.", 1);
         stopLoader();
         return false;
       } else if (data.count < lastIndex) {
         //#3
-        showRecipeGallery();
+        //show result section
+        resultSection.style.display = "block";
+
+        //smooth scroll - calculate Y coordinate
+        smoothScroll();
+
         //create resultArray
         for (let i = 0; i < data.count; i++) {
           //invalid recipe name check (single and double quote)
@@ -103,7 +115,14 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
         displayResult();
       } else {
         //#4
-        showRecipeGallery();
+        //show result section
+        resultSection.style.display = "block";
+
+        console.log(resultSection.getBoundingClientRect());
+
+        //smooth scroll - calculate Y coordinate
+        smoothScroll();
+
         //create resultArray 16 items each time 
         for (let i = 0; i < 16; i++) {
           //console.log(data.hits.length)
@@ -341,15 +360,14 @@ const clearAlert = () => {
   }
 }
 
-/* Show result field */
-const showRecipeGallery = () => {
-  //show result section
-  resultSection.style.display = "block";
-  //clear previous search result
-  resultArray = [];
-  //GSAP scrollTo plugin
-  // Move to the next section when the search button is clicked
-  gsap.to(window, { duration: .5, scrollTo: "#result" });
+/* smooth scroll and Y coordinate caltulation */
+const smoothScroll = () => {
+  /* Math for smooth scroll
+  // When the search button is clicked, scroll to the top of Gallery
+  // When the show more button is clicked, webpage shows the bottom of the result section
+  */
+  let position = resultSection.getBoundingClientRect().bottom - resultSection.getBoundingClientRect().y
+  window.scrollTo(0, position); 
 }
 
 /* loader - 2s */
@@ -374,6 +392,13 @@ searchBtn.addEventListener("click", () => {
     clearInput();
   } else {
     activateLoader();
+    //clear previous search result
+    resultArray = [];
+    //hide result section if it is already shown
+    resultSection.style.display = "none";
+    //hide recipe section if it is already shown
+    recipeSection.style.display = "none";
+
     getRecipe(`${searchKeyword.value}`, 0, 16);
     clearInput();
   }
@@ -385,6 +410,8 @@ showMoreBtn.addEventListener("click", () => {
   //fetch data from the lastIndex of data to the next 16
   console.log("resultArray is ", resultArray);
   getRecipe(`${keywordParam}`, lastIdxParam, lastIdxParam + 16);
+  console.log(resultSection.getBoundingClientRect());
+
 });
 
 /* bookmark - Bookmark link in the header */
