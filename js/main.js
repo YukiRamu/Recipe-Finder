@@ -205,14 +205,12 @@ const displayResult = () => {
 const displayRecipe = async (title) => {
   clearAlert(); //if it is already shown
 
+  console.log("seleced recipe title is " , title);
   //show recipe section
   recipeSection.style.display = "block";
 
   try {
-    //1 scroll
-    await scrollToRecipe();
-
-    //2 display
+    //1 display
     //find one item index to display
     const mealTitle = document.querySelectorAll(".mealTitle"); //all items in the result
 
@@ -222,7 +220,8 @@ const displayRecipe = async (title) => {
         selectedIndex = i;
       }
     }
-
+    
+    console.log(selectedIndex);
     //create <li> tags - ingredients
     appendHTMLForIngrList = resultArray[selectedIndex].recipe.ingredientLines.map((elem) => {
       return `
