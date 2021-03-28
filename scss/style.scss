@@ -148,7 +148,7 @@ body {
     background-color: linear-gradient();
     width: 100%;
     height: 100vh;
-    z-index: 100;
+    z-index: 300;
     .spinner {
       position: absolute;
       @include centering;

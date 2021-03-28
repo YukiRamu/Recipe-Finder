@@ -46,7 +46,6 @@ const timerBtn = document.getElementById("timerBtn");
 //animation
 const toTopBtn = document.querySelector("#toTop"); // move to top button
 const loader = document.querySelector(".loader"); // loading modal
-const 
 
 //filter to be added : &cuisineType=${cuisine}
 
