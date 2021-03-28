@@ -46,6 +46,8 @@ const timerBtn = document.getElementById("timerBtn");
 //animation
 const toTopBtn = document.querySelector("#toTop"); // move to top button
 const loader = document.querySelector(".loader"); // loading modal
+const colorCheckbox = document.querySelector(".colorCheckbox");//theme color change
+const styleSheetLink = document.getElementById("styleSheetLink");//html link tag colorchange pattern 1
 
 //filter to be added : &cuisineType=${cuisine}
 
@@ -226,7 +228,7 @@ const displayRecipe = async (title) => {
           <ul class="dishInfo">
             <li><i class="fas fa-balance-scale-right"></i> Calories: ${Math.round(resultArray[selectedIndex].recipe.calories)}</li>
             <li><i class="fas fa-utensils"></i> Serving size: ${resultArray[selectedIndex].recipe.yield}</li>
-            <button type="button" class="likeBtn" id="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
+            <button type="button" class="likeBtn" onclick="addBookmark()"><i class="fas fa-heart"></i>Bookmark</button>
           </ul>
           <div class="recipeInfo">
             <p><i class="fas fa-pepper-hot"></i>Ingredients:</p>
@@ -266,7 +268,7 @@ const addBookmark = () => {
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
     <div class="bookmarkItem">
-      <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+      <input type="checkbox" name="checkbox" class="checkbox">
       <label for="checkbox"></label>
       <img src="${element.imgURL}" alt="itemImg">
       <p>${element.title}</p>
@@ -305,7 +307,7 @@ const addBookmark = () => {
       appendHTMLForBookmark = bookmarkArray.map((element) => {
         return `
          <div class="bookmarkItem">
-          <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+          <input type="checkbox" name="checkbox" class="checkbox">
           <label for="checkbox"></label>
            <img src="${element.imgURL}" alt="itemImg">
            <p>${element.title}</p>
@@ -351,7 +353,7 @@ const deleteBookmark = () => {
   appendHTMLForBookmark = bookmarkArray.map((element) => {
     return `
       <div class="bookmarkItem">
-        <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+        <input type="checkbox" name="checkbox" class="checkbox">
         <label for="checkbox"></label>
         <img src="${element.imgURL}" alt="itemImg">
         <p>${element.title}</p>
@@ -440,7 +442,7 @@ bookmarkLink.addEventListener("click", () => {
 
 /* Open a new window for a countdown timer */
 timerBtn.addEventListener("click", () => {
-  window.open("countdownTimer.html", "", "width=300, height=300");
+  window.open("timer.html", "", "width=300, height=300");
 });
 
 /* delete bookmark */
@@ -448,7 +450,43 @@ delBtn.addEventListener("click", () => {
   deleteBookmark();
 })
 
+/* Enable light theme */
+const enableLightTheme = () => {
+  //document.body.classList.toggle("light");
+  localStorage.setItem("mode", "light");
+}
+
+/* Disable light theme = back to default */
+const disableLightTheme = () => {
+  //document.body.classList.remove("light");
+  localStorage.setItem("mode", "default");
+  console.log("mode changed to ", localStorage);
+}
+
 /* ============================== Animation ============================== */
+//When the window is loaded
+// mode = null : first loaded => assign "default" to mode
+
+let mode = localStorage.getItem("mode"); //default or light
+
+if (mode === "light") {
+  enableLightTheme();
+} else if ((mode === "default") || (mode === null)) {
+  disableLightTheme();
+}
+
+//color change button is clicked
+colorCheckbox.addEventListener("change", () => {
+  //====pattern 2 : add "light" class to body
+  mode = localStorage.getItem("mode"); // get the current mode
+
+  if (mode === "light") {
+    disableLightTheme(); // if current mode is light, then change back to default
+  } else if (mode === "default") {
+    enableLightTheme(); // if current mode is light, then change to light theme
+  }
+});
+
 //jQuery
 /* Move to top button appears after 200 px scroll down the page */
 $(window).scroll(function () {
@@ -472,3 +510,11 @@ toTop.addEventListener("click", () => {
 //     return false;
 //   });
 // });
+
+  //====pattern 1 : two css files used
+  // if(colorCheckbox.checked) {
+  //   styleSheetLink.setAttribute("href", "./scss/lightTheme.css");
+  // }else {
+  //   styleSheetLink.setAttribute("href", "./scss/style.css");
+  // }
+  //================================================================

@@ -149,12 +149,12 @@ a {
 }
 
 /* Main Styling */
-body {
+.default {
   font-family: "PT Serif", serif;
   /* header */
 }
 
-body .loader {
+.default .loader {
   display: none;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.8);
@@ -164,7 +164,7 @@ body .loader {
   z-index: 300;
 }
 
-body .loader .spinner {
+.default .loader .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -184,7 +184,7 @@ body .loader .spinner {
           animation: spin 2.5s linear infinite;
 }
 
-body .loader span {
+.default .loader span {
   position: absolute;
   color: #f1f4f1;
   top: 50%;
@@ -199,14 +199,14 @@ body .loader span {
   text-transform: uppercase;
 }
 
-body .header {
+.default .header {
   text-align: center;
   background-image: url(../img/top2.jpg);
   height: 100vh;
   overflow: hidden;
 }
 
-body .header h1 {
+.default .header h1 {
   text-transform: uppercase;
   color: #e1c736;
   text-shadow: 0 0 0.3em #f1f4f1;
@@ -218,7 +218,7 @@ body .header h1 {
   font-size: 5em;
 }
 
-body .header .navBar {
+.default .header .navBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,27 +237,27 @@ body .header .navBar {
   width: 25%;
 }
 
-body .header .navBar .bookmarkLink {
+.default .header .navBar .bookmarkLink {
   -webkit-animation: flicker 2s linear infinite;
           animation: flicker 2s linear infinite;
 }
 
-body .header .navBar .colorChange {
+.default .header .navBar .colorChange {
   width: 25%;
   margin-left: 2em;
 }
 
-body .header .navBar .colorChange .colorCheckbox {
+.default .header .navBar .colorChange .colorCheckbox {
   display: none;
 }
 
-body .header .navBar .colorChange .colorCheckbox:checked + .colorCheckboxLabel .ball {
+.default .header .navBar .colorChange .colorCheckbox:checked + .colorCheckboxLabel .ball {
   background-color: red;
   -webkit-transform: translateX(93%);
           transform: translateX(93%);
 }
 
-body .header .navBar .colorChange .colorCheckboxLabel {
+.default .header .navBar .colorChange .colorCheckboxLabel {
   border-radius: 50vw;
   background-color: #f1f4f1;
   width: 100%;
@@ -267,13 +267,13 @@ body .header .navBar .colorChange .colorCheckboxLabel {
   margin-top: 0.3em;
 }
 
-body .header .navBar .colorChange .colorCheckboxLabel .ball {
+.default .header .navBar .colorChange .colorCheckboxLabel .ball {
   position: relative;
   top: 12%;
   left: 7%;
   width: 45%;
   height: 80%;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   border-radius: 50%;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s linear;
@@ -282,12 +282,12 @@ body .header .navBar .colorChange .colorCheckboxLabel .ball {
   transition: transform 0.3s linear, -webkit-transform 0.3s linear;
 }
 
-body .header .navBar .colorChange .colorCheckboxLabel .ball:hover {
+.default .header .navBar .colorChange .colorCheckboxLabel .ball:hover {
   border: 0.2em solid #e1c736;
 }
 
-body .header .searchForm {
-  background-color: rgba(12, 39, 53, 0.9);
+.default .header .searchForm {
+  background-color: rgba(158, 92, 139, 0.9);
   margin: auto;
   width: 50%;
   height: 100%;
@@ -297,12 +297,12 @@ body .header .searchForm {
   z-index: 100;
 }
 
-body .header .searchForm .keywordSearch {
+.default .header .searchForm .keywordSearch {
   position: relative;
   height: 100%;
 }
 
-body .header .searchForm .keywordSearch label {
+.default .header .searchForm .keywordSearch label {
   position: absolute;
   left: 0;
   top: 50%;
@@ -315,7 +315,7 @@ body .header .searchForm .keywordSearch label {
   font-size: 2em;
 }
 
-body .header .searchForm .keywordSearch .keyword {
+.default .header .searchForm .keywordSearch .keyword {
   border-radius: 50vw;
   border: none;
   padding: 1em;
@@ -331,7 +331,7 @@ body .header .searchForm .keywordSearch .keyword {
   font-size: 1.3em;
 }
 
-body .header .searchForm .keywordSearch .search {
+.default .header .searchForm .keywordSearch .search {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -346,12 +346,12 @@ body .header .searchForm .keywordSearch .search {
   background-color: transparent;
 }
 
-body .header .searchForm .keywordSearch .search .fa-search {
+.default .header .searchForm .keywordSearch .search .fa-search {
   color: #e1c736;
   font-size: 1.5em;
 }
 
-body .main .result {
+.default .main .result {
   display: none;
   position: relative;
   min-height: 100vh;
@@ -359,18 +359,18 @@ body .main .result {
   background-size: cover;
 }
 
-body .main .result h2 {
+.default .main .result h2 {
   position: absolute;
   top: 1%;
   left: -6%;
   color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   width: 70%;
   padding: 0.5em;
   font-size: 2.5em;
 }
 
-body .main .result .resultPanel {
+.default .main .result .resultPanel {
   background-color: #f1f1f490;
   text-align: center;
   display: -ms-grid;
@@ -385,7 +385,7 @@ body .main .result .resultPanel {
   padding-right: 5%;
 }
 
-body .main .result .resultPanel .itemPanel {
+.default .main .result .resultPanel .itemPanel {
   min-height: 50vh;
   -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
           box-shadow: 0.5em 0.5em 1em #04080c;
@@ -417,14 +417,14 @@ body .main .result .resultPanel .itemPanel {
   }
 }
 
-body .main .result .resultPanel .itemPanel img {
+.default .main .result .resultPanel .itemPanel img {
   height: 35vh;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-body .main .result .resultPanel p {
+.default .main .result .resultPanel p {
   margin-bottom: 0;
   margin: auto;
   padding: 1em;
@@ -434,46 +434,46 @@ body .main .result .resultPanel p {
   width: 90%;
 }
 
-body .main .result .resultPanel .view {
+.default .main .result .resultPanel .view {
   display: block;
   width: 50%;
   margin: auto;
   margin-bottom: 1.2em;
   background-color: #e1c736;
   text-decoration: none;
-  color: rgba(12, 39, 53, 0.9);
+  color: rgba(158, 92, 139, 0.9);
   font-size: 1.2em;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-body .main .result .resultPanel .view:hover {
+.default .main .result .resultPanel .view:hover {
   background-color: #ca4d4a;
   color: #f1f4f1;
 }
 
-body .main .result .showMoreContainer {
+.default .main .result .showMoreContainer {
   position: relative;
   height: 100%;
   padding: 1em 0;
 }
 
-body .main .result .showMoreContainer .alert {
+.default .main .result .showMoreContainer .alert {
   top: 20%;
 }
 
-body .main .result .showMoreContainer .showMore {
+.default .main .result .showMoreContainer .showMore {
   margin: 1em auto;
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
   color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   -webkit-box-shadow: 0 0 1em #04080c;
           box-shadow: 0 0 1em #04080c;
 }
 
-body .main .recipe {
+.default .main .recipe {
   display: none;
   min-height: 100vh;
   position: relative;
@@ -481,7 +481,7 @@ body .main .recipe {
   color: #04080c;
 }
 
-body .main .recipe .recipePanel {
+.default .main .recipe .recipePanel {
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: 2s;
@@ -514,7 +514,7 @@ body .main .recipe .recipePanel {
   }
 }
 
-body .main .recipe .recipePanel img {
+.default .main .recipe .recipePanel img {
   margin: auto 3em;
   margin-top: 3em;
   display: block;
@@ -524,25 +524,25 @@ body .main .recipe .recipePanel img {
           box-shadow: 0.5em 0.5em 1em #04080c;
 }
 
-body .main .recipe .recipePanel .detailInfo {
+.default .main .recipe .recipePanel .detailInfo {
   margin-left: auto;
   width: 60%;
   height: 100%;
 }
 
-body .main .recipe .recipePanel .detailInfo .title {
+.default .main .recipe .recipePanel .detailInfo .title {
   position: relative;
   width: 130%;
   left: -30%;
   margin-top: 1em;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   padding: 0.5em;
   text-align: left;
   font-size: 2.5em;
   color: #e1c736;
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo {
+.default .main .recipe .recipePanel .detailInfo .dishInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -560,25 +560,25 @@ body .main .recipe .recipePanel .detailInfo .dishInfo {
   font-size: 1.3em;
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo li {
+.default .main .recipe .recipePanel .detailInfo .dishInfo li {
   margin: 0.5em 1em;
   color: #d76b34;
   font-weight: bold;
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo li i {
+.default .main .recipe .recipePanel .detailInfo .dishInfo li i {
   padding-right: 0.5em;
   color: #497e9a;
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
+.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
   padding: 0, 0.5em;
   background-color: transparent;
   color: #d76b34;
   font-weight: bold;
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
+.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
   -webkit-animation: scaleup 0.5s;
           animation: scaleup 0.5s;
 }
@@ -605,38 +605,38 @@ body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
   }
 }
 
-body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn i {
+.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn i {
   padding-right: 0.5em;
 }
 
-body .main .recipe .recipePanel .detailInfo .recipeInfo {
+.default .main .recipe .recipePanel .detailInfo .recipeInfo {
   width: 100%;
   text-align: left;
   padding-right: 2em;
 }
 
-body .main .recipe .recipePanel .detailInfo .recipeInfo p {
+.default .main .recipe .recipePanel .detailInfo .recipeInfo p {
   font-weight: bold;
   margin: 0;
 }
 
-body .main .recipe .recipePanel .detailInfo .recipeInfo p .fa-pepper-hot {
+.default .main .recipe .recipePanel .detailInfo .recipeInfo p .fa-pepper-hot {
   padding-right: 0.5em;
   color: #497e9a;
 }
 
-body .main .recipe .recipePanel .detailInfo .recipeInfo ul {
+.default .main .recipe .recipePanel .detailInfo .recipeInfo ul {
   padding-bottom: 1em;
   margin: 0;
 }
 
-body .main .recipe .recipePanel .detailInfo a {
+.default .main .recipe .recipePanel .detailInfo a {
   display: block;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   text-decoration: none;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
   padding: 0.5em 2em;
@@ -646,7 +646,7 @@ body .main .recipe .recipePanel .detailInfo a {
   color: #e1c736;
 }
 
-body .main .recipe .timerBtn {
+.default .main .recipe .timerBtn {
   position: absolute;
   bottom: 2%;
   left: 13%;
@@ -660,23 +660,23 @@ body .main .recipe .timerBtn {
           box-shadow: 0 0 1.2em #04080c;
 }
 
-body .main .bookmark {
+.default .main .bookmark {
   position: relative;
   min-height: 100vh;
   color: #04080c;
   background-image: url(../img/bg6.jpg);
 }
 
-body .main .bookmark .bookmarkContainer {
+.default .main .bookmark .bookmarkContainer {
   width: 90%;
   margin: auto;
   position: relative;
   min-height: 100vh;
 }
 
-body .main .bookmark .bookmarkContainer h2 {
+.default .main .bookmark .bookmarkContainer h2 {
   color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   position: absolute;
   top: 1%;
   left: -6%;
@@ -685,14 +685,14 @@ body .main .bookmark .bookmarkContainer h2 {
   font-size: 2.5em;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList {
+.default .main .bookmark .bookmarkContainer .bookmarkList {
   min-height: 100vh;
   width: 100%;
   padding-top: 10%;
   background-color: rgba(255, 255, 255, 0.613);
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
+.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[6];
@@ -702,31 +702,31 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
   margin: auto;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
+.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   display: table-cell;
   cursor: pointer;
   border-radius: 50vw;
   margin: auto;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
+.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
   display: none;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
+.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
   display: block;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
+.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
   grid-column: span 3;
   margin-right: auto;
   font-size: 2em;
 }
 
-body .main .bookmark .bookmarkContainer .delBtn {
+.default .main .bookmark .bookmarkContainer .delBtn {
   position: absolute;
   bottom: 0;
   right: 10%;
@@ -735,20 +735,20 @@ body .main .bookmark .bookmarkContainer .delBtn {
   padding: 0.5em 2em;
   font-size: 1.3em;
   color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-body .footer {
+.default .footer {
   text-align: center;
   padding: 0.5em 0;
   font-size: 1.3em;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(158, 92, 139, 0.9);
   color: #e1c736;
 }
 
-body .footer .fa-chevron-circle-up {
+.default .footer .fa-chevron-circle-up {
   display: none;
   position: fixed;
   right: 5%;
@@ -757,19 +757,31 @@ body .footer .fa-chevron-circle-up {
   cursor: pointer;
 }
 
-body .footer .fa-chevron-circle-up:hover {
+.default .footer .fa-chevron-circle-up:hover {
   color: #497e9a;
 }
 
-body .footer h4 > a {
+.default .footer h4 > a {
   color: #ca4d4a;
 }
 
-body .footer h4 > a:hover {
+.default .footer h4 > a:hover {
   color: #497e9a;
 }
 
-.light .header h1 {
-  color: #e1c736;
+.default .dark {
+  color: pink;
+  /* header */
 }
-/*# sourceMappingURL=style.css.map */
+
+.default .dark .header {
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.default .dark .header h1 {
+  text-transform: uppercase;
+  color: white;
+}
+/*# sourceMappingURL=lightTheme.css.map */

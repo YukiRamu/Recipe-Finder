@@ -14,7 +14,7 @@
   <script src="https://kit.fontawesome.com/a62f436beb.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="./reset.css" />
-  <link rel="stylesheet" href="./scss/style.css" />
+  <link rel="stylesheet" href="./scss/style.css" id="styleSheetLink"/>
 </head>
 
 <body>
@@ -30,10 +30,10 @@
     <nav class="navBar">
       <!--bookmark link-->
       <a href="#" class="bookmarkLink"><i class="fas fa-heart fa-3x"></i></a>
-      <!--dark-light mode change-->
-      <div class="modeChange">
-        <input type="checkbox" class="darkLight" id="darkLight">
-        <label for="darkLight" class="darkLightLabel">
+      <!--theme color change-->
+      <div class="colorChange">
+        <input type="checkbox" class="colorCheckbox" id="colorCheckbox">
+        <label for="colorCheckbox" class="colorCheckboxLabel">
           <div class="ball"></div>
         </label>
       </div>
@@ -61,7 +61,7 @@
 
   <div class="main">
 
-    <section class="result" id="result">
+    <section class="result">
       <h2>Recipe Gallery</h2>
       <div class="resultPanel">
         <!--*************** Recipe photos here. Below is a reference ***************-->
@@ -83,7 +83,7 @@
     </section>
 
     <section class="recipe" id="recipe">
-      <div class="recipePanel" id="recipePanel">
+      <div class="recipePanel">
         <!--*************** Recipe detail here Below is a reference ***************-->
         <!-- <img src="https://www.edamam.com/web-img/af3/af3681ca8186a814b92a6b88472ecc4a.jpg" alt="itemImg">
         <div class="detailInfo">

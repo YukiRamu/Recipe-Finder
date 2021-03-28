@@ -1,26 +1,25 @@
 /* Variables */
 
-//Color pattern 1 - default
-$color4: #ca4d4a; // in use
-$color6: #97342b; // in use
-$color8: #04080c; // in use
-$color9: #434846; // in use
-$color12: #e1c736; // in use
-$color14: #497e9a; // in use
-$color15: #f1f4f1; // in use
-$base: rgba(12, 39, 53, 0.9); //in use
-
-
-//Color pattern 2 - light
+//Color pattern 1
 $color1: #ebece5;
 $color2: #e3e3e3;
 $color3: #d76b34;
+$color4: #ca4d4a; // in use
 $color5: #d75a54;
+$color6: #97342b; // in use
 $color7: #cc9456;
+
+//Color pattern 2
+$color8: #04080c;
+$color9: #434846; // in use
 $color10: #5a280b;
 $color11: #b85712;
+$color12: #e1c736; // in use
 $color13: #dfa42a;
-
+$color14: #497e9a; // in use
+$color15: #f1f4f1; // in use
+$base: rgba(12, 39, 53, 0.9); //in use
+$base2: rgba(158, 92, 139, 0.9); //in use
 
 @mixin flex {
   display: flex;
@@ -140,7 +139,7 @@ a {
 }
 
 /* Main Styling */
-body {
+.default {
   font-family: "PT Serif", serif;
   //loader
   .loader {
@@ -232,7 +231,7 @@ body {
             left: 7%;
             width: 45%;
             height: 80%;
-            background-color: $base;
+            background-color: $base2;
             border-radius: 50%;
             cursor: pointer;
             transition: transform 0.3s linear; //move the ball from left to right
@@ -245,7 +244,7 @@ body {
     }
     //recipe search form
     .searchForm {
-      background-color: $base;
+      background-color: $base2;
       margin: auto;
       width: 50%;
       height: 100%;
@@ -312,7 +311,7 @@ body {
         top: 1%;
         left: -6%;
         color: $color12;
-        background-color: $base;
+        background-color: $base2;
         width: 70%;
         padding: 0.5em;
         font-size: 2.5em;
@@ -354,7 +353,7 @@ body {
           margin-bottom: 1.2em;
           background-color: $color12;
           text-decoration: none;
-          color: $base;
+          color: $base2;
           font-size: 1.2em;
           box-shadow: 0 0 1.2em $color8;
           &:hover {
@@ -376,7 +375,7 @@ body {
           padding: 0.5em 2em;
           font-size: 1.3em;
           color: $color12;
-          background-color: $base;
+          background-color: $base2;
           box-shadow: 0 0 1em $color8;
         }
       }
@@ -412,7 +411,7 @@ body {
             width: 130%;
             left: -30%;
             margin-top: 1em;
-            background-color: $base;
+            background-color: $base2;
             padding: 0.5em;
             text-align: left;
             font-size: 2.5em;
@@ -477,7 +476,7 @@ body {
             display: block;
             width: fit-content;
             text-decoration: none;
-            background-color: $base;
+            background-color: $base2;
             box-shadow: 0 0 1.2em $color8;
             padding: 0.5em 2em;
             font-size: 1.3em;
@@ -514,7 +513,7 @@ body {
         min-height: 100vh;
         h2 {
           color: $color12;
-          background-color: $base;
+          background-color: $base2;
           position: absolute;
           top: 1%;
           left: -6%;
@@ -563,7 +562,7 @@ body {
           padding: 0.5em 2em;
           font-size: 1.3em;
           color: $color12;
-          background-color: $base;
+          background-color: $base2;
           box-shadow: 0 0 1.2em $color8;
         }
       }
@@ -574,7 +573,7 @@ body {
     text-align: center;
     padding: 0.5em 0;
     font-size: 1.3em;
-    background-color: $base;
+    background-color: $base2;
     color: $color12;
     .fa-chevron-circle-up {
       display: none;
@@ -596,10 +595,16 @@ body {
   }
 }
 
-.light {
+.default .dark {
+  color: pink;
+  /* header */
   .header {
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
     h1 {
-      color: $color12;
+      text-transform: uppercase;
+      color: white;
     }
   }
 }
