@@ -1,25 +1,23 @@
 /* Variables */
 
-//Color pattern 1
-$color1: #ebece5;
-$color2: #e3e3e3;
-$color3: #d76b34;
-$color4: #ca4d4a; // in use
-$color5: #d75a54;
-$color6: #97342b; // in use
-$color7: #cc9456;
+//Color pattern 1 - default
+$color3: #d76b34; // in use  - not changed
+$color4: #dfa42a; // in use
+$color6: #582811; // in use
+$color8: #04080c; // in use - not changed
+$color12: #b34140; // in use
+$color14: #7f9530; // in use
+$color15: #f1f4f1; // in use - not changed
+$base: #f1e7ecd6; //in use
 
-//Color pattern 2
-$color8: #04080c;
-$color9: #434846; // in use
+//Color pattern 2 - light
+$color1: #ebece5;
+
+$color5: #d75a54;
+$color7: #cc9456;
 $color10: #5a280b;
 $color11: #b85712;
-$color12: #e1c736; // in use
 $color13: #dfa42a;
-$color14: #497e9a; // in use
-$color15: #f1f4f1; // in use
-$base: rgba(12, 39, 53, 0.9); //in use
-$base2: rgba(158, 92, 139, 0.9); //in use
 
 @mixin flex {
   display: flex;
@@ -133,13 +131,13 @@ a {
   text-align: center;
   font-size: 1em;
   background-color: $color4;
-  color: $color12;
+  color: $color8;
   border-radius: 10vw;
   width: 80%;
 }
 
 /* Main Styling */
-.default {
+body {
   font-family: "PT Serif", serif;
   //loader
   .loader {
@@ -180,7 +178,7 @@ a {
   /* header */
   .header {
     text-align: center;
-    background-image: url(../img/top2.jpg);
+    background-image: url(../img/bg3.jpg);
     height: 100vh;
     overflow: hidden;
     h1 {
@@ -211,15 +209,11 @@ a {
         margin-left: 2em;
         .colorCheckbox {
           display: none;
-          &:checked + .colorCheckboxLabel .ball {
-            //move the ball from left to right
-            background-color: red;
-            transform: translateX(93%);
-          }
         }
         .colorCheckboxLabel {
           border-radius: 50vw;
           background-color: $color15;
+          box-shadow: 0 0 1.2em #04080c;
           width: 100%;
           height: 100%;
           height: 75%;
@@ -228,15 +222,16 @@ a {
           .ball {
             position: relative;
             top: 12%;
-            left: 7%;
+            left: 51%;
             width: 45%;
             height: 80%;
-            background-color: $base2;
+            background-color: $base;
             border-radius: 50%;
+            border: 0.2em solid $color12;
             cursor: pointer;
             transition: transform 0.3s linear; //move the ball from left to right
             &:hover {
-              border: 0.2em solid $color12;
+              transform: scale(1.5);
             }
           }
         }
@@ -244,7 +239,7 @@ a {
     }
     //recipe search form
     .searchForm {
-      background-color: $base2;
+      background-color: $base;
       margin: auto;
       width: 50%;
       height: 100%;
@@ -304,14 +299,14 @@ a {
       display: none;
       position: relative;
       min-height: 100vh;
-      background-image: url(../img/bg7.jpg);
+      background-image: url(../img/bg4.jpg);
       background-size: cover;
       h2 {
         position: absolute;
         top: 1%;
         left: -6%;
         color: $color12;
-        background-color: $base2;
+        background-color: $base;
         width: 70%;
         padding: 0.5em;
         font-size: 2.5em;
@@ -353,7 +348,7 @@ a {
           margin-bottom: 1.2em;
           background-color: $color12;
           text-decoration: none;
-          color: $base2;
+          color: $base;
           font-size: 1.2em;
           box-shadow: 0 0 1.2em $color8;
           &:hover {
@@ -375,7 +370,7 @@ a {
           padding: 0.5em 2em;
           font-size: 1.3em;
           color: $color12;
-          background-color: $base2;
+          background-color: $base;
           box-shadow: 0 0 1em $color8;
         }
       }
@@ -386,7 +381,7 @@ a {
       display: none;
       min-height: 100vh;
       position: relative;
-      background-image: url(../img/bg7_.jpg);
+      background-image: url(../img/bg_recipe.jpg);
       color: $color8;
       .recipePanel {
         @include animationFadeIn;
@@ -411,7 +406,7 @@ a {
             width: 130%;
             left: -30%;
             margin-top: 1em;
-            background-color: $base2;
+            background-color: $base;
             padding: 0.5em;
             text-align: left;
             font-size: 2.5em;
@@ -476,7 +471,7 @@ a {
             display: block;
             width: fit-content;
             text-decoration: none;
-            background-color: $base2;
+            background-color: $base;
             box-shadow: 0 0 1.2em $color8;
             padding: 0.5em 2em;
             font-size: 1.3em;
@@ -505,7 +500,7 @@ a {
       position: relative;
       min-height: 100vh;
       color: $color8; // change to variable
-      background-image: url(../img/bg6.jpg);
+      background-image: url(../img/bg2.jpg);
       .bookmarkContainer {
         width: 90%;
         margin: auto;
@@ -513,7 +508,7 @@ a {
         min-height: 100vh;
         h2 {
           color: $color12;
-          background-color: $base2;
+          background-color: $base;
           position: absolute;
           top: 1%;
           left: -6%;
@@ -562,7 +557,7 @@ a {
           padding: 0.5em 2em;
           font-size: 1.3em;
           color: $color12;
-          background-color: $base2;
+          background-color: $base;
           box-shadow: 0 0 1.2em $color8;
         }
       }
@@ -573,7 +568,7 @@ a {
     text-align: center;
     padding: 0.5em 0;
     font-size: 1.3em;
-    background-color: $base2;
+    background-color: $base;
     color: $color12;
     .fa-chevron-circle-up {
       display: none;
@@ -591,20 +586,6 @@ a {
       &:hover {
         color: $color14;
       }
-    }
-  }
-}
-
-.default .dark {
-  color: pink;
-  /* header */
-  .header {
-    text-align: center;
-    height: 100vh;
-    overflow: hidden;
-    h1 {
-      text-transform: uppercase;
-      color: white;
     }
   }
 }

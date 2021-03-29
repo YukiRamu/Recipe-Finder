@@ -143,7 +143,7 @@ a {
   text-align: center;
   font-size: 1em;
   background-color: #ca4d4a;
-  color: #e1c736;
+  color: #e7d362;
   border-radius: 10vw;
   width: 80%;
 }
@@ -208,7 +208,7 @@ body .header {
 
 body .header h1 {
   text-transform: uppercase;
-  color: #e1c736;
+  color: #e7d362;
   text-shadow: 0 0 0.3em #f1f4f1;
   margin-left: auto;
   width: 50%;
@@ -251,12 +251,6 @@ body .header .navBar .colorChange .colorCheckbox {
   display: none;
 }
 
-body .header .navBar .colorChange .colorCheckbox:checked + .colorCheckboxLabel .ball {
-  background-color: red;
-  -webkit-transform: translateX(93%);
-          transform: translateX(93%);
-}
-
 body .header .navBar .colorChange .colorCheckboxLabel {
   border-radius: 50vw;
   background-color: #f1f4f1;
@@ -273,8 +267,9 @@ body .header .navBar .colorChange .colorCheckboxLabel .ball {
   left: 7%;
   width: 45%;
   height: 80%;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(12, 39, 53, 0.958);
   border-radius: 50%;
+  border: 0.2em solid #e7d362;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s linear;
   transition: -webkit-transform 0.3s linear;
@@ -283,11 +278,12 @@ body .header .navBar .colorChange .colorCheckboxLabel .ball {
 }
 
 body .header .navBar .colorChange .colorCheckboxLabel .ball:hover {
-  border: 0.2em solid #e1c736;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 body .header .searchForm {
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(12, 39, 53, 0.958);
   margin: auto;
   width: 50%;
   height: 100%;
@@ -311,7 +307,7 @@ body .header .searchForm .keywordSearch label {
   text-align: left;
   width: 80%;
   margin: auto;
-  color: #e1c736;
+  color: #e7d362;
   font-size: 2em;
 }
 
@@ -347,7 +343,7 @@ body .header .searchForm .keywordSearch .search {
 }
 
 body .header .searchForm .keywordSearch .search .fa-search {
-  color: #e1c736;
+  color: #e7d362;
   font-size: 1.5em;
 }
 
@@ -355,7 +351,7 @@ body .main .result {
   display: none;
   position: relative;
   min-height: 100vh;
-  background-image: url(../img/bg7.jpg);
+  background-image: url(../img/bg4.jpg);
   background-size: cover;
 }
 
@@ -363,8 +359,8 @@ body .main .result h2 {
   position: absolute;
   top: 1%;
   left: -6%;
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #e7d362;
+  background-color: rgba(12, 39, 53, 0.958);
   width: 70%;
   padding: 0.5em;
   font-size: 2.5em;
@@ -439,9 +435,9 @@ body .main .result .resultPanel .view {
   width: 50%;
   margin: auto;
   margin-bottom: 1.2em;
-  background-color: #e1c736;
+  background-color: #e7d362;
   text-decoration: none;
-  color: rgba(12, 39, 53, 0.9);
+  color: rgba(12, 39, 53, 0.958);
   font-size: 1.2em;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
@@ -467,8 +463,8 @@ body .main .result .showMoreContainer .showMore {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #e7d362;
+  background-color: rgba(12, 39, 53, 0.958);
   -webkit-box-shadow: 0 0 1em #04080c;
           box-shadow: 0 0 1em #04080c;
 }
@@ -477,7 +473,7 @@ body .main .recipe {
   display: none;
   min-height: 100vh;
   position: relative;
-  background-image: url(../img/bg7_.jpg);
+  background-image: url(../img/bg_recipe.jpg);
   color: #04080c;
 }
 
@@ -535,11 +531,11 @@ body .main .recipe .recipePanel .detailInfo .title {
   width: 130%;
   left: -30%;
   margin-top: 1em;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(12, 39, 53, 0.958);
   padding: 0.5em;
   text-align: left;
   font-size: 2.5em;
-  color: #e1c736;
+  color: #e7d362;
 }
 
 body .main .recipe .recipePanel .detailInfo .dishInfo {
@@ -636,14 +632,14 @@ body .main .recipe .recipePanel .detailInfo a {
   width: -moz-fit-content;
   width: fit-content;
   text-decoration: none;
-  background-color: rgba(12, 39, 53, 0.9);
+  background-color: rgba(12, 39, 53, 0.958);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
   padding: 0.5em 2em;
   font-size: 1.3em;
   margin-top: 1em;
   margin-bottom: 1.8em;
-  color: #e1c736;
+  color: #e7d362;
 }
 
 body .main .recipe .timerBtn {
@@ -654,8 +650,8 @@ body .main .recipe .timerBtn {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #e7d362;
+  background-color: rgba(12, 39, 53, 0.958);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
@@ -675,8 +671,8 @@ body .main .bookmark .bookmarkContainer {
 }
 
 body .main .bookmark .bookmarkContainer h2 {
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #e7d362;
+  background-color: rgba(12, 39, 53, 0.958);
   position: absolute;
   top: 1%;
   left: -6%;
@@ -734,8 +730,8 @@ body .main .bookmark .bookmarkContainer .delBtn {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #e7d362;
+  background-color: rgba(12, 39, 53, 0.958);
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
@@ -744,8 +740,8 @@ body .footer {
   text-align: center;
   padding: 0.5em 0;
   font-size: 1.3em;
-  background-color: rgba(12, 39, 53, 0.9);
-  color: #e1c736;
+  background-color: rgba(12, 39, 53, 0.958);
+  color: #e7d362;
 }
 
 body .footer .fa-chevron-circle-up {
@@ -767,9 +763,5 @@ body .footer h4 > a {
 
 body .footer h4 > a:hover {
   color: #497e9a;
-}
-
-.light .header h1 {
-  color: #e1c736;
 }
 /*# sourceMappingURL=style.css.map */

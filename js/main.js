@@ -48,6 +48,7 @@ const toTopBtn = document.querySelector("#toTop"); // move to top button
 const loader = document.querySelector(".loader"); // loading modal
 const colorCheckbox = document.querySelector(".colorCheckbox");//theme color change
 const styleSheetLink = document.getElementById("styleSheetLink");//html link tag colorchange pattern 1
+const ball = document.querySelector(".ball");//theme color change
 
 //filter to be added : &cuisineType=${cuisine}
 
@@ -452,21 +453,25 @@ delBtn.addEventListener("click", () => {
 
 /* Enable light theme */
 const enableLightTheme = () => {
-  //document.body.classList.toggle("light");
+  styleSheetLink.href = "./scss/lightTheme.css"; //change stylesheet
   localStorage.setItem("mode", "light");
+  ball.style.transform = "translateX(-1%)"; //move the ball to right
+  ball.style.backgroundColor = "#ebece5d6";
+  ball.style.transition = "transform" + 0.3 + "s" + "linear"
 }
 
 /* Disable light theme = back to default */
 const disableLightTheme = () => {
-  //document.body.classList.remove("light");
+  styleSheetLink.href = "./scss/style.css";  //change stylesheet
   localStorage.setItem("mode", "default");
-  console.log("mode changed to ", localStorage);
+  ball.style.transform = "translateX(-3%)"; // move the ball to left
+  ball.style.backgroundColor = "rgba(12, 39, 53, 0.958)";
+  ball.style.transition = "transform" + 0.3 + "s" + "linear"
 }
 
 /* ============================== Animation ============================== */
 //When the window is loaded
 // mode = null : first loaded => assign "default" to mode
-
 let mode = localStorage.getItem("mode"); //default or light
 
 if (mode === "light") {
@@ -477,7 +482,6 @@ if (mode === "light") {
 
 //color change button is clicked
 colorCheckbox.addEventListener("change", () => {
-  //====pattern 2 : add "light" class to body
   mode = localStorage.getItem("mode"); // get the current mode
 
   if (mode === "light") {
@@ -511,10 +515,3 @@ toTop.addEventListener("click", () => {
 //   });
 // });
 
-  //====pattern 1 : two css files used
-  // if(colorCheckbox.checked) {
-  //   styleSheetLink.setAttribute("href", "./scss/lightTheme.css");
-  // }else {
-  //   styleSheetLink.setAttribute("href", "./scss/style.css");
-  // }
-  //================================================================

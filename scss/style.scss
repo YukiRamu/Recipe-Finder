@@ -1,26 +1,23 @@
 /* Variables */
 
 //Color pattern 1 - default
+$color3: #d76b34; // in use
 $color4: #ca4d4a; // in use
 $color6: #97342b; // in use
 $color8: #04080c; // in use
-$color9: #434846; // in use
-$color12: #e1c736; // in use
+$color12: #e7d362; // in use
 $color14: #497e9a; // in use
 $color15: #f1f4f1; // in use
-$base: rgba(12, 39, 53, 0.9); //in use
-
+$base: rgba(12, 39, 53, 0.958); //in use
 
 //Color pattern 2 - light
 $color1: #ebece5;
 $color2: #e3e3e3;
-$color3: #d76b34;
 $color5: #d75a54;
 $color7: #cc9456;
 $color10: #5a280b;
 $color11: #b85712;
 $color13: #dfa42a;
-
 
 @mixin flex {
   display: flex;
@@ -212,11 +209,6 @@ body {
         margin-left: 2em;
         .colorCheckbox {
           display: none;
-          &:checked + .colorCheckboxLabel .ball {
-            //move the ball from left to right
-            background-color: red;
-            transform: translateX(93%);
-          }
         }
         .colorCheckboxLabel {
           border-radius: 50vw;
@@ -234,10 +226,11 @@ body {
             height: 80%;
             background-color: $base;
             border-radius: 50%;
+            border: 0.2em solid $color12;
             cursor: pointer;
             transition: transform 0.3s linear; //move the ball from left to right
             &:hover {
-              border: 0.2em solid $color12;
+              transform: scale(1.5);
             }
           }
         }
@@ -305,7 +298,7 @@ body {
       display: none;
       position: relative;
       min-height: 100vh;
-      background-image: url(../img/bg7.jpg);
+      background-image: url(../img/bg4.jpg);
       background-size: cover;
       h2 {
         position: absolute;
@@ -387,7 +380,7 @@ body {
       display: none;
       min-height: 100vh;
       position: relative;
-      background-image: url(../img/bg7_.jpg);
+      background-image: url(../img/bg_recipe.jpg);
       color: $color8;
       .recipePanel {
         @include animationFadeIn;
@@ -592,14 +585,6 @@ body {
       &:hover {
         color: $color14;
       }
-    }
-  }
-}
-
-.light {
-  .header {
-    h1 {
-      color: $color12;
     }
   }
 }

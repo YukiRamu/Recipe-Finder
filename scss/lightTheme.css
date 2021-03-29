@@ -120,12 +120,12 @@ p {
 }
 
 .fa-heart {
-  color: #ca4d4a;
+  color: #dfa42a;
   z-index: 100;
 }
 
 .fa-heart:hover {
-  color: #497e9a;
+  color: #7f9530;
 }
 
 a {
@@ -142,19 +142,19 @@ a {
   top: 75%;
   text-align: center;
   font-size: 1em;
-  background-color: #ca4d4a;
-  color: #e1c736;
+  background-color: #dfa42a;
+  color: #04080c;
   border-radius: 10vw;
   width: 80%;
 }
 
 /* Main Styling */
-.default {
+body {
   font-family: "PT Serif", serif;
   /* header */
 }
 
-.default .loader {
+body .loader {
   display: none;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.8);
@@ -164,7 +164,7 @@ a {
   z-index: 300;
 }
 
-.default .loader .spinner {
+body .loader .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -174,9 +174,9 @@ a {
   left: 47%;
   background-color: transparent;
   border: 0.3em solid transparent;
-  border-top: 0.3em dotted #ca4d4a;
-  border-right: 0.3em dotted #ca4d4a;
-  border-bottom: 0.3em dotted #ca4d4a;
+  border-top: 0.3em dotted #dfa42a;
+  border-right: 0.3em dotted #dfa42a;
+  border-bottom: 0.3em dotted #dfa42a;
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -184,7 +184,7 @@ a {
           animation: spin 2.5s linear infinite;
 }
 
-.default .loader span {
+body .loader span {
   position: absolute;
   color: #f1f4f1;
   top: 50%;
@@ -199,16 +199,16 @@ a {
   text-transform: uppercase;
 }
 
-.default .header {
+body .header {
   text-align: center;
-  background-image: url(../img/top2.jpg);
+  background-image: url(../img/bg3.jpg);
   height: 100vh;
   overflow: hidden;
 }
 
-.default .header h1 {
+body .header h1 {
   text-transform: uppercase;
-  color: #e1c736;
+  color: #b34140;
   text-shadow: 0 0 0.3em #f1f4f1;
   margin-left: auto;
   width: 50%;
@@ -218,7 +218,7 @@ a {
   font-size: 5em;
 }
 
-.default .header .navBar {
+body .header .navBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,29 +237,25 @@ a {
   width: 25%;
 }
 
-.default .header .navBar .bookmarkLink {
+body .header .navBar .bookmarkLink {
   -webkit-animation: flicker 2s linear infinite;
           animation: flicker 2s linear infinite;
 }
 
-.default .header .navBar .colorChange {
+body .header .navBar .colorChange {
   width: 25%;
   margin-left: 2em;
 }
 
-.default .header .navBar .colorChange .colorCheckbox {
+body .header .navBar .colorChange .colorCheckbox {
   display: none;
 }
 
-.default .header .navBar .colorChange .colorCheckbox:checked + .colorCheckboxLabel .ball {
-  background-color: red;
-  -webkit-transform: translateX(93%);
-          transform: translateX(93%);
-}
-
-.default .header .navBar .colorChange .colorCheckboxLabel {
+body .header .navBar .colorChange .colorCheckboxLabel {
   border-radius: 50vw;
   background-color: #f1f4f1;
+  -webkit-box-shadow: 0 0 1.2em #04080c;
+          box-shadow: 0 0 1.2em #04080c;
   width: 100%;
   height: 100%;
   height: 75%;
@@ -267,14 +263,15 @@ a {
   margin-top: 0.3em;
 }
 
-.default .header .navBar .colorChange .colorCheckboxLabel .ball {
+body .header .navBar .colorChange .colorCheckboxLabel .ball {
   position: relative;
   top: 12%;
-  left: 7%;
+  left: 51%;
   width: 45%;
   height: 80%;
-  background-color: rgba(158, 92, 139, 0.9);
+  background-color: #f1e7ecd6;
   border-radius: 50%;
+  border: 0.2em solid #b34140;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s linear;
   transition: -webkit-transform 0.3s linear;
@@ -282,12 +279,13 @@ a {
   transition: transform 0.3s linear, -webkit-transform 0.3s linear;
 }
 
-.default .header .navBar .colorChange .colorCheckboxLabel .ball:hover {
-  border: 0.2em solid #e1c736;
+body .header .navBar .colorChange .colorCheckboxLabel .ball:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
-.default .header .searchForm {
-  background-color: rgba(158, 92, 139, 0.9);
+body .header .searchForm {
+  background-color: #f1e7ecd6;
   margin: auto;
   width: 50%;
   height: 100%;
@@ -297,12 +295,12 @@ a {
   z-index: 100;
 }
 
-.default .header .searchForm .keywordSearch {
+body .header .searchForm .keywordSearch {
   position: relative;
   height: 100%;
 }
 
-.default .header .searchForm .keywordSearch label {
+body .header .searchForm .keywordSearch label {
   position: absolute;
   left: 0;
   top: 50%;
@@ -311,11 +309,11 @@ a {
   text-align: left;
   width: 80%;
   margin: auto;
-  color: #e1c736;
+  color: #b34140;
   font-size: 2em;
 }
 
-.default .header .searchForm .keywordSearch .keyword {
+body .header .searchForm .keywordSearch .keyword {
   border-radius: 50vw;
   border: none;
   padding: 1em;
@@ -331,7 +329,7 @@ a {
   font-size: 1.3em;
 }
 
-.default .header .searchForm .keywordSearch .search {
+body .header .searchForm .keywordSearch .search {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -346,31 +344,31 @@ a {
   background-color: transparent;
 }
 
-.default .header .searchForm .keywordSearch .search .fa-search {
-  color: #e1c736;
+body .header .searchForm .keywordSearch .search .fa-search {
+  color: #b34140;
   font-size: 1.5em;
 }
 
-.default .main .result {
+body .main .result {
   display: none;
   position: relative;
   min-height: 100vh;
-  background-image: url(../img/bg7.jpg);
+  background-image: url(../img/bg4.jpg);
   background-size: cover;
 }
 
-.default .main .result h2 {
+body .main .result h2 {
   position: absolute;
   top: 1%;
   left: -6%;
-  color: #e1c736;
-  background-color: rgba(158, 92, 139, 0.9);
+  color: #b34140;
+  background-color: #f1e7ecd6;
   width: 70%;
   padding: 0.5em;
   font-size: 2.5em;
 }
 
-.default .main .result .resultPanel {
+body .main .result .resultPanel {
   background-color: #f1f1f490;
   text-align: center;
   display: -ms-grid;
@@ -385,7 +383,7 @@ a {
   padding-right: 5%;
 }
 
-.default .main .result .resultPanel .itemPanel {
+body .main .result .resultPanel .itemPanel {
   min-height: 50vh;
   -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
           box-shadow: 0.5em 0.5em 1em #04080c;
@@ -417,71 +415,71 @@ a {
   }
 }
 
-.default .main .result .resultPanel .itemPanel img {
+body .main .result .resultPanel .itemPanel img {
   height: 35vh;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.default .main .result .resultPanel p {
+body .main .result .resultPanel p {
   margin-bottom: 0;
   margin: auto;
   padding: 1em;
-  color: #97342b;
+  color: #582811;
   font-size: 1.5em;
   font-weight: bold;
   width: 90%;
 }
 
-.default .main .result .resultPanel .view {
+body .main .result .resultPanel .view {
   display: block;
   width: 50%;
   margin: auto;
   margin-bottom: 1.2em;
-  background-color: #e1c736;
+  background-color: #b34140;
   text-decoration: none;
-  color: rgba(158, 92, 139, 0.9);
+  color: #f1e7ecd6;
   font-size: 1.2em;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-.default .main .result .resultPanel .view:hover {
-  background-color: #ca4d4a;
+body .main .result .resultPanel .view:hover {
+  background-color: #dfa42a;
   color: #f1f4f1;
 }
 
-.default .main .result .showMoreContainer {
+body .main .result .showMoreContainer {
   position: relative;
   height: 100%;
   padding: 1em 0;
 }
 
-.default .main .result .showMoreContainer .alert {
+body .main .result .showMoreContainer .alert {
   top: 20%;
 }
 
-.default .main .result .showMoreContainer .showMore {
+body .main .result .showMoreContainer .showMore {
   margin: 1em auto;
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(158, 92, 139, 0.9);
+  color: #b34140;
+  background-color: #f1e7ecd6;
   -webkit-box-shadow: 0 0 1em #04080c;
           box-shadow: 0 0 1em #04080c;
 }
 
-.default .main .recipe {
+body .main .recipe {
   display: none;
   min-height: 100vh;
   position: relative;
-  background-image: url(../img/bg7_.jpg);
+  background-image: url(../img/bg_recipe.jpg);
   color: #04080c;
 }
 
-.default .main .recipe .recipePanel {
+body .main .recipe .recipePanel {
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: 2s;
@@ -514,7 +512,7 @@ a {
   }
 }
 
-.default .main .recipe .recipePanel img {
+body .main .recipe .recipePanel img {
   margin: auto 3em;
   margin-top: 3em;
   display: block;
@@ -524,25 +522,25 @@ a {
           box-shadow: 0.5em 0.5em 1em #04080c;
 }
 
-.default .main .recipe .recipePanel .detailInfo {
+body .main .recipe .recipePanel .detailInfo {
   margin-left: auto;
   width: 60%;
   height: 100%;
 }
 
-.default .main .recipe .recipePanel .detailInfo .title {
+body .main .recipe .recipePanel .detailInfo .title {
   position: relative;
   width: 130%;
   left: -30%;
   margin-top: 1em;
-  background-color: rgba(158, 92, 139, 0.9);
+  background-color: #f1e7ecd6;
   padding: 0.5em;
   text-align: left;
   font-size: 2.5em;
-  color: #e1c736;
+  color: #b34140;
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo {
+body .main .recipe .recipePanel .detailInfo .dishInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -560,25 +558,25 @@ a {
   font-size: 1.3em;
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo li {
+body .main .recipe .recipePanel .detailInfo .dishInfo li {
   margin: 0.5em 1em;
   color: #d76b34;
   font-weight: bold;
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo li i {
+body .main .recipe .recipePanel .detailInfo .dishInfo li i {
   padding-right: 0.5em;
-  color: #497e9a;
+  color: #7f9530;
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
+body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn {
   padding: 0, 0.5em;
   background-color: transparent;
   color: #d76b34;
   font-weight: bold;
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
+body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn:hover {
   -webkit-animation: scaleup 0.5s;
           animation: scaleup 0.5s;
 }
@@ -605,48 +603,48 @@ a {
   }
 }
 
-.default .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn i {
+body .main .recipe .recipePanel .detailInfo .dishInfo .likeBtn i {
   padding-right: 0.5em;
 }
 
-.default .main .recipe .recipePanel .detailInfo .recipeInfo {
+body .main .recipe .recipePanel .detailInfo .recipeInfo {
   width: 100%;
   text-align: left;
   padding-right: 2em;
 }
 
-.default .main .recipe .recipePanel .detailInfo .recipeInfo p {
+body .main .recipe .recipePanel .detailInfo .recipeInfo p {
   font-weight: bold;
   margin: 0;
 }
 
-.default .main .recipe .recipePanel .detailInfo .recipeInfo p .fa-pepper-hot {
+body .main .recipe .recipePanel .detailInfo .recipeInfo p .fa-pepper-hot {
   padding-right: 0.5em;
-  color: #497e9a;
+  color: #7f9530;
 }
 
-.default .main .recipe .recipePanel .detailInfo .recipeInfo ul {
+body .main .recipe .recipePanel .detailInfo .recipeInfo ul {
   padding-bottom: 1em;
   margin: 0;
 }
 
-.default .main .recipe .recipePanel .detailInfo a {
+body .main .recipe .recipePanel .detailInfo a {
   display: block;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   text-decoration: none;
-  background-color: rgba(158, 92, 139, 0.9);
+  background-color: #f1e7ecd6;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
   padding: 0.5em 2em;
   font-size: 1.3em;
   margin-top: 1em;
   margin-bottom: 1.8em;
-  color: #e1c736;
+  color: #b34140;
 }
 
-.default .main .recipe .timerBtn {
+body .main .recipe .timerBtn {
   position: absolute;
   bottom: 2%;
   left: 13%;
@@ -654,29 +652,29 @@ a {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(12, 39, 53, 0.9);
+  color: #b34140;
+  background-color: #f1e7ecd6;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-.default .main .bookmark {
+body .main .bookmark {
   position: relative;
   min-height: 100vh;
   color: #04080c;
-  background-image: url(../img/bg6.jpg);
+  background-image: url(../img/bg2.jpg);
 }
 
-.default .main .bookmark .bookmarkContainer {
+body .main .bookmark .bookmarkContainer {
   width: 90%;
   margin: auto;
   position: relative;
   min-height: 100vh;
 }
 
-.default .main .bookmark .bookmarkContainer h2 {
-  color: #e1c736;
-  background-color: rgba(158, 92, 139, 0.9);
+body .main .bookmark .bookmarkContainer h2 {
+  color: #b34140;
+  background-color: #f1e7ecd6;
   position: absolute;
   top: 1%;
   left: -6%;
@@ -685,14 +683,14 @@ a {
   font-size: 2.5em;
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList {
+body .main .bookmark .bookmarkContainer .bookmarkList {
   min-height: 100vh;
   width: 100%;
   padding-top: 10%;
   background-color: rgba(255, 255, 255, 0.613);
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[6];
@@ -702,31 +700,31 @@ a {
   margin: auto;
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   display: table-cell;
   cursor: pointer;
   border-radius: 50vw;
   margin: auto;
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
   display: none;
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
   display: block;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-.default .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
   grid-column: span 3;
   margin-right: auto;
   font-size: 2em;
 }
 
-.default .main .bookmark .bookmarkContainer .delBtn {
+body .main .bookmark .bookmarkContainer .delBtn {
   position: absolute;
   bottom: 0;
   right: 10%;
@@ -734,54 +732,38 @@ a {
   display: block;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  color: #e1c736;
-  background-color: rgba(158, 92, 139, 0.9);
+  color: #b34140;
+  background-color: #f1e7ecd6;
   -webkit-box-shadow: 0 0 1.2em #04080c;
           box-shadow: 0 0 1.2em #04080c;
 }
 
-.default .footer {
+body .footer {
   text-align: center;
   padding: 0.5em 0;
   font-size: 1.3em;
-  background-color: rgba(158, 92, 139, 0.9);
-  color: #e1c736;
+  background-color: #f1e7ecd6;
+  color: #b34140;
 }
 
-.default .footer .fa-chevron-circle-up {
+body .footer .fa-chevron-circle-up {
   display: none;
   position: fixed;
   right: 5%;
   bottom: 10%;
-  color: #ca4d4a;
+  color: #dfa42a;
   cursor: pointer;
 }
 
-.default .footer .fa-chevron-circle-up:hover {
-  color: #497e9a;
+body .footer .fa-chevron-circle-up:hover {
+  color: #7f9530;
 }
 
-.default .footer h4 > a {
-  color: #ca4d4a;
+body .footer h4 > a {
+  color: #dfa42a;
 }
 
-.default .footer h4 > a:hover {
-  color: #497e9a;
-}
-
-.default .dark {
-  color: pink;
-  /* header */
-}
-
-.default .dark .header {
-  text-align: center;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.default .dark .header h1 {
-  text-transform: uppercase;
-  color: white;
+body .footer h4 > a:hover {
+  color: #7f9530;
 }
 /*# sourceMappingURL=lightTheme.css.map */
