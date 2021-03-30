@@ -21,11 +21,11 @@
 
 <h4>&nbsp&nbsp2. Function Declaration</h4>
 
-![image](https://user-images.githubusercontent.com/76931326/112599634-73782d80-8dcd-11eb-8817-09edc431eb2a.png)
+![image](https://user-images.githubusercontent.com/76931326/113053115-c69b0900-915c-11eb-8d99-c32138e955ff.png)
 
 <h4>&nbsp&nbsp3. Function call</h4>
 
-![image](https://user-images.githubusercontent.com/76931326/112600265-33657a80-8dce-11eb-9e3f-ce9c2380927a.png)
+![image](https://user-images.githubusercontent.com/76931326/113053163-d31f6180-915c-11eb-8b04-62de41d223a3.png)
 
 <hr>
 <h2>To do list</h2>
