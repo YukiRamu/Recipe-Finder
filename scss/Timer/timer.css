@@ -22,13 +22,19 @@ body .timerBtn .startBtn,
 body .timerBtn .stopBtn,
 body .timerBtn .resetBtn {
   border: none;
-  border: 0.1em #d76b34 solid;
-  -webkit-box-shadow: 0 0 1em #0d243b;
-          box-shadow: 0 0 1em #0d243b;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f0b9d4ca), color-stop(#c0e7f0d1), to(#f4dd9c));
-  background: linear-gradient(#f0b9d4ca, #c0e7f0d1, #f4dd9c);
+  -webkit-box-shadow: 0 0.3em 0.5em #727171;
+          box-shadow: 0 0.3em 0.5em #727171;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c2d67f), to(#dd7fc7));
+  background: linear-gradient(#c2d67f, #dd7fc7);
   font-size: 1.2em;
   padding: 0.3em 2em;
   margin: 0 1em;
+}
+
+body .timerBtn .startBtn:active,
+body .timerBtn .stopBtn:active,
+body .timerBtn .resetBtn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 /*# sourceMappingURL=timer.css.map */

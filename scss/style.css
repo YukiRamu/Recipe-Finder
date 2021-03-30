@@ -322,8 +322,6 @@ body .header .searchForm .keywordSearch .keyword {
   top: 70%;
   position: absolute;
   width: 80%;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
   font-size: 1.3em;
 }
 
@@ -335,8 +333,6 @@ body .header .searchForm .keywordSearch .search {
   position: absolute;
   top: 70%;
   left: 83%;
-  border-radius: 50vw;
-  border: none;
   text-transform: none;
   border-style: none;
   background-color: transparent;
@@ -344,6 +340,8 @@ body .header .searchForm .keywordSearch .search {
 
 body .header .searchForm .keywordSearch .search .fa-search {
   color: #e7d362;
+  border-bottom: #04080c 0.2em solid;
+  padding-bottom: 0.2em;
   font-size: 1.5em;
 }
 
@@ -383,8 +381,8 @@ body .main .result .resultPanel {
 
 body .main .result .resultPanel .itemPanel {
   min-height: 50vh;
-  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
-          box-shadow: 0.5em 0.5em 1em #04080c;
+  -webkit-box-shadow: 0 0.2em 1em #04080c;
+          box-shadow: 0 0.2em 1em #04080c;
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: 2s;
@@ -439,13 +437,18 @@ body .main .result .resultPanel .view {
   text-decoration: none;
   color: rgba(12, 39, 53, 0.958);
   font-size: 1.2em;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0.2em 0.5em #04080c;
+          box-shadow: 0 0.2em 0.5em #04080c;
 }
 
 body .main .result .resultPanel .view:hover {
   background-color: #ca4d4a;
   color: #f1f4f1;
+}
+
+body .main .result .resultPanel .view:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 body .main .result .showMoreContainer {
@@ -465,8 +468,13 @@ body .main .result .showMoreContainer .showMore {
   font-size: 1.3em;
   color: #e7d362;
   background-color: rgba(12, 39, 53, 0.958);
-  -webkit-box-shadow: 0 0 1em #04080c;
-          box-shadow: 0 0 1em #04080c;
+  -webkit-box-shadow: 0 0.5em 1em #04080c;
+          box-shadow: 0 0.5em 1em #04080c;
+}
+
+body .main .result .showMoreContainer .showMore:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 body .main .recipe {
@@ -516,8 +524,8 @@ body .main .recipe .recipePanel img {
   display: block;
   width: 35%;
   height: 70%;
-  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
-          box-shadow: 0.5em 0.5em 1em #04080c;
+  -webkit-box-shadow: 1em 1em 0.5em #04080c;
+          box-shadow: 1em 1em 0.5em #04080c;
 }
 
 body .main .recipe .recipePanel .detailInfo {
@@ -633,13 +641,18 @@ body .main .recipe .recipePanel .detailInfo a {
   width: fit-content;
   text-decoration: none;
   background-color: rgba(12, 39, 53, 0.958);
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0.5em 1em #04080c;
+          box-shadow: 0 0.5em 1em #04080c;
   padding: 0.5em 2em;
   font-size: 1.3em;
   margin-top: 1em;
   margin-bottom: 1.8em;
   color: #e7d362;
+}
+
+body .main .recipe .recipePanel .detailInfo a:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 body .main .recipe .timerBtn {
@@ -652,8 +665,13 @@ body .main .recipe .timerBtn {
   font-size: 1.3em;
   color: #e7d362;
   background-color: rgba(12, 39, 53, 0.958);
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0.5em 1em #04080c;
+          box-shadow: 0 0.5em 1em #04080c;
+}
+
+body .main .recipe .timerBtn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 body .main .bookmark {
@@ -712,8 +730,8 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
   display: block;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 1em 1em 0.5em #04080c;
+          box-shadow: 1em 1em 0.5em #04080c;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
@@ -732,8 +750,13 @@ body .main .bookmark .bookmarkContainer .delBtn {
   font-size: 1.3em;
   color: #e7d362;
   background-color: rgba(12, 39, 53, 0.958);
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0.5em 1em #04080c;
+          box-shadow: 0 0.5em 1em #04080c;
+}
+
+body .main .bookmark .bookmarkContainer .delBtn:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 body .footer {

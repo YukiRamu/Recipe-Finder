@@ -255,12 +255,13 @@ body {
         .keyword {
           border-radius: 50vw;
           border: none;
+         // border-bottom: $color4 0.2em solid;
           padding: 1em;
           @include centering;
           top: 70%;
           position: absolute;
           width: 80%;
-          box-shadow: 0 0 1.2em $color8;
+         // box-shadow: 0 0.3em 0.5em $color15;
           font-size: 1.3em;
         }
         .search {
@@ -268,13 +269,13 @@ body {
           position: absolute;
           top: 70%;
           left: 83%;
-          border-radius: 50vw;
-          border: none;
           text-transform: none;
           border-style: none;
           background-color: transparent;
           .fa-search {
             color: $color12;
+            border-bottom: $color8 0.2em solid;
+            padding-bottom: 0.2em;
             font-size: 1.5em;
           }
         }
@@ -314,7 +315,7 @@ body {
         padding-right: 5%;
         .itemPanel {
           min-height: 50vh;
-          box-shadow: 0.5em 0.5em 1em $color8;
+          box-shadow: 0 0.2em 1em $color8;
           @include animationFadeIn;
           img {
             height: 35vh;
@@ -340,10 +341,13 @@ body {
           text-decoration: none;
           color: $base;
           font-size: 1.2em;
-          box-shadow: 0 0 1.2em $color8;
+          box-shadow: 0 0.2em 0.5em $color8;
           &:hover {
             background-color: $color4;
             color: $color15;
+          }
+          &:active {
+            box-shadow: none;
           }
         }
       }
@@ -361,7 +365,10 @@ body {
           font-size: 1.3em;
           color: $color12;
           background-color: $base;
-          box-shadow: 0 0 1em $color8;
+          box-shadow:  0 0.5em 1em $color8;
+          &:active {
+            box-shadow: none;
+          }
         }
       }
     }
@@ -384,7 +391,7 @@ body {
           display: block;
           width: 35%;
           height: 70%;
-          box-shadow: 0.5em 0.5em 1em $color8;
+          box-shadow: 1em 1em 0.5em $color8;
         }
 
         .detailInfo {
@@ -439,7 +446,6 @@ body {
               }
             }
           }
-
           .recipeInfo {
             width: 100%;
             text-align: left;
@@ -462,12 +468,15 @@ body {
             width: fit-content;
             text-decoration: none;
             background-color: $base;
-            box-shadow: 0 0 1.2em $color8;
+            box-shadow:  0 0.5em 1em $color8;
             padding: 0.5em 2em;
             font-size: 1.3em;
             margin-top: 1em;
             margin-bottom: 1.8em;
             color: $color12;
+            &:active {
+              box-shadow: none;
+            }
           }
         }
       }
@@ -481,7 +490,10 @@ body {
         font-size: 1.3em;
         color: $color12;
         background-color: $base;
-        box-shadow: 0 0 1.2em $color8;
+        box-shadow:  0 0.5em 1em $color8;
+        &:active {
+          box-shadow: none;
+        }
       }
     }
 
@@ -529,7 +541,7 @@ body {
             img {
               width: 50%;
               display: block;
-              box-shadow: 0 0 1.2em $color8;
+              box-shadow: 1em 1em 0.5em $color8;
             }
             p {
               grid-column: span 3;
@@ -548,7 +560,10 @@ body {
           font-size: 1.3em;
           color: $color12;
           background-color: $base;
-          box-shadow: 0 0 1.2em $color8;
+          box-shadow:  0 0.5em 1em $color8;
+          &:active {
+            box-shadow: none;
+          }
         }
       }
     }

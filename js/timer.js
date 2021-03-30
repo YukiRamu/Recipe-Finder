@@ -10,64 +10,87 @@ const second = document.querySelector(".second");
 let displayHour = 0;
 let displayMin = 0;
 let displaySec = 0;
-let interval;
+let timerId;
 
 /* ====== Function Declaration  ===== */
 
 const startTimer = () => {
-  //second untiil 59
-  console.log("timer started");
-
-  if (displaySec < 60) {
+  //second
+  if (displaySec < 59) {
     //count second up to 59
     displaySec++;
 
     if (displaySec < 10) {
-      second.innerHTML = "0" + displaySec;
+      second.innerHTML = displaySec.toString().padStart(2, "0");
     } else {
       second.innerHTML = displaySec;
     }
-
+  } else {
+    //increment min
+    displayMin++;
+    displaySec = 0;
+    if (displaySec < 10) {
+      second.innerHTML = displaySec.toString().padStart(2, "0");
+    } else {
+      second.innerHTML = displaySec;
+    }
   }
-  //continue from here
 
-  // if (displaySec > 60) {
-  //   //increment min
-  //   displayMin++
-  //   if (displayMin < 10) {
-  //     min.innerHTML = "0" + displayMin;
-  //   } else {
-  //     min.innerHTML = displayMin;
-  //   }
-  // }
+  //minutes
+  if (displayMin < 59) {
+    if (displayMin < 10) {
+      min.innerHTML = displayMin.toString().padStart(2, "0");
+    } else {
+      min.innerHTML = displayMin;
+    }
+  } else {
+    //increment hour
+    displayHour++;
+    displayMin = 0;
+    if (displayMin < 10) {
+      min.innerHTML = displayMin.toString().padStart(2, "0");
+    } else {
+      min.innerHTML = displayMin;
+    }
+  }
 
-
+  //hour 
+  if (displayHour < 10) {
+    hour.innerHTML = displayHour.toString().padStart(2, "0");
+  } else {
+    hour.innerHTML = displayHour;
+  }
 }
 
 const stopTimer = () => {
-  clearInterval(interval);
+  clearInterval(timerId);
 }
 
 const resetTimer = () => {
-  clearInterval(interval);
+  clearInterval(timerId);
   hour.innerHTML = "00";
   min.innerHTML = "00";
   second.innerHTML = "00";
+  displayHour = 0;
+  displayMin = 0;
+  displaySec = 0;
 }
 
 /* ====== Function Call  ===== */
 startBtn.addEventListener("click", () => {
-  interval = setInterval(startTimer, 1000);
+  timerId = setInterval(startTimer, 1000);
+  console.log("start", timerId);
   startBtn.disabled = true; //disabled : prevent the button from being clicked multiple times
-  console.log(interval);//1
 });
 
 stopBtn.addEventListener("click", () => {
   stopTimer();
+  console.log("stop", timerId);
   startBtn.disabled = false;
 });
 
 resetBtn.addEventListener("click", () => {
   resetTimer();
+  console.log("reset", timerId);
   startBtn.disabled = false;
 });

@@ -237,7 +237,7 @@ const displayRecipe = async (title) => {
               ${appendHTMLForIngrList}
             </ul>
           </div>
-          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i>Make them</a>
+          <a href="${resultArray[selectedIndex].recipe.url}" target="_blank"><i class="fas fa-seedling"></i> Make them</a>
         </div>
         `;
 
