@@ -56,7 +56,3 @@
 <li>back button on Recipe field => back to the last position of the result</li>
 <li>Add item id (random number) to the array of objects - for now an item name is used for a unique identifier</li>
 </ul>
-
-<h2>Website Design</h2>
-
-![image](https://user-images.githubusercontent.com/76931326/112596215-baafef80-8dc8-11eb-9292-afce9377f20a.png)
