@@ -368,14 +368,12 @@ const deleteBookmark = () => {
 const storeBookmark = () => {
   let storeJson = JSON.stringify(bookmarkArray);
   localStorage.setItem("bookmark", storeJson);
-  console.log("bookmark stored", localStorage);
 }
 
 /* Get bookmark in local storage*/
 const getBookmark = () => {
   let getJson = localStorage.getItem("bookmark");
   bookmarkArray = JSON.parse(getJson);
-  console.log("get bookmarkArray", bookmarkArray);
 }
 
 /* Display bookmark when the page is loaded */
@@ -435,6 +433,24 @@ const stopLoader = () => {
   loader.style.display = "none";
 }
 
+/* Enable light theme */
+const enableLightTheme = () => {
+  styleSheetLink.href = "./scss/lightTheme.css"; //change stylesheet
+  localStorage.setItem("mode", "light");
+  ball.style.transform = "translateX(-1%)"; //move the ball to right
+  ball.style.backgroundColor = "#ebece5d6";
+  ball.style.transition = "transform" + 0.3 + "s" + "linear"
+}
+
+/* Disable light theme = back to default */
+const disableLightTheme = () => {
+  styleSheetLink.href = "./scss/style.css";  //change stylesheet
+  localStorage.setItem("mode", "default");
+  ball.style.transform = "translateX(-3%)"; // move the ball to left
+  ball.style.backgroundColor = "rgba(12, 39, 53, 0.958)";
+  ball.style.transition = "transform" + 0.3 + "s" + "linear"
+}
+
 /* ============================== Function Call ============================== */
 /* recipe search - Search button */
 searchBtn.addEventListener("click", () => {
@@ -480,24 +496,6 @@ timerBtn.addEventListener("click", () => {
 delBtn.addEventListener("click", () => {
   deleteBookmark();
 })
-
-/* Enable light theme */
-const enableLightTheme = () => {
-  styleSheetLink.href = "./scss/lightTheme.css"; //change stylesheet
-  localStorage.setItem("mode", "light");
-  ball.style.transform = "translateX(-1%)"; //move the ball to right
-  ball.style.backgroundColor = "#ebece5d6";
-  ball.style.transition = "transform" + 0.3 + "s" + "linear"
-}
-
-/* Disable light theme = back to default */
-const disableLightTheme = () => {
-  styleSheetLink.href = "./scss/style.css";  //change stylesheet
-  localStorage.setItem("mode", "default");
-  ball.style.transform = "translateX(-3%)"; // move the ball to left
-  ball.style.backgroundColor = "rgba(12, 39, 53, 0.958)";
-  ball.style.transition = "transform" + 0.3 + "s" + "linear"
-}
 
 /* Display bookmark when the page is loaded */
 displayBookmark();
