@@ -5,7 +5,7 @@
 <ul>
 <li>Recipe search with any keywords</li>
 <li>View the detail of recipes</li>
-<li>Bookmark (add and delete)</li>
+<li>Bookmark (add, delete and store data even if hte page is reloaded)</li>
 </ul>
 
 <h3 align="left">🗝️JavaScript Explanation:</h3>
@@ -48,7 +48,7 @@
 <li>Alert() to popup - item is already in the bookmark, no item selected, and bookmark added</li>
 <li>Bookmark - delete more than 2 items -<b>[done]</b> : array.every()</li>
 <li>Bookmark - delete all - <b>[done]</b>: array.every()</li>
-<li>Store previous bookmark</li>
+<li>Store previous bookmark  - <b>[done]</b></li>
 <li>Second time+ display recipe animation - fadeIn</li>
 <li>Escape invalid recipe names with /" and /' ==> displayRecipe last index issue will be solved</li>
 <li>Style for checkbox (bookmark)</li>
