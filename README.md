@@ -6,6 +6,7 @@
 <li>Recipe search with any keywords</li>
 <li>View the detail of recipes</li>
 <li>Bookmark (add, delete and store data even if hte page is reloaded)</li>
+<li>Theme color change</li>
 </ul>
 
 <h3 align="left">🗝️JavaScript Explanation:</h3>
