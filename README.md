@@ -49,10 +49,10 @@
 <li>Alert() to popup - item is already in the bookmark and bookmark added</li>
 <li>Bookmark - delete more than 2 items -<b>[done]</b> : array.every()</li>
 <li>Bookmark - delete all - <b>[done]</b>: array.every()</li>
+<li>Store previous bookmark</li>
 <li>Second time+ display recipe animation - fadeIn</li>
 <li>Escape invalid recipe names with /" and /' ==> displayRecipe last index issue will be solved</li>
-<li>Style for checkbox</li>
-<li>Bookmark - keep storing the items even after the window refresh</li>
+<li>Style for checkbox (bookmark)</li>
 <li>back button on Recipe field => back to the last position of the result</li>
 <li>Add item id (random number) to the array of objects - for now an item name is used for a unique identifier</li>
 </ul>
