@@ -10,7 +10,7 @@ const second = document.querySelector(".second");
 let displayHour = 0;
 let displayMin = 0;
 let displaySec = 0;
-let timerId;
+let timerId; //to clearInterval
 
 /* ====== Function Declaration  ===== */
 
@@ -19,7 +19,6 @@ const startTimer = () => {
   if (displaySec < 59) {
     //count second up to 59
     displaySec++;
-
     if (displaySec < 10) {
       second.innerHTML = displaySec.toString().padStart(2, "0");
     } else {

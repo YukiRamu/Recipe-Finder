@@ -277,6 +277,7 @@ const addBookmark = () => {
     `
     }).join("");
     bookmarkList.innerHTML = appendHTMLForBookmark;
+    storeBookmark();
     alert("🔖 Bookmark added😊");//====planning to change to the popup screen
   } else {
     //more than one items already in the bookmark
@@ -316,6 +317,7 @@ const addBookmark = () => {
          `
       }).join("");
       bookmarkList.innerHTML = appendHTMLForBookmark;
+      storeBookmark();
       alert("🔖 Bookmark added😊"); //====planning to change to the popup screen
     }
   }
@@ -347,6 +349,38 @@ const deleteBookmark = () => {
   }
 
   //display bookmark again
+  //create html
+  appendHTMLForBookmark = bookmarkArray.map((element) => {
+    return `
+      <div class="bookmarkItem">
+        <input type="checkbox" name="checkbox" class="checkbox">
+        <label for="checkbox"></label>
+        <img src="${element.imgURL}" alt="itemImg">
+        <p>${element.title}</p>
+      </div>
+      `
+  }).join("");
+  bookmarkList.innerHTML = appendHTMLForBookmark;
+  storeBookmark();
+}
+
+/* Store bookmark in local storage*/
+const storeBookmark = () => {
+  let storeJson = JSON.stringify(bookmarkArray);
+  localStorage.setItem("bookmark", storeJson);
+  console.log("bookmark stored", localStorage);
+}
+
+/* Get bookmark in local storage*/
+const getBookmark = () => {
+  let getJson = localStorage.getItem("bookmark");
+  bookmarkArray = JSON.parse(getJson);
+  console.log("get bookmarkArray", bookmarkArray);
+}
+
+/* Display bookmark when the page is loaded */
+const displayBookmark = () => {
+  getBookmark();
   //create html
   appendHTMLForBookmark = bookmarkArray.map((element) => {
     return `
@@ -405,7 +439,6 @@ const stopLoader = () => {
 /* recipe search - Search button */
 searchBtn.addEventListener("click", () => {
   clearAlert(); // clear alert if it is already shown
-
   //validation check
   if ((searchKeyword.value === "") || !(isNaN)) {
     showAlert("This field is required. Number is not allowed", 0);
@@ -465,6 +498,9 @@ const disableLightTheme = () => {
   ball.style.backgroundColor = "rgba(12, 39, 53, 0.958)";
   ball.style.transition = "transform" + 0.3 + "s" + "linear"
 }
+
+/* Display bookmark when the page is loaded */
+displayBookmark();
 
 /* ============================== Animation ============================== */
 //When the window is loaded
