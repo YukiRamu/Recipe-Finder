@@ -31,13 +31,13 @@
 <h2>To do list</h2>
 <ul>
 <li>Form validation (null or number) and filter - filter not yet done</li>
-<li>Degital clock</li>
+<li>Degital clock JS app</li>
 <li>API - <b>[done]</b></li>
 <li>Load more - <b>[done]</b></li>
 <li>Loading modal - <b>[done]</b></li>
 <li>Theme color change - <b>[done]</b></li>
 <li>Bookmark (adding one by one, delete one item, duplication check) - <b>[done]</b></li>
-<li>Stopwatch - <b>[done]</b></li>
+<li>Stopwatch JS app - <b>[done]</b></li>
 <li>Note taker JS app</li>
 <li>Move to top button - <b>[done]</b></li>
 <li>GSAP Library - scrollTo plugin => plan changed. Window.scrollTo()</li>
