@@ -36,8 +36,7 @@
 <li>Loading modal - <b>[done]</b></li>
 <li>Theme color change - <b>[done]</b></li>
 <li>Bookmark (adding one by one, delete one item, duplication check) - <b>[done]</b></li>
-<li>Countdown clock</li>
-<li>Display today's date</li>
+<li>Stopwatch - <b>[done]</b></li>
 <li>Note taker JS app</li>
 <li>Move to top button - <b>[done]</b></li>
 <li>GSAP Library - scrollTo plugin => plan changed. Window.scrollTo()</li>
@@ -46,7 +45,7 @@
 <h2>Additional to do list</h2>
 <ul>
 <li>Clean up SCSS</li>
-<li>Alert() to popup - item is already in the bookmark and bookmark added</li>
+<li>Alert() to popup - item is already in the bookmark, no item selected, and bookmark added</li>
 <li>Bookmark - delete more than 2 items -<b>[done]</b> : array.every()</li>
 <li>Bookmark - delete all - <b>[done]</b>: array.every()</li>
 <li>Store previous bookmark</li>
