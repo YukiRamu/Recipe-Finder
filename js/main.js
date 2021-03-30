@@ -335,19 +335,16 @@ const deleteBookmark = () => {
       recipeTitleArray.push(bookmarkArray[i].title); //recipe name to be deleted (string)
       //filter out the items that are ok to be deleted
       newBookmarkArray = bookmarkArray.filter(i => recipeTitleArray.every(item => item !== i.title));
-
-      //============= Error Code for reference : only checking one item ==================
-      // newBookmarkArray = bookmarkArray.filter((item => {
-      //   console.log(item.title); //1 object
-      //   recipeTitle[i].indexOf(item.title) === -1;
-      // }));
     }
   }
 
-  //delete
-
-  //to use bookmarkArray for the duplication check
-  bookmarkArray = newBookmarkArray;
+  if ((bookmarkArray.length > newBookmarkArray.length) && (recipeTitleArray.length !== 0)) {
+    //to use bookmarkArray for the duplication check
+    //one or more items are selected
+    bookmarkArray = newBookmarkArray;
+  } else {
+    alert("no item selected.");
+  }
 
   //display bookmark again
   //create html
