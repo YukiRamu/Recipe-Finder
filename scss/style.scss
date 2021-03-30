@@ -1,23 +1,14 @@
 /* Variables */
 
 //Color pattern 1 - default
-$color3: #d76b34; // in use
-$color4: #ca4d4a; // in use
-$color6: #97342b; // in use
-$color8: #04080c; // in use
-$color12: #e7d362; // in use
-$color14: #497e9a; // in use
-$color15: #f1f4f1; // in use
-$base: rgba(12, 39, 53, 0.958); //in use
-
-//Color pattern 2 - light
-$color1: #ebece5;
-$color2: #e3e3e3;
-$color5: #d75a54;
-$color7: #cc9456;
-$color10: #5a280b;
-$color11: #b85712;
-$color13: #dfa42a;
+$color3: #d76b34; // recipe detail text color
+$color4: #ca4d4a; // button, bookmark heart, recipe button hover color
+$color6: #97342b; // recipe panel text color
+$color8: #04080c; // bookmark text color
+$color12: #e7d362; // primary text color
+$color14: #497e9a; // accent color, button hover color
+$color15: #f1f4f1; // recipe button hover text color
+$base: rgba(12, 39, 53, 0.958); // base color
 
 @mixin flex {
   display: flex;

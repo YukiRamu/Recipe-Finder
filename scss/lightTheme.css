@@ -143,7 +143,7 @@ a {
   text-align: center;
   font-size: 1em;
   background-color: #dfa42a;
-  color: #04080c;
+  color: #0d243b;
   border-radius: 10vw;
   width: 80%;
 }
@@ -186,7 +186,7 @@ body .loader .spinner {
 
 body .loader span {
   position: absolute;
-  color: #f1f4f1;
+  color: #918484;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -209,7 +209,7 @@ body .header {
 body .header h1 {
   text-transform: uppercase;
   color: #b34140;
-  text-shadow: 0 0 0.3em #f1f4f1;
+  text-shadow: 0 0 0.3em #918484;
   margin-left: auto;
   width: 50%;
   z-index: 200;
@@ -253,9 +253,7 @@ body .header .navBar .colorChange .colorCheckbox {
 
 body .header .navBar .colorChange .colorCheckboxLabel {
   border-radius: 50vw;
-  background-color: #f1f4f1;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  background-color: #918484;
   width: 100%;
   height: 100%;
   height: 75%;
@@ -324,8 +322,8 @@ body .header .searchForm .keywordSearch .keyword {
   top: 70%;
   position: absolute;
   width: 80%;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
   font-size: 1.3em;
 }
 
@@ -385,8 +383,8 @@ body .main .result .resultPanel {
 
 body .main .result .resultPanel .itemPanel {
   min-height: 50vh;
-  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
-          box-shadow: 0.5em 0.5em 1em #04080c;
+  -webkit-box-shadow: 0.5em 0.5em 1em #0d243b;
+          box-shadow: 0.5em 0.5em 1em #0d243b;
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   -webkit-animation-duration: 2s;
@@ -426,7 +424,7 @@ body .main .result .resultPanel p {
   margin-bottom: 0;
   margin: auto;
   padding: 1em;
-  color: #582811;
+  color: #52230d;
   font-size: 1.5em;
   font-weight: bold;
   width: 90%;
@@ -441,13 +439,13 @@ body .main .result .resultPanel .view {
   text-decoration: none;
   color: #f1e7ecd6;
   font-size: 1.2em;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
 }
 
 body .main .result .resultPanel .view:hover {
   background-color: #dfa42a;
-  color: #f1f4f1;
+  color: #918484;
 }
 
 body .main .result .showMoreContainer {
@@ -467,8 +465,8 @@ body .main .result .showMoreContainer .showMore {
   font-size: 1.3em;
   color: #b34140;
   background-color: #f1e7ecd6;
-  -webkit-box-shadow: 0 0 1em #04080c;
-          box-shadow: 0 0 1em #04080c;
+  -webkit-box-shadow: 0 0 1em #0d243b;
+          box-shadow: 0 0 1em #0d243b;
 }
 
 body .main .recipe {
@@ -476,7 +474,7 @@ body .main .recipe {
   min-height: 100vh;
   position: relative;
   background-image: url(../img/bg_recipe.jpg);
-  color: #04080c;
+  color: #0d243b;
 }
 
 body .main .recipe .recipePanel {
@@ -518,8 +516,8 @@ body .main .recipe .recipePanel img {
   display: block;
   width: 35%;
   height: 70%;
-  -webkit-box-shadow: 0.5em 0.5em 1em #04080c;
-          box-shadow: 0.5em 0.5em 1em #04080c;
+  -webkit-box-shadow: 0.5em 0.5em 1em #0d243b;
+          box-shadow: 0.5em 0.5em 1em #0d243b;
 }
 
 body .main .recipe .recipePanel .detailInfo {
@@ -635,8 +633,8 @@ body .main .recipe .recipePanel .detailInfo a {
   width: fit-content;
   text-decoration: none;
   background-color: #f1e7ecd6;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
   padding: 0.5em 2em;
   font-size: 1.3em;
   margin-top: 1em;
@@ -654,14 +652,14 @@ body .main .recipe .timerBtn {
   font-size: 1.3em;
   color: #b34140;
   background-color: #f1e7ecd6;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
 }
 
 body .main .bookmark {
   position: relative;
   min-height: 100vh;
-  color: #04080c;
+  color: #0d243b;
   background-image: url(../img/bg2.jpg);
 }
 
@@ -714,8 +712,8 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
   display: block;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
@@ -734,8 +732,8 @@ body .main .bookmark .bookmarkContainer .delBtn {
   font-size: 1.3em;
   color: #b34140;
   background-color: #f1e7ecd6;
-  -webkit-box-shadow: 0 0 1.2em #04080c;
-          box-shadow: 0 0 1.2em #04080c;
+  -webkit-box-shadow: 0 0 1.2em #0d243b;
+          box-shadow: 0 0 1.2em #0d243b;
 }
 
 body .footer {
