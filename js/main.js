@@ -1,7 +1,9 @@
 /* ======================== Variable Declaration ======================== */
 //Recipe API
 //======Modification required===
-const baseURL = "https://api.edamam.com/search?q=";
+//const baseURL = "https://api.edamam.com/search?q=";
+const url = "https://api.edamam.com/";
+const parameter = "search?q=";
 const apiiD = "93398462";
 const apiKey = "6440cc80aeb489ed0b5cdf7eda03a7fa";
 
@@ -61,7 +63,7 @@ const getRecipe = (keyword, firstIndex, lastIndex) => {
   lastIdxParam = lastIndex;
 
   //fetch api
-  fetch(`${baseURL}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
+  fetch(`${url}${parameter}${keyword}&app_id=${apiiD}&app_key=${apiKey}&from=${firstIndex}&to=${lastIndex}`)
     .then((response) => {
       if (!response.ok) {
         throw error(response.statusText);
