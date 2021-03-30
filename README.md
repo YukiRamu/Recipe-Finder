@@ -34,7 +34,7 @@
 <li>API - <b>[done]</b></li>
 <li>Load more - <b>[done]</b></li>
 <li>Loading modal - <b>[done]</b></li>
-<li>Dark-light mode change</li>
+<li>Theme color change - <b>[done]</b></li>
 <li>Bookmark (adding one by one, delete one item, duplication check) - <b>[done]</b></li>
 <li>Countdown clock</li>
 <li>Display today's date</li>
