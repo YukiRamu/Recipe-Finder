@@ -1,1 +1,34 @@
-/* No CSS *//*# sourceMappingURL=timer.css.map */
+body {
+  background-image: url(../../img/timerbg.jpg);
+  background-size: cover;
+  font-family: "PT Serif", serif;
+}
+
+body .timer {
+  font-size: 5em;
+  text-align: center;
+}
+
+body .timerBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .timerBtn .startBtn,
+body .timerBtn .stopBtn,
+body .timerBtn .resetBtn {
+  border: none;
+  border: 0.1em #d76b34 solid;
+  -webkit-box-shadow: 0 0 1em #0d243b;
+          box-shadow: 0 0 1em #0d243b;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f0b9d4ca), color-stop(#c0e7f0d1), to(#f4dd9c));
+  background: linear-gradient(#f0b9d4ca, #c0e7f0d1, #f4dd9c);
+  font-size: 1.2em;
+  padding: 0.3em 2em;
+  margin: 0 1em;
+}
+/*# sourceMappingURL=timer.css.map */

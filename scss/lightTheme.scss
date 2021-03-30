@@ -169,7 +169,7 @@ body {
   /* header */
   .header {
     text-align: center;
-    background-image: url(../img/bg3.jpg);
+    background-image: url(../img/bg_top2.jpg);
     height: 100vh;
     overflow: hidden;
     h1 {
@@ -290,7 +290,7 @@ body {
       display: none;
       position: relative;
       min-height: 100vh;
-      background-image: url(../img/bg4.jpg);
+      background-image: url(../img/bg_result.jpg);
       background-size: cover;
       h2 {
         position: absolute;
@@ -491,7 +491,7 @@ body {
       position: relative;
       min-height: 100vh;
       color: $color8; // change to variable
-      background-image: url(../img/bg2.jpg);
+      background-image: url(../img/bg_bookmark2.jpg);
       .bookmarkContainer {
         width: 90%;
         margin: auto;

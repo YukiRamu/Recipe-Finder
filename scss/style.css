@@ -201,7 +201,7 @@ body .loader span {
 
 body .header {
   text-align: center;
-  background-image: url(../img/top2.jpg);
+  background-image: url(../img/bg_top.jpg);
   height: 100vh;
   overflow: hidden;
 }
@@ -351,7 +351,7 @@ body .main .result {
   display: none;
   position: relative;
   min-height: 100vh;
-  background-image: url(../img/bg4.jpg);
+  background-image: url(../img/bg_result.jpg);
   background-size: cover;
 }
 
@@ -660,7 +660,7 @@ body .main .bookmark {
   position: relative;
   min-height: 100vh;
   color: #04080c;
-  background-image: url(../img/bg6.jpg);
+  background-image: url(../img/bg_bookmark.jpg);
 }
 
 body .main .bookmark .bookmarkContainer {

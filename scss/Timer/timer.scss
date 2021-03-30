@@ -1,0 +1,25 @@
+body {
+  background-image: url(../../img/timerbg.jpg);
+  background-size: cover;
+  font-family: "PT Serif", serif;
+  .timer {
+    font-size: 5em;
+    text-align: center;
+  }
+  .timerBtn {
+    display: flex;
+    justify-content: center;
+    .startBtn,
+    .stopBtn,
+    .resetBtn {
+      border: none;
+      border: 0.1em #d76b34 solid;
+      box-shadow: 0 0 1em #0d243b;
+      background: linear-gradient(#f0b9d4ca, #c0e7f0d1, #f4dd9c);
+      font-size: 1.2em;
+      padding: 0.3em 2em;
+      margin: 0 1em;
+      //background-color: transparent;
+    }
+  }
+}

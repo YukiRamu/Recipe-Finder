@@ -443,7 +443,7 @@ bookmarkLink.addEventListener("click", () => {
 
 /* Open a new window for a countdown timer */
 timerBtn.addEventListener("click", () => {
-  window.open("timer.html", "", "width=300, height=300");
+  window.open("timer.html", "", "width=500, height=285");
 });
 
 /* delete bookmark */
