@@ -44,7 +44,7 @@
 
 <h2>Additional to do list</h2>
 <ul>
-<li>Clean up SCSS</li>
+<li>Media Query</li>
 <li>Alert() to popup - item is already in the bookmark, no item selected, and bookmark added</li>
 <li>Bookmark - delete more than 2 items -<b>[done]</b> : array.every()</li>
 <li>Bookmark - delete all - <b>[done]</b>: array.every()</li>
