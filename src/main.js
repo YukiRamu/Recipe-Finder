@@ -31,14 +31,12 @@ const recipeSection = document.querySelector(".recipe");
 const recipePanel = document.querySelector(".recipePanel");
 let appendHTMLForRecipe = "";
 let title = "";
-let singleObj = {};
 let titleParam = ""; //to use parameter outside of the function block
 let imgURLParam = "";// same as above
 
 //bookmark
 const bookmarkLink = document.querySelector(".bookmarkLink"); //a link on header
 let bookmarkArray = []; //array of object
-let bookmarkObj = {}; // object
 const bookmarkList = document.querySelector(".bookmarkList");
 let appendHTMLForBookmark = "";
 const delBtn = document.querySelector(".delBtn");//bookmark delete
@@ -50,7 +48,7 @@ const timerBtn = document.getElementById("timerBtn");
 const toTopBtn = document.querySelector("#toTop"); // move to top button
 const loader = document.querySelector(".loader"); // loading modal
 const colorCheckbox = document.querySelector(".colorCheckbox");//theme color change
-const styleSheetLink = document.getElementById("styleSheetLink");//html link tag colorchange pattern 1
+const styleSheetLink = document.getElementById("styleSheetLink");//html link tag colorchange 
 const ball = document.querySelector(".ball");//theme color change
 
 //filter to be added : &cuisineType=${cuisine}
@@ -259,7 +257,7 @@ const displayRecipe = async (title) => {
 
 /* display bookmark list - Add */
 const addBookmark = () => {
-  console.log(typeof (bookmarkArray), bookmarkArray);
+
   if (bookmarkArray.length === 0) {
     //adding to bookmark for the first time
     //add a selected item to an array
@@ -291,7 +289,6 @@ const addBookmark = () => {
       title: `${titleParam}`,
       imgURL: `${imgURLParam}`
     };
-
     //check the target item is already in the list
     let trueOrfalse = bookmarkArray.some(elem => {
       return elem.title === targetItem.title
@@ -333,9 +330,11 @@ const deleteBookmark = () => {
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
   let recipeTitleArray = [];
   let newBookmarkArray = [];
+
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].firstElementChild.checked) {
+
       //Ok to delete - bookmarkArray[i]
       recipeTitleArray.push(bookmarkArray[i].title); //recipe name to be deleted (string)
       //filter out the items that are ok to be deleted
@@ -344,54 +343,12 @@ const deleteBookmark = () => {
   }
 
   if ((bookmarkArray.length > newBookmarkArray.length) && (recipeTitleArray.length !== 0)) {
+
     //to use bookmarkArray for the duplication check
     //one or more items are selected
     bookmarkArray = newBookmarkArray;
-  } else {
-    alert("no item selected.");
-  }
-
-  //display bookmark again
-  //create html
-  appendHTMLForBookmark = bookmarkArray.map((element) => {
-    return `
-      <div class="bookmarkItem">
-        <input type="checkbox" name="checkbox" class="checkbox">
-        <label for="checkbox"></label>
-        <img src="${element.imgURL}" alt="itemImg">
-        <p>${element.title}</p>
-      </div>
-      `
-  }).join("");
-  bookmarkList.innerHTML = appendHTMLForBookmark;
-  storeBookmark();
-}
-
-/* Store bookmark in local storage*/
-const storeBookmark = () => {
-  let storeJson = JSON.stringify(bookmarkArray);
-  localStorage.setItem("bookmark", storeJson);
-}
-
-/* Get bookmark in local storage*/  // ----not called yet
-const getBookmark = () => {
-  let getJson = localStorage.getItem("bookmark");
-  bookmarkObj = JSON.parse(getJson); //change to Object
-  console.log(bookmarkObj);
-  return bookmarkObj;
-}
-
-/* Display bookmark when the page is loaded */
-const displayBookmark = () => {
-  getBookmark();
-  console.log(bookmarkObj);
-  if (bookmarkObj !== null) {
-    //=================== Under Const ==========================//
-    //convert obj to array
-    // bookmarkArray = Object.entries(bookmarkObj);
-    // console.log("bookmarkarray is", bookmarkArray)
-     //=================== Under Const ==========================//
-    //create html if bookmark is not null
+    //display bookmark again
+    //create html
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
       <div class="bookmarkItem">
@@ -402,8 +359,48 @@ const displayBookmark = () => {
       </div>
       `
     }).join("");
+    bookmarkList.innerHTML = appendHTMLForBookmark;
+    storeBookmark();
+  } else {
+    alert("No item selected.");
   }
 
+}
+
+/* Store bookmark in local storage*/
+const storeBookmark = () => {
+
+  localStorage.setItem("bookmark", JSON.stringify(bookmarkArray));
+}
+
+/* Get bookmark in local storage*/
+const getBookmark = () => {
+  bookmarkArray = JSON.parse(localStorage.getItem("bookmark")); //change to array of object
+  return bookmarkArray;
+}
+
+/* Display bookmark when the page is loaded */
+const displayBookmark = () => {
+  getBookmark();
+
+  if (bookmarkArray !== null) {
+    //create html if bookmark is not null
+    appendHTMLForBookmark = bookmarkArray.map((element) => {
+
+      return `
+      <div class="bookmarkItem">
+        <input type="checkbox" name="checkbox" class="checkbox">
+        <label for="checkbox"></label>
+        <img src="${element.imgURL}" alt="itemImg">
+        <p>${element.title}</p>
+      </div>
+      `
+    }).join("");
+  } else {
+    // When the page is loaded very first time, it is always null. Set an empty array.
+    // This happened only once.
+    bookmarkArray = [];
+  }
   bookmarkList.innerHTML = appendHTMLForBookmark;
 }
 
