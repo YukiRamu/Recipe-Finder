@@ -269,13 +269,16 @@ const addBookmark = () => {
     //create html
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
-    <div class="bookmarkItem">
-      <input type="checkbox" name="checkbox" class="checkbox">
-      <label for="checkbox"></label>
+      <div class="bookmarkItem">
+
+      <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="delLabel"></label>
+
       <img src="${element.imgURL}" alt="itemImg">
       <p>${element.title}</p>
-    </div>
-    `
+
+      </div>
+      `
     }).join("");
     bookmarkList.innerHTML = appendHTMLForBookmark;
     storeBookmark();
@@ -308,13 +311,16 @@ const addBookmark = () => {
       //create html
       appendHTMLForBookmark = bookmarkArray.map((element) => {
         return `
-         <div class="bookmarkItem">
-          <input type="checkbox" name="checkbox" class="checkbox">
-          <label for="checkbox"></label>
-           <img src="${element.imgURL}" alt="itemImg">
-           <p>${element.title}</p>
-         </div>
-         `
+        <div class="bookmarkItem">
+
+        <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox" class="delLabel"></label>
+
+        <img src="${element.imgURL}" alt="itemImg">
+        <p>${element.title}</p>
+ 
+       </div>
+        `
       }).join("");
       bookmarkList.innerHTML = appendHTMLForBookmark;
       storeBookmark();
@@ -331,9 +337,10 @@ const deleteBookmark = () => {
   let recipeTitleArray = [];
   let newBookmarkArray = [];
 
+  console.log(currentBookmark);
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
-    if (currentBookmark[i].firstElementChild.checked) {
+    if (currentBookmark[i].childNodes[1].checked) {
 
       //Ok to delete - bookmarkArray[i]
       recipeTitleArray.push(bookmarkArray[i].title); //recipe name to be deleted (string)
@@ -352,10 +359,13 @@ const deleteBookmark = () => {
     appendHTMLForBookmark = bookmarkArray.map((element) => {
       return `
       <div class="bookmarkItem">
-        <input type="checkbox" name="checkbox" class="checkbox">
-        <label for="checkbox"></label>
-        <img src="${element.imgURL}" alt="itemImg">
-        <p>${element.title}</p>
+
+      <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="delLabel"></label>
+
+      <img src="${element.imgURL}" alt="itemImg">
+      <p>${element.title}</p>
+
       </div>
       `
     }).join("");
@@ -389,10 +399,13 @@ const displayBookmark = () => {
 
       return `
       <div class="bookmarkItem">
-        <input type="checkbox" name="checkbox" class="checkbox">
-        <label for="checkbox"></label>
-        <img src="${element.imgURL}" alt="itemImg">
-        <p>${element.title}</p>
+
+       <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+       <label for="checkbox" class="delLabel"></label>
+
+       <img src="${element.imgURL}" alt="itemImg">
+       <p>${element.title}</p>
+
       </div>
       `
     }).join("");

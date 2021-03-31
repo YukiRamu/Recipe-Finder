@@ -707,6 +707,7 @@ body .main .bookmark .bookmarkContainer .bookmarkList {
   min-height: 100vh;
   width: 100%;
   padding-top: 10%;
+  padding-bottom: 5%;
   background-color: rgba(255, 255, 255, 0.613);
 }
 
@@ -727,15 +728,15 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   margin: auto;
 }
 
-body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem label {
+body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .delLabel {
   display: none;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem img {
   width: 50%;
   display: block;
-  -webkit-box-shadow: 1em 1em 0.5em #04080c;
-          box-shadow: 1em 1em 0.5em #04080c;
+  -webkit-box-shadow: 0.5em 0.2em 0.5em #04080c;
+          box-shadow: 0.5em 0.2em 0.5em #04080c;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem p {
