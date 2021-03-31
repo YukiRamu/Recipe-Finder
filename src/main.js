@@ -23,7 +23,6 @@ let lastIdxParam; //same as above
 let appendHTMLForResult = "";
 let appendHTMLForIngrList = "";
 
-
 //load more
 const showMoreBtn = document.querySelector(".showMore");
 
@@ -39,6 +38,7 @@ let imgURLParam = "";// same as above
 //bookmark
 const bookmarkLink = document.querySelector(".bookmarkLink"); //a link on header
 let bookmarkArray = []; //array of object
+let bookmarkObj = {}; // object
 const bookmarkList = document.querySelector(".bookmarkList");
 let appendHTMLForBookmark = "";
 const delBtn = document.querySelector(".delBtn");//bookmark delete
@@ -259,7 +259,7 @@ const displayRecipe = async (title) => {
 
 /* display bookmark list - Add */
 const addBookmark = () => {
-
+  console.log(typeof (bookmarkArray), bookmarkArray);
   if (bookmarkArray.length === 0) {
     //adding to bookmark for the first time
     //add a selected item to an array
@@ -373,18 +373,27 @@ const storeBookmark = () => {
   localStorage.setItem("bookmark", storeJson);
 }
 
-/* Get bookmark in local storage*/
+/* Get bookmark in local storage*/  // ----not called yet
 const getBookmark = () => {
   let getJson = localStorage.getItem("bookmark");
-  bookmarkArray = JSON.parse(getJson);
+  bookmarkObj = JSON.parse(getJson); //change to Object
+  console.log(bookmarkObj);
+  return bookmarkObj;
 }
 
 /* Display bookmark when the page is loaded */
 const displayBookmark = () => {
   getBookmark();
-  //create html
-  appendHTMLForBookmark = bookmarkArray.map((element) => {
-    return `
+  console.log(bookmarkObj);
+  if (bookmarkObj !== null) {
+    //=================== Under Const ==========================//
+    //convert obj to array
+    // bookmarkArray = Object.entries(bookmarkObj);
+    // console.log("bookmarkarray is", bookmarkArray)
+     //=================== Under Const ==========================//
+    //create html if bookmark is not null
+    appendHTMLForBookmark = bookmarkArray.map((element) => {
+      return `
       <div class="bookmarkItem">
         <input type="checkbox" name="checkbox" class="checkbox">
         <label for="checkbox"></label>
@@ -392,7 +401,9 @@ const displayBookmark = () => {
         <p>${element.title}</p>
       </div>
       `
-  }).join("");
+    }).join("");
+  }
+
   bookmarkList.innerHTML = appendHTMLForBookmark;
 }
 
@@ -470,7 +481,6 @@ searchBtn.addEventListener("click", () => {
     resultSection.style.display = "none";
     //hide recipe section if it is already shown
     recipeSection.style.display = "none";
-
     getRecipe(`${searchKeyword.value}`, 0, 16);
     clearInput();
   }
