@@ -23,6 +23,7 @@ let lastIdxParam; //same as above
 let appendHTMLForResult = "";
 let appendHTMLForIngrList = "";
 
+
 //load more
 const showMoreBtn = document.querySelector(".showMore");
 

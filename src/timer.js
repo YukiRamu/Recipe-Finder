@@ -35,6 +35,7 @@ const startTimer = () => {
     }
   }
 
+  
   //minutes
   if (displayMin < 59) {
     if (displayMin < 10) {

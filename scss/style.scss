@@ -1,4 +1,11 @@
 /* Variables */
+@import "./media";
+/* Media Query */
+/* Devices*/
+$desktop: 1280px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 480px;
 
 //Color pattern 1 - default
 $color3: #d76b34; // recipe detail text color
@@ -255,13 +262,13 @@ body {
         .keyword {
           border-radius: 50vw;
           border: none;
-         // border-bottom: $color4 0.2em solid;
+          // border-bottom: $color4 0.2em solid;
           padding: 1em;
           @include centering;
           top: 70%;
           position: absolute;
           width: 80%;
-         // box-shadow: 0 0.3em 0.5em $color15;
+          // box-shadow: 0 0.3em 0.5em $color15;
           font-size: 1.3em;
         }
         .search {
@@ -365,7 +372,7 @@ body {
           font-size: 1.3em;
           color: $color12;
           background-color: $base;
-          box-shadow:  0 0.5em 1em $color8;
+          box-shadow: 0 0.5em 1em $color8;
           &:active {
             box-shadow: none;
           }
@@ -468,7 +475,7 @@ body {
             width: fit-content;
             text-decoration: none;
             background-color: $base;
-            box-shadow:  0 0.5em 1em $color8;
+            box-shadow: 0 0.5em 1em $color8;
             padding: 0.5em 2em;
             font-size: 1.3em;
             margin-top: 1em;
@@ -490,7 +497,7 @@ body {
         font-size: 1.3em;
         color: $color12;
         background-color: $base;
-        box-shadow:  0 0.5em 1em $color8;
+        box-shadow: 0 0.5em 1em $color8;
         &:active {
           box-shadow: none;
         }
@@ -560,7 +567,7 @@ body {
           font-size: 1.3em;
           color: $color12;
           background-color: $base;
-          box-shadow:  0 0.5em 1em $color8;
+          box-shadow: 0 0.5em 1em $color8;
           &:active {
             box-shadow: none;
           }
