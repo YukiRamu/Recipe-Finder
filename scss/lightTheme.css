@@ -726,6 +726,8 @@ body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .checkbox {
   cursor: pointer;
   border-radius: 50vw;
   margin: auto;
+  width: 50%;
+  height: 35%;
 }
 
 body .main .bookmark .bookmarkContainer .bookmarkList .bookmarkItem .delLabel {
