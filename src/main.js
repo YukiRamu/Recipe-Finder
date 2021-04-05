@@ -512,7 +512,7 @@ bookmarkLink.addEventListener("click", () => {
 
 /* Open a new window for a countdown timer */
 timerBtn.addEventListener("click", () => {
-  window.open("timer.html", "", "width=500, height=285");
+  window.open("timer.html", "stopwatch", "width=500,height=285,top=0,left=0");
 });
 
 /* delete bookmark */
