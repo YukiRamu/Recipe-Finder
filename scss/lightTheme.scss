@@ -1,6 +1,7 @@
 /* Variables */
+@import "./mixin";
 
-//Color pattern 1 - default
+//Colors pattern 2
 $color3: #d76b34; // recipe detail text color
 $color4: #dfa42a; // button, bookmark heart, recipe button hover color
 $color6: #52230d; // recipe panel text color
@@ -9,83 +10,6 @@ $color12: #b34140; // primary text color
 $color14: #7f9530; // accent color, button hover color
 $color15: #918484; // recipe button hover text color
 $base: #f1e7ecd6; // base color
-
-@mixin flex {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  text-align: center;
-}
-
-@mixin animationFadeIn {
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  2% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  4% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  19% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  21% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  23% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-
-  80% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  83% {
-    opacity: 0.4;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  87% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-}
-
-@mixin centering {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* Global styling */
 h1 {

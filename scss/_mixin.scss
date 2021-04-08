@@ -1,0 +1,115 @@
+/* mixin */
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+@mixin centering {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin animationFadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  2% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  4% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  19% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  21% {
+    opacity: 0.1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  23% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+
+  80% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  83% {
+    opacity: 0.4;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+  87% {
+    opacity: 1;
+    text-shadow: 0 0 1em #d75b54e4;
+  }
+}
+
+/* Media Query */
+/* Devices*/
+$desktop: 1280px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 480px;
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $tablet) and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $laptop) and (max-width: $desktop) {
+    //follow the main css configuration
+    @content;
+  }
+}
+
+@mixin largeDesktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

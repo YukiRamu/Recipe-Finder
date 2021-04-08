@@ -1,8 +1,5 @@
 /* Variables */
-/* Media Query */
-/* Devices*/
-/* Media Query */
-/* Devices*/
+/* mixin */
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
@@ -102,6 +99,8 @@
   }
 }
 
+/* Media Query */
+/* Devices*/
 /* Global styling */
 h1 {
   font-size: 3em;
@@ -220,12 +219,6 @@ body .header h1 {
   top: 16%;
   position: relative;
   font-size: 5em;
-}
-
-@media (max-width: 480px) {
-  body .header h1 h1 {
-    font-size: 0.5rem;
-  }
 }
 
 body .header .navBar {

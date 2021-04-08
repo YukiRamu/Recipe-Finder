@@ -1,13 +1,7 @@
 /* Variables */
-@import "./media";
-/* Media Query */
-/* Devices*/
-$desktop: 1280px;
-$laptop: 1024px;
-$tablet: 768px;
-$mobile: 480px;
+@import "./mixin";
 
-//Color pattern 1 - default
+//Colors pattern1 - default
 $color3: #d76b34; // recipe detail text color
 $color4: #ca4d4a; // button, bookmark heart, recipe button hover color
 $color6: #97342b; // recipe panel text color
@@ -16,83 +10,6 @@ $color12: #e7d362; // primary text color
 $color14: #497e9a; // accent color, button hover color
 $color15: #f1f4f1; // recipe button hover text color
 $base: rgba(12, 39, 53, 0.958); // base color
-
-@mixin flex {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  text-align: center;
-}
-
-@mixin animationFadeIn {
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes flicker {
-  0% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  2% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  4% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  19% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  21% {
-    opacity: 0.1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  23% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-
-  80% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  83% {
-    opacity: 0.4;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-  87% {
-    opacity: 1;
-    text-shadow: 0 0 1em #d75b54e4;
-  }
-}
-
-@mixin centering {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* Global styling */
 h1 {
@@ -189,10 +106,10 @@ body {
       top: 16%;
       position: relative;
       font-size: 5em;
-      @include mobile;
-      &content {
-        
-      }
+
+      // @include mobile {
+      //   font-size: 2rem;
+      // }
     }
     .navBar {
       @include flex;

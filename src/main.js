@@ -299,7 +299,7 @@ const addBookmark = () => {
 
     if (trueOrfalse) {
       //show pop up - Already in the list
-      alert("Item below is already in the bookmark list"); //====planning to change to the popup screen
+      alert("✔️Item below is already in the bookmark list"); //====planning to change to the popup screen
     } else {
       //add a selected item to an array
       bookmarkArray.unshift(
@@ -372,7 +372,7 @@ const deleteBookmark = () => {
     bookmarkList.innerHTML = appendHTMLForBookmark;
     storeBookmark();
   } else {
-    alert("No item selected.");
+    alert("No item selected.😶");
   }
 
 }

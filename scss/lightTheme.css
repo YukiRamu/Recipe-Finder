@@ -1,4 +1,5 @@
 /* Variables */
+/* mixin */
 @-webkit-keyframes spin {
   from {
     -webkit-transform: rotate(0deg);
@@ -98,6 +99,8 @@
   }
 }
 
+/* Media Query */
+/* Devices*/
 /* Global styling */
 h1 {
   font-size: 3em;
