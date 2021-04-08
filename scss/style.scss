@@ -189,6 +189,10 @@ body {
       top: 16%;
       position: relative;
       font-size: 5em;
+      @include mobile;
+      &content {
+        
+      }
     }
     .navBar {
       @include flex;

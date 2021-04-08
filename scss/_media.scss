@@ -7,8 +7,9 @@ $mobile: 480px;
 
 @mixin mobile {
   @media (max-width: $mobile) {
+    @content;
     h1 {
-      font-size: 1em;
+      font-size: 0.5rem;
     }
   }
 }
