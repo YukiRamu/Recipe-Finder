@@ -372,7 +372,6 @@ const deleteBookmark = () => {
   } else {
     alert("No item selected.😶");
   }
-
 }
 
 /* Store bookmark in local storage*/
