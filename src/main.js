@@ -298,10 +298,10 @@ const addBookmark = () => {
     });
 
     if (trueOrfalse) {
-      //show pop up - Already in the list
+      //true: show pop up - Already in the list
       alert("✔️Item below is already in the bookmark list"); //====planning to change to the popup screen
     } else {
-      //add a selected item to an array
+      //false: add a selected item to an array
       bookmarkArray.unshift(
         {
           "title": `${titleParam}`,
@@ -334,14 +334,12 @@ const addBookmark = () => {
 const deleteBookmark = () => {
 
   const currentBookmark = document.querySelectorAll(".bookmarkItem");
-  let recipeTitleArray = [];
+  let recipeTitleArray = []; //ok-to-delete item list
   let newBookmarkArray = [];
 
-  console.log(currentBookmark);
   //check if the checkbox is checked 
   for (i = 0; i < currentBookmark.length; i++) {
     if (currentBookmark[i].childNodes[1].checked) {
-
       //Ok to delete - bookmarkArray[i]
       recipeTitleArray.push(bookmarkArray[i].title); //recipe name to be deleted (string)
       //filter out the items that are ok to be deleted
@@ -349,10 +347,10 @@ const deleteBookmark = () => {
     }
   }
 
+  //check one or more items are selected
   if ((bookmarkArray.length > newBookmarkArray.length) && (recipeTitleArray.length !== 0)) {
 
     //to use bookmarkArray for the duplication check
-    //one or more items are selected
     bookmarkArray = newBookmarkArray;
     //display bookmark again
     //create html
@@ -379,7 +377,6 @@ const deleteBookmark = () => {
 
 /* Store bookmark in local storage*/
 const storeBookmark = () => {
-
   localStorage.setItem("bookmark", JSON.stringify(bookmarkArray));
 }
 
