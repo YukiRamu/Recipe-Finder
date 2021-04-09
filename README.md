@@ -6,6 +6,7 @@
 <li>Recipe search with any keywords</li>
 <li>View the detail of recipes</li>
 <li>Bookmark (add, delete and store data even if the page is reloaded)</li>
+<li>Validation checks</li>
 <li>Theme color change</li>
 </ul>
 
